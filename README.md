@@ -1,4 +1,5 @@
 # ActivityFragmentManager
+[![License](http://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat)](http://choosealicense.com/licenses/apache-2.0/)
 > A library to help android developer working easly with activities and fragments 
 
 # Usage
