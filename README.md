@@ -1,4 +1,5 @@
 # ActivityFragmentManager
+[![License](http://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat)](http://choosealicense.com/licenses/apache-2.0/)
 > A library to help android developer working easly with activities and fragments 
 
 # Usage
@@ -15,7 +16,7 @@ ActivityFragmentManager.add(mActivity, FragmentLogin.class);
 ```
 ### Useful info
 - If you want to change the fragment enter/exit animations, override the methods **getAnimFragmentEnter()** and **getAnimFragmentExit()** on your activity.
-- Don't forget to check the [Sample project]( https://github.com/***REMOVED***/ActivityFragmentManager/blob/master/sample/src/main/java/).
+- Don't forget to check the [Sample project]( https://github.com/***REMOVED***/ActivityFragmentManager/blob/master/example/src/main/java/com/massivedisaster/example/fragment/FragmentOpenAdd.java).
 
 ## Install
 
