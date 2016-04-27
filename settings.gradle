@@ -1,1 +1,1 @@
-include ':app', ':activity-fragment-manager'
+include ':example', ':activity-fragment-manager'

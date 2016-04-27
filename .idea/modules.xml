@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ActivityManager.iml" filepath="$PROJECT_DIR$/ActivityManager.iml" />
       <module fileurl="file://$PROJECT_DIR$/activity-fragment-manager/activity-fragment-manager.iml" filepath="$PROJECT_DIR$/activity-fragment-manager/activity-fragment-manager.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/example/example.iml" filepath="$PROJECT_DIR$/example/example.iml" />
     </modules>
   </component>
 </project>
