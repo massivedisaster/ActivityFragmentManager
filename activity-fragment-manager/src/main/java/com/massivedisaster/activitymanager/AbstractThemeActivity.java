@@ -3,7 +3,6 @@ package com.massivedisaster.activitymanager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -20,8 +19,8 @@ public abstract class AbstractThemeActivity extends AppCompatActivity {
     protected abstract int getContainerViewId();
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
         setContentView(getLayoutResId());
     }
@@ -89,5 +88,14 @@ public abstract class AbstractThemeActivity extends AppCompatActivity {
 
     protected int getAnimFragmentExit() {
         return android.R.anim.fade_out;
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
     }
 }
