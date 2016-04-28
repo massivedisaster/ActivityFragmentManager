@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.massivedisaster.activitymanager.AbstractThemeActivity;
+import com.massivedisaster.activitymanager.AbstractFragmentActivity;
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.example.activity.PrimaryThemeActivity;
 import com.massivedisaster.example.activity.SecondaryThemeActivity;
@@ -49,7 +49,7 @@ public class FragmentOpenAdd extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnAddFragment:
-                ActivityFragmentManager.add((AbstractThemeActivity) getActivity(), FragmentOpenAdd.class);
+                ActivityFragmentManager.add((AbstractFragmentActivity) getActivity(), FragmentOpenAdd.class);
                 break;
             case R.id.btnOpenPrimaryTheme:
                 ActivityFragmentManager.open(getActivity(), PrimaryThemeActivity.class, FragmentOpenAdd.class);
