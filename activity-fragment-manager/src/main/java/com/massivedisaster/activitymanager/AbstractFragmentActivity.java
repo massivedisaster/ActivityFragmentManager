@@ -12,7 +12,7 @@ import android.util.Log;
  * Activity Manager
  * Created by jms on 21/04/16.
  */
-public abstract class AbstractThemeActivity extends AppCompatActivity {
+public abstract class AbstractFragmentActivity extends AppCompatActivity {
 
     protected abstract int getLayoutResId();
 

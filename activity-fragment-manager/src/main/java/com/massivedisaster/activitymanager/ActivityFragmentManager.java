@@ -17,7 +17,7 @@ public class ActivityFragmentManager {
     /**
      * Open a new activity with a specific fragment
      */
-    public static void open(Activity activity, Class<? extends AbstractThemeActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle, Integer requestCode) {
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle, Integer requestCode) {
 
         Intent intent = new Intent(activity, activityClazz);
 
@@ -32,19 +32,19 @@ public class ActivityFragmentManager {
         }
     }
 
-    public static void open(Activity activity, Class<? extends AbstractThemeActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle) {
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle) {
         open(activity, activityClazz, fragmentClazz, bundle, null);
     }
 
-    public static void open(Activity activity, Class<? extends AbstractThemeActivity> activityClazz, Class<? extends Fragment> fragmentClazz) {
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz) {
         open(activity, activityClazz, fragmentClazz, null, null);
     }
 
-    public static void open(Activity activity, Class<? extends AbstractThemeActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Integer requestCode) {
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Integer requestCode) {
         open(activity, activityClazz, fragmentClazz, null, requestCode);
     }
 
-    public static void add(AbstractThemeActivity activity, Class<? extends Fragment> fragmentClazz, Bundle b) {
+    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, Bundle b) {
 
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
 
@@ -67,7 +67,7 @@ public class ActivityFragmentManager {
         }
     }
 
-    public static void add(AbstractThemeActivity activity, Class<? extends Fragment> fragmentClazz) {
+    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz) {
         add(activity, fragmentClazz, null);
     }
 }
