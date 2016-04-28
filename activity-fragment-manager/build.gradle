@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/***REMOVED***/Activity-Fragment-Manager'
     gitUrl = 'https://github.com/***REMOVED***/Activity-Fragment-Manager.git'
 
-    libraryVersion = '0.1.2'
+    libraryVersion = '0.1.3'
 
     developerId = '***REMOVED***'
     developerName = 'Jorge Costa'
