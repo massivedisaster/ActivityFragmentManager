@@ -90,6 +90,14 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
         return android.R.anim.fade_out;
     }
 
+    protected int getAnimFragmentPopEnter() {
+        return android.R.anim.fade_in;
+    }
+
+    protected int getAnimFragmentPopExit() {
+        return android.R.anim.fade_out;
+    }
+
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
