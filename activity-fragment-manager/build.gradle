@@ -10,10 +10,10 @@ ext {
 
     libraryDescription = 'A library to help android developers work with activities and fragmenet easly'
 
-    siteUrl = 'https://github.com/***REMOVED***/Activity-Fragment-Manager'
-    gitUrl = 'https://github.com/***REMOVED***/Activity-Fragment-Manager.git'
+    siteUrl = 'https://github.com/extmkv/Activity-Fragment-Manager'
+    gitUrl = 'https://github.com/extmkv/Activity-Fragment-Manager.git'
 
-    libraryVersion = '0.1.3'
+    libraryVersion = '0.1.4'
 
     developerId = '***REMOVED***'
     developerName = 'Jorge Costa'
