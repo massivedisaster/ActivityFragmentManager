@@ -57,11 +57,13 @@ public class ActivityFragmentManager {
             }
 
             transaction.addToBackStack(null);
-            transaction.setCustomAnimations(activity.getAnimFragmentEnter(), activity.getAnimFragmentExit());
+            transaction.setCustomAnimations(activity.getAnimFragmentEnter(), activity.getAnimFragmentExit(), activity.getAnimFragmentPopEnter(), activity.getAnimFragmentPopExit());
 
-            transaction.replace(activity.getContainerViewId(), f);
+            if (activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()) != null)
+                transaction.hide(activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()));
+
+            transaction.add(activity.getContainerViewId(), f);
             transaction.commit();
-
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
