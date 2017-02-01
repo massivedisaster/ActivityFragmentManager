@@ -15,14 +15,14 @@ Add a new fragment to an activity
 ActivityFragmentManager.add(mActivity, FragmentLogin.class);
 ```
 ### Useful info
-- If you want to change the fragment enter/exit animations, override the methods **getAnimFragmentEnter()** and **getAnimFragmentExit()** on your activity.
-- Don't forget to check the [Sample project]( https://github.com/***REMOVED***/ActivityFragmentManager/blob/master/example/src/main/java/com/massivedisaster/example/fragment/FragmentOpenAdd.java).
+- If you want to change the fragment enter/exit animations, override the methods **getAnimFragmentEnter()**, **getAnimFragmentExit()**, **getAnimFragmentPopEnter()** and **getAnimFragmentPopExit()** on your activity.
+- Don't forget to check the [Sample project]( https://github.com/extmkv/ActivityFragmentManager/blob/master/example/src/main/java/com/massivedisaster/example/fragment/FragmentOpenAdd.java).
 
 ## Install
 
 Add the dependency in the form:
 ```groovy
 dependencies {
-  compile 'com.massivedisaster:activity-fragment-manager:0.1.3'
+  compile 'com.massivedisaster:activity-fragment-manager:0.1.4'
 }
 ```
