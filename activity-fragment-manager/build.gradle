@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/extmkv/Activity-Fragment-Manager'
     gitUrl = 'https://github.com/extmkv/Activity-Fragment-Manager.git'
 
-    libraryVersion = '0.1.4'
+    libraryVersion = '0.1.5'
 
     developerId = '***REMOVED***'
     developerName = 'Jorge Costa'
@@ -29,7 +29,7 @@ android {
     buildToolsVersion "23.0.3"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 10
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
