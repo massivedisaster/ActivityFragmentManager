@@ -1,4 +1,5 @@
 # ActivityFragmentManager
+[![Download](https://api.bintray.com/packages/***REMOVED***/maven/activity-fragment-manager/images/download.svg) ](https://bintray.com/***REMOVED***/maven/activity-fragment-manager/)
 [![License](http://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat)](http://choosealicense.com/licenses/apache-2.0/)
 > A library to help android developer working easly with activities and fragments 
 
