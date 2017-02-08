@@ -1,6 +1,7 @@
 package com.massivedisaster.activitymanager;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -73,13 +74,13 @@ public class ActivityFragmentManager {
         add(activity, fragmentClazz, null);
     }
 
-    public static Intent getIntent(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz) {
-        return getIntent(activity, activityClazz, fragmentClazz, null);
+    public static Intent getIntent(Context context, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz) {
+        return getIntent(context, activityClazz, fragmentClazz, null);
     }
 
-    public static Intent getIntent(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle) {
+    public static Intent getIntent(Context context, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle) {
 
-        Intent intent = new Intent(activity, activityClazz);
+        Intent intent = new Intent(context, activityClazz);
 
         intent.putExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT, fragmentClazz.getCanonicalName());
 
