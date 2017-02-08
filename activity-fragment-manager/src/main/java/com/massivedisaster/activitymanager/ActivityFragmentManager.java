@@ -72,4 +72,19 @@ public class ActivityFragmentManager {
     public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz) {
         add(activity, fragmentClazz, null);
     }
+
+    public static Intent getIntent(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz) {
+        return getIntent(activity, activityClazz, fragmentClazz, null);
+    }
+
+    public static Intent getIntent(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle) {
+
+        Intent intent = new Intent(activity, activityClazz);
+
+        intent.putExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT, fragmentClazz.getCanonicalName());
+
+        if (bundle != null) intent.putExtras(bundle);
+
+        return intent;
+    }
 }
