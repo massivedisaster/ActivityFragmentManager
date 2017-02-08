@@ -74,6 +74,34 @@ public class ActivityFragmentManager {
         add(activity, fragmentClazz, null);
     }
 
+    public static void replace(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, Bundle b) {
+
+        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+
+        try {
+
+            Fragment f = fragmentClazz.newInstance();
+
+            if (b != null) {
+                f.setArguments(b);
+            }
+
+            transaction.setCustomAnimations(activity.getAnimFragmentEnter(), activity.getAnimFragmentExit(), activity.getAnimFragmentPopEnter(), activity.getAnimFragmentPopExit());
+
+            if (activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()) != null)
+                transaction.hide(activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()));
+
+            transaction.add(activity.getContainerViewId(), f);
+            transaction.commit();
+        } catch (InstantiationException | IllegalAccessException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void replace(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz) {
+        replace(activity, fragmentClazz, null);
+    }
+
     public static Intent getIntent(Context context, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz) {
         return getIntent(context, activityClazz, fragmentClazz, null);
     }
