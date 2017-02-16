@@ -14,15 +14,17 @@ import android.support.v4.app.FragmentTransaction;
 public class ActivityFragmentManager {
 
     public static final String ACTIVITY_MANAGER_FRAGMENT = "activity_manager_fragment";
+    public static final String ACTIVITY_MANAGER_FRAGMENT_TAG = "activity_manager_fragment_tag";
 
     /**
      * Open a new activity with a specific fragment
      */
-    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle, Integer requestCode) {
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, String tag, Bundle bundle, Integer requestCode) {
 
         Intent intent = new Intent(activity, activityClazz);
 
         intent.putExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT, fragmentClazz.getCanonicalName());
+        intent.putExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT_TAG, tag);
 
         if (bundle != null) intent.putExtras(bundle);
 
@@ -33,19 +35,38 @@ public class ActivityFragmentManager {
         }
     }
 
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle, Integer requestCode) {
+        open(activity, activityClazz, fragmentClazz, null, bundle, requestCode);
+    }
+
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, String tag, Bundle bundle) {
+        open(activity, activityClazz, fragmentClazz, tag, bundle, null);
+    }
+
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, String tag) {
+        open(activity, activityClazz, fragmentClazz, tag, null, null);
+    }
+
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, String tag, Integer requestCode) {
+        open(activity, activityClazz, fragmentClazz, tag, null, requestCode);
+    }
+
     public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle) {
-        open(activity, activityClazz, fragmentClazz, bundle, null);
+        open(activity, activityClazz, fragmentClazz, null, bundle, null);
     }
 
     public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz) {
-        open(activity, activityClazz, fragmentClazz, null, null);
+        open(activity, activityClazz, fragmentClazz, null, null, null);
     }
 
     public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Integer requestCode) {
-        open(activity, activityClazz, fragmentClazz, null, requestCode);
+        open(activity, activityClazz, fragmentClazz, null, null, requestCode);
     }
 
-    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, Bundle b) {
+    /**
+     * Add a new fragment in a specific AbstractFragmentActivity activity
+     */
+    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, String tag, Bundle b) {
 
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
 
@@ -63,15 +84,23 @@ public class ActivityFragmentManager {
             if (activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()) != null)
                 transaction.hide(activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()));
 
-            transaction.add(activity.getContainerViewId(), f);
+            transaction.add(activity.getContainerViewId(), f, tag);
             transaction.commit();
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
     }
 
+    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, Bundle b) {
+        add(activity, fragmentClazz, null, b);
+    }
+
+    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, String tag) {
+        add(activity, fragmentClazz, tag, null);
+    }
+
     public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz) {
-        add(activity, fragmentClazz, null);
+        add(activity, fragmentClazz, null, null);
     }
 
     public static void replace(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, Bundle b) {
@@ -103,17 +132,27 @@ public class ActivityFragmentManager {
     }
 
     public static Intent getIntent(Context context, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz) {
-        return getIntent(context, activityClazz, fragmentClazz, null);
+        return getIntent(context, activityClazz, fragmentClazz, null, null);
+    }
+
+    public static Intent getIntent(Context context, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, String tag) {
+        return getIntent(context, activityClazz, fragmentClazz, tag, null);
     }
 
     public static Intent getIntent(Context context, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle) {
+        return getIntent(context, activityClazz, fragmentClazz, null, bundle);
+    }
+
+    public static Intent getIntent(Context context, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, String tag, Bundle bundle) {
 
         Intent intent = new Intent(context, activityClazz);
 
         intent.putExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT, fragmentClazz.getCanonicalName());
+        intent.putExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT_TAG, tag);
 
         if (bundle != null) intent.putExtras(bundle);
 
         return intent;
     }
+
 }

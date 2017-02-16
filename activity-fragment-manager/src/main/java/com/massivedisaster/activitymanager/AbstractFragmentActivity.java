@@ -37,7 +37,7 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
     protected void performTransaction(Fragment fragment, String tag) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
-        ft.replace(getContainerViewId(), fragment);
+        ft.replace(getContainerViewId(), fragment, tag);
         ft.addToBackStack(tag);
 
         ft.commitAllowingStateLoss();
@@ -79,7 +79,7 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
     }
 
     private String getFragmentTag() {
-        return getIntent().getStringExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT);
+        return getIntent().getStringExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT_TAG);
     }
 
     protected int getAnimFragmentEnter() {
