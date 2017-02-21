@@ -8,7 +8,7 @@ ext {
     libraryName = 'Activity-Fragment-Manager'
     artifact = 'activity-fragment-manager'
 
-    libraryDescription = 'A library to help android developers work with activities and fragmenet easly'
+    libraryDescription = 'A library to help android developers work with activities and fragments easly'
 
     siteUrl = 'https://github.com/extmkv/Activity-Fragment-Manager'
 
