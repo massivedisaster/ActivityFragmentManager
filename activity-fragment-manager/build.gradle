@@ -14,7 +14,7 @@ ext {
 
     gitUrl = 'https://github.com/extmkv/Activity-Fragment-Manager.git'
 
-    libraryVersion = '0.2.0'
+    libraryVersion = '0.2.1'
 
     developerId = 'jmspt'
     developerName = 'Jorge Costa'
