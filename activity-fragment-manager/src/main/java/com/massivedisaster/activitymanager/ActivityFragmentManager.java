@@ -66,7 +66,7 @@ public class ActivityFragmentManager {
     /**
      * Add a new fragment in a specific AbstractFragmentActivity activity
      */
-    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, String tag, Bundle b) {
+    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, String tag, Bundle bundle, TransactionAnimation animation) {
 
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
 
@@ -74,12 +74,16 @@ public class ActivityFragmentManager {
 
             Fragment f = fragmentClazz.newInstance();
 
-            if (b != null) {
-                f.setArguments(b);
+            if (bundle != null) {
+                f.setArguments(bundle);
             }
 
             transaction.addToBackStack(null);
-            transaction.setCustomAnimations(activity.getAnimFragmentEnter(), activity.getAnimFragmentExit(), activity.getAnimFragmentPopEnter(), activity.getAnimFragmentPopExit());
+            if (animation != null) {
+                transaction.setCustomAnimations(animation.getEnter(), animation.getExit(), animation.getPopEnter(), animation.getPopExit());
+            } else {
+                transaction.setCustomAnimations(activity.getAnimFragmentEnter(), activity.getAnimFragmentExit(), activity.getAnimFragmentPopEnter(), activity.getAnimFragmentPopExit());
+            }
 
             if (activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()) != null)
                 transaction.hide(activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()));
@@ -91,19 +95,35 @@ public class ActivityFragmentManager {
         }
     }
 
-    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, Bundle b) {
-        add(activity, fragmentClazz, null, b);
+    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, Bundle bundle, TransactionAnimation animation) {
+        add(activity, fragmentClazz, null, bundle, animation);
+    }
+
+    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, String tag, TransactionAnimation animation) {
+        add(activity, fragmentClazz, tag, null, animation);
+    }
+
+    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, String tag, Bundle bundle) {
+        add(activity, fragmentClazz, tag, bundle, null);
+    }
+
+    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, TransactionAnimation animation) {
+        add(activity, fragmentClazz, null, null, animation);
+    }
+
+    public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, Bundle bundle) {
+        add(activity, fragmentClazz, null, bundle, null);
     }
 
     public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, String tag) {
-        add(activity, fragmentClazz, tag, null);
+        add(activity, fragmentClazz, tag, null, null);
     }
 
     public static void add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz) {
-        add(activity, fragmentClazz, null, null);
+        add(activity, fragmentClazz, null, null, null);
     }
 
-    public static void replace(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, Bundle b) {
+    public static void replace(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, Bundle bundle, TransactionAnimation animation) {
 
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
 
@@ -111,11 +131,15 @@ public class ActivityFragmentManager {
 
             Fragment f = fragmentClazz.newInstance();
 
-            if (b != null) {
-                f.setArguments(b);
+            if (bundle != null) {
+                f.setArguments(bundle);
             }
 
-            transaction.setCustomAnimations(activity.getAnimFragmentEnter(), activity.getAnimFragmentExit(), activity.getAnimFragmentPopEnter(), activity.getAnimFragmentPopExit());
+            if (animation != null) {
+                transaction.setCustomAnimations(animation.getEnter(), animation.getExit(), animation.getPopEnter(), animation.getPopExit());
+            } else {
+                transaction.setCustomAnimations(activity.getAnimFragmentEnter(), activity.getAnimFragmentExit(), activity.getAnimFragmentPopEnter(), activity.getAnimFragmentPopExit());
+            }
 
             if (activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()) != null)
                 transaction.hide(activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()));
@@ -127,8 +151,16 @@ public class ActivityFragmentManager {
         }
     }
 
+    public static void replace(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, Bundle bundle) {
+        replace(activity, fragmentClazz, bundle, null);
+    }
+
     public static void replace(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz) {
-        replace(activity, fragmentClazz, null);
+        replace(activity, fragmentClazz, null, null);
+    }
+
+    public static void replace(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz, TransactionAnimation animation) {
+        replace(activity, fragmentClazz, null, animation);
     }
 
     public static Intent getIntent(Context context, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz) {
