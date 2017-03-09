@@ -24,6 +24,6 @@ ActivityFragmentManager.add(mActivity, FragmentLogin.class);
 Add the dependency in the form:
 ```groovy
 dependencies {
-  compile 'com.massivedisaster:activity-fragment-manager:0.1.4'
+  compile 'com.massivedisaster:activity-fragment-manager:0.2.2'
 }
 ```
