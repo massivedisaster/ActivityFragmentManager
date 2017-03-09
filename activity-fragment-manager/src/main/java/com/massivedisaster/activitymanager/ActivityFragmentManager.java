@@ -43,7 +43,7 @@ public class ActivityFragmentManager {
         open(activity, activityClazz, fragmentClazz, tag, bundle, null);
     }
 
-    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, String tag) {
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment>fragmentClazz, String tag) {
         open(activity, activityClazz, fragmentClazz, tag, null, null);
     }
 
@@ -51,7 +51,7 @@ public class ActivityFragmentManager {
         open(activity, activityClazz, fragmentClazz, tag, null, requestCode);
     }
 
-    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle) {
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment>fragmentClazz, Bundle bundle) {
         open(activity, activityClazz, fragmentClazz, null, bundle, null);
     }
 
@@ -59,9 +59,35 @@ public class ActivityFragmentManager {
         open(activity, activityClazz, fragmentClazz, null, null, null);
     }
 
-    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Integer requestCode) {
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment>fragmentClazz, Integer requestCode) {
         open(activity, activityClazz, fragmentClazz, null, null, requestCode);
     }
+
+    public static void open(Fragment fragment, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, String tag, Bundle bundle, Integer requestCode) {
+
+        Intent intent = new Intent(fragment.getContext(), activityClazz);
+
+        intent.putExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT, fragmentClazz.getCanonicalName());
+        intent.putExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT_TAG, tag);
+
+        if (bundle != null) intent.putExtras(bundle);
+
+        if (requestCode == null) {
+            fragment.startActivity(intent);
+        } else {
+            fragment.startActivityForResult(intent, requestCode);
+        }
+    }
+
+    public static void open(Fragment fragment, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle, Integer requestCode) {
+        open(fragment, activityClazz, fragmentClazz, null, bundle, requestCode);
+    }
+
+    public static void open(Fragment fragment, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, String tag, Integer requestCode) {
+        open(fragment, activityClazz, fragmentClazz, tag, null, requestCode);
+    }
+
+
 
     /**
      * Add a new fragment in a specific AbstractFragmentActivity activity

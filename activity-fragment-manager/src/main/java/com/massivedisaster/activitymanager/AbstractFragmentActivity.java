@@ -1,6 +1,5 @@
 package com.massivedisaster.activitymanager;
 
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -46,17 +45,6 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        // Force to call onActivityResult on nested fragments
-        for (Fragment fragment : getSupportFragmentManager().getFragments()) {
-            if (fragment != null)
-                fragment.onActivityResult(requestCode, resultCode, data);
-        }
     }
 
     private Fragment getFragment() {

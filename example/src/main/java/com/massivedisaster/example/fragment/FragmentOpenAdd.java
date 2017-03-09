@@ -57,6 +57,7 @@ public class FragmentOpenAdd extends Fragment implements View.OnClickListener {
             case R.id.btnOpenSecondaryTheme:
                 ActivityFragmentManager.open(getActivity(), SecondaryThemeActivity.class, FragmentOpenAdd.class);
                 break;
+
         }
     }
 }
