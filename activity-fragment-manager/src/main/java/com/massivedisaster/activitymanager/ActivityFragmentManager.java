@@ -165,10 +165,8 @@ public class ActivityFragmentManager {
                 transaction.setCustomAnimations(activity.getAnimFragmentEnter(), activity.getAnimFragmentExit(), activity.getAnimFragmentPopEnter(), activity.getAnimFragmentPopExit());
             }
 
-            if (activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()) != null)
-                transaction.hide(activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()));
-
-            transaction.add(activity.getContainerViewId(), f);
+            transaction.replace(activity.getContainerViewId(), f);
+            transaction.addToBackStack(null);
             transaction.commit();
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
