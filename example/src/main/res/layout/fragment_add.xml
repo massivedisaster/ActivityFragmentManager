@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnAddFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_more_one_fragment"/>
+
+    <Button
+        android:id="@+id/btnAddFragmentWithAnimation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/add_more_one_fragment_with_custom_animation"/>
+
+    <Button
+        android:id="@+id/btnReplaceFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/replace_this_fragment"/>
+
+    <TextView
+        android:id="@+id/txtNumberOfFragments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/activity_horizontal_margin"/>
+
+</LinearLayout>

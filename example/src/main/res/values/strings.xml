@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">Activity Manager</string>
-    <string name="open_primary">Open Primary Activity</string>
-    <string name="open_secondary">Open Secondary Activity</string>
-    <string name="add_fragment">Add Fragment</string>
-    <string name="number_fragment_in_this_activity">Number of fragments:</string>
+    <string name="number_fragment_in_this_activity">Number of fragments: </string>
+    <string name="splash_screen">splashscreen</string>
+
+    <string name="open_fragment_other_activity">Open a fragment in a toolbar activity.</string>
+    <string name="open_fragment_other_activity_fullscreen">Open a fragment in a fullscreen activity.</string>
+    <string name="open_fragment_other_activity_with_animation">Open a fragment in a toolbar activity with a custom animation.</string>
+    <string name="add_more_one_fragment">Add one more fragment to this activity!</string>
+    <string name="home">Home</string>
+    <string name="add_more_one_fragment_with_custom_animation">Add one more fragment to this activty with a custom animation!</string>
+    <string name="replace_this_fragment">Replace this fragment!</string>
+
 </resources>

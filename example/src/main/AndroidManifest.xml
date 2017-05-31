@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.massivedisaster.example.activitymanager">
+<manifest package="com.massivedisaster.example.activitymanager"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -9,20 +9,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name="com.massivedisaster.example.activity.SplashActivity">
+        <activity
+            android:name="com.massivedisaster.example.activity.ActivityFullscreen"
+            android:theme="@style/FullscreenTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
 
         <activity
-            android:name="com.massivedisaster.example.activity.PrimaryThemeActivity"
-            android:theme="@style/PrimaryTheme" />
-
-        <activity
-            android:name="com.massivedisaster.example.activity.SecondaryThemeActivity"
-            android:theme="@style/SecondaryTheme" />
+            android:name="com.massivedisaster.example.activity.ActivityPrimaryTheme"
+            android:theme="@style/AppTheme"/>
 
     </application>
 
