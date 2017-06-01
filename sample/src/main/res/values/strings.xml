@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Activity Manager</string>
-    <string name="number_fragment_in_this_activity">Number of fragments: </string>
+    <string name="number_fragment_in_this_activity">Number of fragments: %d</string>
     <string name="splash_screen">splashscreen</string>
 
     <string name="open_fragment_other_activity">Open a fragment in a toolbar activity.</string>
