@@ -194,12 +194,13 @@ public final class ActivityFragmentManager {
             }
 
             transaction.addToBackStack(null);
-            if (animation != null) {
-                transaction.setCustomAnimations(animation.getEnter(), animation.getExit(), animation.getPopEnter(), animation.getPopExit());
-            } else {
-                transaction.setCustomAnimations(activity.getAnimFragmentEnter(), activity.getAnimFragmentExit(), activity.getAnimFragmentPopEnter(),
-                        activity.getAnimFragmentPopExit());
+
+            if (animation == null) {
+                animation = activity;
             }
+
+            transaction.setCustomAnimations(animation.getAnimationEnter(), animation.getAnimationExit(), animation.getAnimationPopEnter(),
+                    animation.getAnimationPopExit());
 
             if (activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()) != null) {
                 transaction.hide(activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()));
@@ -292,12 +293,12 @@ public final class ActivityFragmentManager {
                 f.setArguments(bundle);
             }
 
-            if (animation != null) {
-                transaction.setCustomAnimations(animation.getEnter(), animation.getExit(), animation.getPopEnter(), animation.getPopExit());
-            } else {
-                transaction.setCustomAnimations(activity.getAnimFragmentEnter(), activity.getAnimFragmentExit(), activity.getAnimFragmentPopEnter(),
-                        activity.getAnimFragmentPopExit());
+            if (animation == null) {
+                animation = activity;
             }
+
+            transaction.setCustomAnimations(animation.getAnimationEnter(), animation.getAnimationExit(), animation.getAnimationPopEnter(),
+                    animation.getAnimationPopExit());
 
             transaction.replace(activity.getContainerViewId(), f);
             transaction.addToBackStack(null);
