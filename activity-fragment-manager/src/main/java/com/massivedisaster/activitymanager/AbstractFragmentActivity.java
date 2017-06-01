@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 /**
- * Abstract Fragment Activity
+ * Abstract Fragment Activity.
  */
 public abstract class AbstractFragmentActivity extends AppCompatActivity {
 
