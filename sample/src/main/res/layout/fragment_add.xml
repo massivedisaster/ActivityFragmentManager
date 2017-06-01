@@ -28,4 +28,10 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/activity_horizontal_margin"/>
 
+    <EditText
+        android:hint="@string/write_a_value_to_test_onsaveinstance"
+        android:id="@+id/edtValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

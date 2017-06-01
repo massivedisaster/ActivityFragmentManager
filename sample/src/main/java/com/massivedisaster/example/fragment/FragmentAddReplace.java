@@ -3,10 +3,12 @@ package com.massivedisaster.example.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.massivedisaster.activitymanager.AbstractFragmentActivity;
@@ -22,6 +24,7 @@ public class FragmentAddReplace extends Fragment implements View.OnClickListener
 
     private Button mBtnAddFragment, mBtnAddFragmentWithAnimation, mBtnReplaceFragment;
     private TextView mTxtNumberOfFragments;
+    private EditText mEdtValue;
 
     @Nullable
     @Override
@@ -32,6 +35,13 @@ public class FragmentAddReplace extends Fragment implements View.OnClickListener
         mBtnReplaceFragment = (Button) v.findViewById(R.id.btnReplaceFragment);
         mBtnAddFragmentWithAnimation = (Button) v.findViewById(R.id.btnAddFragmentWithAnimation);
         mTxtNumberOfFragments = (TextView) v.findViewById(R.id.txtNumberOfFragments);
+        mEdtValue = (EditText) v.findViewById(R.id.edtValue);
+
+        if (savedInstanceState != null && savedInstanceState.containsKey("teste")) {
+            mEdtValue.setText(savedInstanceState.getString("teste"));
+        }
+
+        Log.d("AFM", "OnCreated Called");
 
         return v;
     }
@@ -81,8 +91,23 @@ public class FragmentAddReplace extends Fragment implements View.OnClickListener
     }
 
     @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            mTxtNumberOfFragments.setText(new StringBuilder().append(getString(R.string.number_fragment_in_this_activity)).append(getActivity().getSupportFragmentManager().getBackStackEntryCount()).toString());
+            Log.d("AFM", "Number:" + getActivity().getSupportFragmentManager().getBackStackEntryCount());
+        }
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
         mTxtNumberOfFragments.setText(new StringBuilder().append(getString(R.string.number_fragment_in_this_activity)).append(getActivity().getSupportFragmentManager().getBackStackEntryCount()).toString());
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("teste", mEdtValue.getText().toString());
     }
 }
