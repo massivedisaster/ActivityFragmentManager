@@ -13,6 +13,9 @@ import com.massivedisaster.example.activity.ActivityFullscreen;
 import com.massivedisaster.example.activity.ActivityPrimaryTheme;
 import com.massivedisaster.example.activitymanager.R;
 
+/**
+ * Fragment Home
+ */
 public class FragmentHome extends Fragment implements View.OnClickListener {
 
     private Button mBtnOpenFragmentOtherActivity,
@@ -53,6 +56,8 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
                 break;
             case R.id.btnOpenFragmentOtherActivityWithCustomAnimation:
                 ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentAddReplace.class);
+                break;
+            default:
                 break;
         }
     }
