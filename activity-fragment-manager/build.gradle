@@ -1,31 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'pt.simdea.verifier'
 apply from: "$project.rootDir/quality/quality.gradle"
-
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'activity-fragment-manager'
-
-    publishedGroupId = 'com.massivedisaster'
-    libraryName = 'Activity-Fragment-Manager'
-    artifact = 'activity-fragment-manager'
-
-    libraryDescription = 'A library to help android developers work with activities and fragments easly'
-
-    siteUrl = 'https://github.com/extmkv/Activity-Fragment-Manager'
-
-    gitUrl = 'https://github.com/extmkv/Activity-Fragment-Manager.git'
-
-    libraryVersion = '0.2.2'
-
-    developerId = '***REMOVED***'
-    developerName = 'Jorge Costa'
-    developerEmail = 'j.costa90@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
 
 android {
     compileSdkVersion 25
@@ -36,6 +12,7 @@ android {
         targetSdkVersion 25
         versionCode 1
         versionName "1.0"
+
     }
     buildTypes {
         release {
@@ -50,5 +27,13 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
 }
 
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+
+publish {
+    userOrg = userOrgBase
+    groupId = adalModuleBase
+    artifactId = 'adal'
+    publishVersion = libraryVersionString()
+    desc = 'ADAL'
+    website = websiteBase
+    licences = licensesBase
+}
