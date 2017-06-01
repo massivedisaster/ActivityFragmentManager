@@ -8,14 +8,29 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 /**
- * Activity Manager
- * Created by jms on 21/04/16.
+ * Abstract Fragment Activity
  */
 public abstract class AbstractFragmentActivity extends AppCompatActivity {
 
+    /**
+     * @return the layout resource id.
+     */
     protected abstract int getLayoutResId();
 
+    /**
+     * @return the container view id to inject the fragments.
+     */
     protected abstract int getContainerViewId();
+
+    /**
+     * Override this method if you want to set a default fragment.
+     * Example: If you want to use this activity for a splash screen you need to override this method.
+     *
+     * @return The fragment class to inject in this activity.
+     */
+    protected Class<? extends Fragment> getDefaultFragment() {
+        return null;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +44,9 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
         super.onStart();
 
         if (getSupportFragmentManager().getBackStackEntryCount() == 0 && getIntent().hasExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT)) {
-            performTransaction(getFragment(), getFragmentTag());
+            performTransaction(getFragment(getIntent().getStringExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT)), getFragmentTag());
+        } else if (getDefaultFragment() != null) {
+            performTransaction(getFragment(getDefaultFragment().getCanonicalName()), null);
         }
     }
 
@@ -47,9 +64,9 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
     }
 
-    private Fragment getFragment() {
+    private Fragment getFragment(String clazz) {
         try {
-            Fragment f = ((Fragment) Class.forName(getIntent().getStringExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT)).newInstance());
+            Fragment f = ((Fragment) Class.forName(clazz).newInstance());
 
             if (getIntent().getExtras() != null)
                 f.setArguments(getIntent().getExtras());
