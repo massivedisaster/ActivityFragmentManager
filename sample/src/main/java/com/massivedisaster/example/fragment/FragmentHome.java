@@ -54,7 +54,6 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
             case R.id.btnOpenFragmentOtherActivityWithCustomAnimation:
                 ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentAddReplace.class);
                 break;
-
         }
     }
 }

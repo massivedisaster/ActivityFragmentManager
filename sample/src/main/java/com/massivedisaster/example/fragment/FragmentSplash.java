@@ -12,6 +12,9 @@ import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.example.activity.ActivityPrimaryTheme;
 import com.massivedisaster.example.activitymanager.R;
 
+/**
+ * Fragment Splash Screen
+ */
 public class FragmentSplash extends Fragment {
 
     private static final long sSplashTimeOut = 2000;
