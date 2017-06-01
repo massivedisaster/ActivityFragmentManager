@@ -6,6 +6,9 @@ import com.massivedisaster.activitymanager.AbstractFragmentActivity;
 import com.massivedisaster.example.activitymanager.R;
 import com.massivedisaster.example.fragment.FragmentSplash;
 
+/**
+ * Activity in fullscreen mode.
+ */
 public class ActivityFullscreen extends AbstractFragmentActivity {
 
     @Override
