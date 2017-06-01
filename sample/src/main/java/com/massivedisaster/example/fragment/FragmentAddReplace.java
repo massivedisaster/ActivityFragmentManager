@@ -16,9 +16,13 @@ import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.activitymanager.TransactionAnimation;
 import com.massivedisaster.example.activitymanager.R;
 
+/**
+ * Fragment Add Replace
+ * Fragment with some features to add and remove more fragments.
+ */
 public class FragmentAddReplace extends Fragment implements View.OnClickListener {
 
-    private static final String sValue = "value";
+    private static final String VALUE = "value";
 
     private Button mBtnAddFragment, mBtnAddFragmentWithAnimation, mBtnReplaceFragment;
     private TextView mTxtNumberOfFragments;
@@ -35,8 +39,8 @@ public class FragmentAddReplace extends Fragment implements View.OnClickListener
         mTxtNumberOfFragments = (TextView) v.findViewById(R.id.txtNumberOfFragments);
         mEdtValue = (EditText) v.findViewById(R.id.edtValue);
 
-        if (savedInstanceState != null && savedInstanceState.containsKey(sValue)) {
-            mEdtValue.setText(savedInstanceState.getString(sValue));
+        if (savedInstanceState != null && savedInstanceState.containsKey(VALUE)) {
+            mEdtValue.setText(savedInstanceState.getString(VALUE));
         }
 
         Log.d("AFM", "OnCreated Called");
@@ -85,6 +89,8 @@ public class FragmentAddReplace extends Fragment implements View.OnClickListener
             case R.id.btnReplaceFragment:
                 ActivityFragmentManager.replace((AbstractFragmentActivity) getActivity(), FragmentAddReplace.class);
                 break;
+            default:
+                break;
         }
     }
 
@@ -94,7 +100,8 @@ public class FragmentAddReplace extends Fragment implements View.OnClickListener
 
         // Refresh value when fragment changes to visible
         if (!hidden) {
-            mTxtNumberOfFragments.setText(getString(R.string.number_fragment_in_this_activity, getActivity().getSupportFragmentManager().getBackStackEntryCount()));
+            mTxtNumberOfFragments.setText(getString(R.string.number_fragment_in_this_activity,
+                    getActivity().getSupportFragmentManager().getBackStackEntryCount()));
             Log.d("AFM", "Number:" + getActivity().getSupportFragmentManager().getBackStackEntryCount());
         }
     }
@@ -102,12 +109,13 @@ public class FragmentAddReplace extends Fragment implements View.OnClickListener
     @Override
     public void onResume() {
         super.onResume();
-        mTxtNumberOfFragments.setText(getString(R.string.number_fragment_in_this_activity, getActivity().getSupportFragmentManager().getBackStackEntryCount()));
+        mTxtNumberOfFragments.setText(getString(R.string.number_fragment_in_this_activity,
+                getActivity().getSupportFragmentManager().getBackStackEntryCount()));
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString(sValue, mEdtValue.getText().toString());
+        outState.putString(VALUE, mEdtValue.getText().toString());
     }
 }
