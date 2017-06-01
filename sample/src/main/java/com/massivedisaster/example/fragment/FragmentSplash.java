@@ -1,5 +1,6 @@
 package com.massivedisaster.example.fragment;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -17,7 +18,7 @@ import com.massivedisaster.example.activitymanager.R;
  */
 public class FragmentSplash extends Fragment {
 
-    private static final long sSplashTimeOut = 2000;
+    private static final long SPLASH_TIMEOUT = 2000;
     private Handler mHandler;
     private long mStartTime;
 
@@ -60,17 +61,19 @@ public class FragmentSplash extends Fragment {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                openHomeScreen();
+                openHomeScreen(getActivity());
             }
         }, getTimeout());
     }
 
     /**
      * Open the home screen
+     *
+     * @param activity The actual activity.
      */
-    private void openHomeScreen() {
-        ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentHome.class);
-        getActivity().finish();
+    protected void openHomeScreen(Activity activity) {
+        ActivityFragmentManager.open(activity, ActivityPrimaryTheme.class, FragmentHome.class);
+        activity.finish();
     }
 
     /**
@@ -81,10 +84,10 @@ public class FragmentSplash extends Fragment {
     private long getTimeout() {
         long diff = System.currentTimeMillis() - mStartTime;
 
-        if (diff > sSplashTimeOut) {
+        if (diff > SPLASH_TIMEOUT) {
             return 0;
         }
 
-        return sSplashTimeOut - diff;
+        return SPLASH_TIMEOUT - diff;
     }
 }
