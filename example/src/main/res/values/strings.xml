@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">Activity Manager</string>
-    <string name="open_primary">Open Primary Activity</string>
-    <string name="open_secondary">Open Secondary Activity</string>
-    <string name="add_fragment">Add Fragment</string>
-    <string name="number_fragment_in_this_activity">Number of fragments:</string>
-</resources>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnOpenFragmentOtherActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/open_fragment_other_activity"/>
+
+    <Button
+        android:id="@+id/btnOpenFragmentOtherActivityFullscreen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/open_fragment_other_activity_fullscreen"/>
+
+    <Button
+        android:id="@+id/btnOpenFragmentOtherActivityWithCustomAnimation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/open_fragment_other_activity_with_animation"/>
+
+</LinearLayout>
