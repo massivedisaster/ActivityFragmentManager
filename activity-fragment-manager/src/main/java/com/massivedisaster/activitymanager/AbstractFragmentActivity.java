@@ -10,7 +10,7 @@ import android.util.Log;
 /**
  * Abstract Fragment Activity.
  */
-public abstract class AbstractFragmentActivity extends AppCompatActivity {
+public abstract class AbstractFragmentActivity extends AppCompatActivity implements TransactionAnimation {
 
     /**
      * @return the layout resource id.
@@ -101,22 +101,6 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
         return getIntent().getStringExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT_TAG);
     }
 
-    protected int getAnimFragmentEnter() {
-        return android.R.anim.fade_in;
-    }
-
-    protected int getAnimFragmentExit() {
-        return android.R.anim.fade_out;
-    }
-
-    protected int getAnimFragmentPopEnter() {
-        return android.R.anim.fade_in;
-    }
-
-    protected int getAnimFragmentPopExit() {
-        return android.R.anim.fade_out;
-    }
-
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
@@ -124,5 +108,25 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public int getAnimationEnter() {
+        return android.R.anim.fade_in;
+    }
+
+    @Override
+    public int getAnimationExit() {
+        return android.R.anim.fade_out;
+    }
+
+    @Override
+    public int getAnimationPopEnter() {
+        return android.R.anim.fade_in;
+    }
+
+    @Override
+    public int getAnimationPopExit() {
+        return android.R.anim.fade_out;
     }
 }
