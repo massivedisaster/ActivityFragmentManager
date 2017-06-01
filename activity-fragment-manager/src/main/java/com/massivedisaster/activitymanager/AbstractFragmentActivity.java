@@ -44,13 +44,19 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
         super.onStart();
 
         if (getSupportFragmentManager().getBackStackEntryCount() == 0 && getIntent().hasExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT)) {
-            performTransaction(getFragment(getIntent().getStringExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT)), getFragmentTag());
+            performInitialTransaction(getFragment(getIntent().getStringExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT)), getFragmentTag());
         } else if (getDefaultFragment() != null) {
-            performTransaction(getFragment(getDefaultFragment().getCanonicalName()), null);
+            performInitialTransaction(getFragment(getDefaultFragment().getCanonicalName()), null);
         }
     }
 
-    protected void performTransaction(Fragment fragment, String tag) {
+    /**
+     * Perform a transaction of a fragment.
+     *
+     * @param fragment the fragment to be applied.
+     * @param tag      the tag to be applied.
+     */
+    protected void performInitialTransaction(Fragment fragment, String tag) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
         ft.replace(getContainerViewId(), fragment, tag);
@@ -64,12 +70,19 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
     }
 
+    /**
+     * Get a new instance of the Fragment.
+     *
+     * @param clazz the canonical Fragment name.
+     * @return the instance of the Fragment.
+     */
     private Fragment getFragment(String clazz) {
         try {
             Fragment f = ((Fragment) Class.forName(clazz).newInstance());
 
-            if (getIntent().getExtras() != null)
+            if (getIntent().getExtras() != null) {
                 f.setArguments(getIntent().getExtras());
+            }
 
             return f;
         } catch (ClassNotFoundException e) {
