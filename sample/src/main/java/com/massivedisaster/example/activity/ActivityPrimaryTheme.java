@@ -7,14 +7,16 @@ import com.massivedisaster.example.activitymanager.R;
  * Activity Manager
  * Created by jms on 27/04/16.
  */
-public class SecondaryThemeActivity extends AbstractFragmentActivity {
+public class ActivityPrimaryTheme extends AbstractFragmentActivity {
+
     @Override
     protected int getLayoutResId() {
-        return R.layout.activity_secondary;
+        return R.layout.activity_primary;
     }
 
     @Override
     protected int getContainerViewId() {
         return R.id.frmContainer;
     }
+
 }

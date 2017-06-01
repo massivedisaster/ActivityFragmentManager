@@ -13,8 +13,8 @@ import android.support.v4.app.FragmentTransaction;
  */
 public class ActivityFragmentManager {
 
-    public static final String ACTIVITY_MANAGER_FRAGMENT = "activity_manager_fragment";
-    public static final String ACTIVITY_MANAGER_FRAGMENT_TAG = "activity_manager_fragment_tag";
+    static final String ACTIVITY_MANAGER_FRAGMENT = "activity_manager_fragment";
+    static final String ACTIVITY_MANAGER_FRAGMENT_TAG = "activity_manager_fragment_tag";
 
     /**
      * Open a new activity with a specific fragment
@@ -43,7 +43,7 @@ public class ActivityFragmentManager {
         open(activity, activityClazz, fragmentClazz, tag, bundle, null);
     }
 
-    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment>fragmentClazz, String tag) {
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, String tag) {
         open(activity, activityClazz, fragmentClazz, tag, null, null);
     }
 
@@ -51,7 +51,7 @@ public class ActivityFragmentManager {
         open(activity, activityClazz, fragmentClazz, tag, null, requestCode);
     }
 
-    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment>fragmentClazz, Bundle bundle) {
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Bundle bundle) {
         open(activity, activityClazz, fragmentClazz, null, bundle, null);
     }
 
@@ -59,7 +59,7 @@ public class ActivityFragmentManager {
         open(activity, activityClazz, fragmentClazz, null, null, null);
     }
 
-    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment>fragmentClazz, Integer requestCode) {
+    public static void open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, Integer requestCode) {
         open(activity, activityClazz, fragmentClazz, null, null, requestCode);
     }
 
@@ -86,8 +86,6 @@ public class ActivityFragmentManager {
     public static void open(Fragment fragment, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz, String tag, Integer requestCode) {
         open(fragment, activityClazz, fragmentClazz, tag, null, requestCode);
     }
-
-
 
     /**
      * Add a new fragment in a specific AbstractFragmentActivity activity
@@ -167,10 +165,8 @@ public class ActivityFragmentManager {
                 transaction.setCustomAnimations(activity.getAnimFragmentEnter(), activity.getAnimFragmentExit(), activity.getAnimFragmentPopEnter(), activity.getAnimFragmentPopExit());
             }
 
-            if (activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()) != null)
-                transaction.hide(activity.getSupportFragmentManager().findFragmentById(activity.getContainerViewId()));
-
-            transaction.add(activity.getContainerViewId(), f);
+            transaction.replace(activity.getContainerViewId(), f);
+            transaction.addToBackStack(null);
             transaction.commit();
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
