@@ -6,15 +6,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
 /**
- * Activity Manager
- * Created by jms on 21/04/16.
+ * Activity Fragment Manager
  */
-public class ActivityFragmentManager {
+public final class ActivityFragmentManager {
 
-    static final String ACTIVITY_MANAGER_FRAGMENT = "activity_manager_fragment";
-    static final String ACTIVITY_MANAGER_FRAGMENT_TAG = "activity_manager_fragment_tag";
+    public static final String ACTIVITY_MANAGER_FRAGMENT = "activity_manager_fragment";
+    public static final String ACTIVITY_MANAGER_FRAGMENT_TAG = "activity_manager_fragment_tag";
+
+    /**
+     * Private constructor to prevent instantiation.
+     */
+    private ActivityFragmentManager() {
+    }
 
     /**
      * Open a new activity with a specific fragment.
@@ -202,9 +208,9 @@ public class ActivityFragmentManager {
             transaction.add(activity.getContainerViewId(), f, tag);
             transaction.commit();
         } catch (InstantiationException e) {
-            e.printStackTrace();
+            Log.e(ActivityFragmentManager.class.getCanonicalName(), e.toString());
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            Log.e(ActivityFragmentManager.class.getCanonicalName(), e.toString());
         }
     }
 
@@ -297,9 +303,9 @@ public class ActivityFragmentManager {
             transaction.addToBackStack(null);
             transaction.commit();
         } catch (InstantiationException e) {
-            e.printStackTrace();
+            Log.e(ActivityFragmentManager.class.getCanonicalName(), e.toString());
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
+            Log.e(ActivityFragmentManager.class.getCanonicalName(), e.toString());
         }
     }
 

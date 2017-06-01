@@ -29,6 +29,7 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
      * @return The fragment class to inject in this activity.
      */
     protected Class<? extends Fragment> getDefaultFragment() {
+        Log.w(AbstractFragmentActivity.class.getCanonicalName(), "No default fragment implemented!");
         return null;
     }
 
