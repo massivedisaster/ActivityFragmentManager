@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply plugin: 'pt.simdea.verifier'
+apply from: "$project.rootDir/quality/quality.gradle"
 
 ext {
     bintrayRepo = 'maven'
