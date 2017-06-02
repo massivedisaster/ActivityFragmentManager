@@ -46,11 +46,11 @@ dependencies {
 
 
 publish {
-    userOrg = userOrgBase
-    groupId = adalModuleBase
-    artifactId = 'adal'
-    publishVersion = libraryVersionString()
-    desc = 'ADAL'
+    userOrg = "jmspt"
+    groupId = "com.massivedisaster"
+    artifactId = 'activity-fragment-manager'
+    publishVersion = "0.3.0"
+    desc = 'Activity Fragment Manager'
     website = websiteBase
     licences = licensesBase
 }
