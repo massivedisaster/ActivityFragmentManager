@@ -11,6 +11,12 @@ A library to help android developer working easly with activities and fragments
 * Reduce the number of activities declared in the project;
 * Add animated transitions between fragments in an easy way;
 
+<div align="center">
+  <img src="extra/example.gif" alt="An animated GIF showing an sample app opening" />
+  <br />
+  <em>Sample</em>
+</div>
+
 ## Download
 
 To use the Activity Fragment Manager, add the compile dependency with the latest version.
