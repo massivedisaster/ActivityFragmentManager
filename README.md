@@ -166,7 +166,7 @@ public class ActivityPrimaryTheme extends AbstractFragmentActivity {
 }
 ```
 
-### 5. Custom Intent
+### 5. Custom Intents
 Sometimes you want to add more information to the ```Intent``` or set some flags. You can use the follow method to open a new ```AbtractActivityFragment```:
 
 ```java
