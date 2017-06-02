@@ -79,7 +79,7 @@ ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, Fragment
 
 #### Add a new Fragment in the actual AbstractFragmentActivity.
 ```java
-ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentExample.class);
+ActivityFragmentManager.add(getActivity(), ActivityPrimaryTheme.class, FragmentExample.class);
 ```
 
 #### Replace a new Fragment in the actual AbstractFragmentActivity.
