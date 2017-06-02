@@ -5,6 +5,6 @@
   "modules": [
     "activity-fragment-manager"
   ],
-  "bintrayUsername": "***REMOVED***",
-  "bintrayKey": "***REMOVED***"
+  "bintrayUsername": "jmspt",
+  "bintrayKey": "84d0a1571053d3f110abcc40ef7e73e36b51012e"
 }

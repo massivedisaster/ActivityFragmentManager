@@ -46,7 +46,7 @@ dependencies {
 
 
 publish {
-    userOrg = "***REMOVED***"
+    userOrg = "jmspt"
     groupId = "com.massivedisaster"
     artifactId = 'activity-fragment-manager'
     publishVersion = "0.3.0"

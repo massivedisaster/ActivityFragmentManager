@@ -1,5 +1,5 @@
 # Activity Fragment Manager 
-[![Download](https://api.bintray.com/packages/***REMOVED***/maven/activity-fragment-manager/images/download.svg) ](https://bintray.com/***REMOVED***/maven/activity-fragment-manager/)
+[![Download](https://api.bintray.com/packages/jmspt/maven/activity-fragment-manager/images/download.svg) ](https://bintray.com/jmspt/maven/activity-fragment-manager/)
 [![License](http://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat)](http://choosealicense.com/licenses/apache-2.0/)
 [![Build Status](https://travis-ci.org/massivedisaster/ActivityFragmentManager.svg?branch=master)](https://travis-ci.org/massivedisaster/ActivityFragmentManager)
 
@@ -120,22 +120,22 @@ If you want to add a single animation only for one transaction you can do this:
 ```java
 ActivityFragmentManager.add((AbstractFragmentActivity) getActivity(), FragmentExample.class, new TransactionAnimation() {
                 @Override
-                public int getEnter() {
+                public int getAnimationEnter() {
                     return R.anim.enter_from_right;
                 }
 
                 @Override
-                public int getExit() {
+                public int getAnimationExit() {
                     return R.anim.exit_from_left;
                 }
 
                 @Override
-                public int getPopEnter() {
+                public int getAnimationPopEnter() {
                     return R.anim.pop_enter;
                 }
 
                 @Override
-                public int getPopExit() {
+                public int getAnimationPopExit() {
                     return R.anim.pop_exit;
                 }
             });
