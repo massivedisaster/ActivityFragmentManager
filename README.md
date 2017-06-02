@@ -20,7 +20,7 @@ To use the Activity Fragment Manager, add the compile dependency with the latest
 Add the Activity Fragment Manager to your `build.gradle`:
 ```gradle
 dependencies {
-    compile 'com.massivedisaster:activity-fragment-manager:0.2.2'
+    compile 'com.massivedisaster:activity-fragment-manager:0.3.0'
 }
 ```
 
@@ -31,7 +31,7 @@ In the `pom.xml` file:
 <dependency>
     <groupId>com.massivedisaster</groupId>
     <artifactId>activity-fragment-manager</artifactId>
-    <version>0.2.2</version>
+    <version>0.3.0</version>
 </dependency>
 ```
 
