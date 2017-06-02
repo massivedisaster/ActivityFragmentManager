@@ -83,22 +83,22 @@ public class FragmentAddReplace extends Fragment implements View.OnClickListener
             case R.id.btnAddFragmentWithAnimation:
                 ActivityFragmentManager.add((AbstractFragmentActivity) getActivity(), FragmentAddReplace.class, new TransactionAnimation() {
                     @Override
-                    public int getEnter() {
+                    public int getAnimationEnter() {
                         return R.anim.enter_from_right;
                     }
 
                     @Override
-                    public int getExit() {
+                    public int getAnimationExit() {
                         return R.anim.exit_from_left;
                     }
 
                     @Override
-                    public int getPopEnter() {
+                    public int getAnimationPopEnter() {
                         return R.anim.pop_enter;
                     }
 
                     @Override
-                    public int getPopExit() {
+                    public int getAnimationPopExit() {
                         return R.anim.pop_exit;
                     }
                 });

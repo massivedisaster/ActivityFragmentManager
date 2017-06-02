@@ -33,7 +33,7 @@ public interface TransactionAnimation {
      * @return the animation.
      */
     @AnimRes
-    int getEnter();
+    int getAnimationEnter();
 
     /**
      * Gets the exiting animation.
@@ -41,7 +41,7 @@ public interface TransactionAnimation {
      * @return the animation.
      */
     @AnimRes
-    int getExit();
+    int getAnimationExit();
 
     /**
      * Gets the pop entering animation.
@@ -49,7 +49,7 @@ public interface TransactionAnimation {
      * @return the animation.
      */
     @AnimRes
-    int getPopEnter();
+    int getAnimationPopEnter();
 
     /**
      * Gets the pop exiting animation.
@@ -57,5 +57,5 @@ public interface TransactionAnimation {
      * @return the animation.
      */
     @AnimRes
-    int getPopExit();
+    int getAnimationPopExit();
 }
