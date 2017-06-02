@@ -1,0 +1,10 @@
+{
+  "basePath": "../",
+  "readmePath": "../README.md",
+  "version": "0.3.0",
+  "modules": [
+    "activity-fragment-manager"
+  ],
+  "bintrayUsername": "***REMOVED***",
+  "bintrayKey": "***REMOVED***"
+}
