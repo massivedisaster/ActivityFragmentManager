@@ -1,3 +1,20 @@
+/*
+ * Activity Fragment Manager - A library to help android developer working easily with activities and fragments
+ * Copyright (C) 2017 ActivityFragmentManager.
+ *
+ * ActivityFragmentManager is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 3 of the License, or any later version.
+ *
+ * ActivityFragmentManager is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License along
+ * with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 package com.massivedisaster.activitymanager;
 
 import android.content.res.Configuration;
@@ -8,14 +25,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 /**
- * Activity Manager
- * Created by jms on 21/04/16.
+ * Abstract Fragment Activity.
  */
-public abstract class AbstractFragmentActivity extends AppCompatActivity {
+public abstract class AbstractFragmentActivity extends AppCompatActivity implements TransactionAnimation {
 
+    /**
+     * @return the layout resource id.
+     */
     protected abstract int getLayoutResId();
 
+    /**
+     * @return the container view id to inject the fragments.
+     */
     protected abstract int getContainerViewId();
+
+    /**
+     * Override this method if you want to set a default fragment.
+     * Example: If you want to use this activity for a splash screen you need to override this method.
+     *
+     * @return The fragment class to inject in this activity.
+     */
+    protected Class<? extends Fragment> getDefaultFragment() {
+        Log.w(AbstractFragmentActivity.class.getCanonicalName(), "No default fragment implemented!");
+        return null;
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,11 +62,19 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
         super.onStart();
 
         if (getSupportFragmentManager().getBackStackEntryCount() == 0 && getIntent().hasExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT)) {
-            performTransaction(getFragment(), getFragmentTag());
+            performInitialTransaction(getFragment(getIntent().getStringExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT)), getFragmentTag());
+        } else if (getDefaultFragment() != null) {
+            performInitialTransaction(getFragment(getDefaultFragment().getCanonicalName()), null);
         }
     }
 
-    protected void performTransaction(Fragment fragment, String tag) {
+    /**
+     * Perform a transaction of a fragment.
+     *
+     * @param fragment the fragment to be applied.
+     * @param tag      the tag to be applied.
+     */
+    protected void performInitialTransaction(Fragment fragment, String tag) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
         ft.replace(getContainerViewId(), fragment, tag);
@@ -47,12 +88,19 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
     }
 
-    private Fragment getFragment() {
+    /**
+     * Get a new instance of the Fragment.
+     *
+     * @param clazz the canonical Fragment name.
+     * @return the instance of the Fragment.
+     */
+    private Fragment getFragment(String clazz) {
         try {
-            Fragment f = ((Fragment) Class.forName(getIntent().getStringExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT)).newInstance());
+            Fragment f = ((Fragment) Class.forName(clazz).newInstance());
 
-            if (getIntent().getExtras() != null)
+            if (getIntent().getExtras() != null) {
                 f.setArguments(getIntent().getExtras());
+            }
 
             return f;
         } catch (ClassNotFoundException e) {
@@ -70,22 +118,6 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
         return getIntent().getStringExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT_TAG);
     }
 
-    protected int getAnimFragmentEnter() {
-        return android.R.anim.fade_in;
-    }
-
-    protected int getAnimFragmentExit() {
-        return android.R.anim.fade_out;
-    }
-
-    protected int getAnimFragmentPopEnter() {
-        return android.R.anim.fade_in;
-    }
-
-    protected int getAnimFragmentPopExit() {
-        return android.R.anim.fade_out;
-    }
-
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
@@ -93,5 +125,25 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public int getAnimationEnter() {
+        return android.R.anim.fade_in;
+    }
+
+    @Override
+    public int getAnimationExit() {
+        return android.R.anim.fade_out;
+    }
+
+    @Override
+    public int getAnimationPopEnter() {
+        return android.R.anim.fade_in;
+    }
+
+    @Override
+    public int getAnimationPopExit() {
+        return android.R.anim.fade_out;
     }
 }

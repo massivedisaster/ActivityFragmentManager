@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ Activity Fragment Manager - A library to help android developer working easily with activities and fragments
   ~ Copyright (C) 2017 ActivityFragmentManager.
@@ -15,4 +16,8 @@
   ~ with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<manifest package="com.massivedisaster.activitymanager"/>
+<FrameLayout
+    android:id="@+id/frmContainer"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>

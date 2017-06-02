@@ -22,33 +22,21 @@
               android:orientation="vertical">
 
     <Button
-        android:id="@+id/btnAddFragment"
+        android:id="@+id/btnOpenFragmentOtherActivity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_more_one_fragment"/>
+        android:text="@string/open_fragment_other_activity"/>
 
     <Button
-        android:id="@+id/btnAddFragmentWithAnimation"
+        android:id="@+id/btnOpenFragmentOtherActivityFullscreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/add_more_one_fragment_with_custom_animation"/>
+        android:text="@string/open_fragment_other_activity_fullscreen"/>
 
     <Button
-        android:id="@+id/btnReplaceFragment"
+        android:id="@+id/btnOpenFragmentOtherActivityWithCustomAnimation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/replace_this_fragment"/>
-
-    <TextView
-        android:id="@+id/txtNumberOfFragments"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/activity_horizontal_margin"/>
-
-    <EditText
-        android:hint="@string/write_a_value_to_test_onsaveinstance"
-        android:id="@+id/edtValue"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:text="@string/open_fragment_other_activity_with_animation"/>
 
 </LinearLayout>
