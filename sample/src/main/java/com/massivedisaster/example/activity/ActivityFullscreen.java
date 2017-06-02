@@ -15,42 +15,31 @@
  * with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
  */
 
-apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
-apply plugin: 'pt.simdea.verifier'
-apply from: "$project.rootDir/quality/quality.gradle"
+package com.massivedisaster.example.activity;
 
-android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+import android.support.v4.app.Fragment;
 
-    defaultConfig {
-        minSdkVersion 10
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+import com.massivedisaster.activitymanager.AbstractFragmentActivity;
+import com.massivedisaster.example.activitymanager.R;
+import com.massivedisaster.example.fragment.FragmentSplash;
 
+/**
+ * Activity in fullscreen mode.
+ */
+public class ActivityFullscreen extends AbstractFragmentActivity {
+
+    @Override
+    protected int getLayoutResId() {
+        return R.layout.activity_fullscreen;
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+
+    @Override
+    protected int getContainerViewId() {
+        return R.id.frmContainer;
     }
-}
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.3.1'
-}
-
-
-publish {
-    userOrg = userOrgBase
-    groupId = adalModuleBase
-    artifactId = 'adal'
-    publishVersion = libraryVersionString()
-    desc = 'ADAL'
-    website = websiteBase
-    licences = licensesBase
+    @Override
+    protected Class<? extends Fragment> getDefaultFragment() {
+        return FragmentSplash.class;
+    }
 }

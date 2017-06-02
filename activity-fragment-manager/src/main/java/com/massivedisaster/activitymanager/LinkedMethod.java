@@ -15,4 +15,11 @@
  * with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ':sample', ':activity-fragment-manager'
+package com.massivedisaster.activitymanager;
+
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
+
+@Target(ElementType.METHOD)
+public @interface LinkedMethod {
+}

@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
 <!--
   ~ Activity Fragment Manager - A library to help android developer working easily with activities and fragments
   ~ Copyright (C) 2017 ActivityFragmentManager.
@@ -15,4 +17,22 @@
   ~ with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<manifest package="com.massivedisaster.activitymanager"/>
+<!--
+FindBugs exclude filter
+Severity: HARD
+-->
+<FindBugsFilter>
+    <Match>
+        <Class name="~.*\.BuildConfig"/>
+    </Match>
+    <Match>
+        <Class name="~.*\.R"/>
+    </Match>
+    <Match>
+        <Class name="~.*\.R\$.*"/>
+    </Match>
+
+    <Match>
+        <Bug category="SF_SWITCH_NO_DEFAULT"/>
+    </Match>
+</FindBugsFilter>

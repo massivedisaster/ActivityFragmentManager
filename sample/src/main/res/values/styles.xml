@@ -15,4 +15,21 @@
   ~ with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<manifest package="com.massivedisaster.activitymanager"/>
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimaryPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkPrimary</item>
+        <item name="colorAccent">@color/colorAccentPrimary</item>
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+</resources>
