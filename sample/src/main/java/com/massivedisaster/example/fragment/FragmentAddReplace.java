@@ -17,6 +17,7 @@
 
 package com.massivedisaster.example.fragment;
 
+import android.arch.lifecycle.LifecycleFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -37,7 +38,7 @@ import com.massivedisaster.example.activitymanager.R;
  * Fragment Add Replace
  * Fragment with some features to add and remove more fragments.
  */
-public class FragmentAddReplace extends Fragment implements View.OnClickListener {
+public class FragmentAddReplace extends LifecycleFragment implements View.OnClickListener {
 
     private static final String VALUE = "value";
 
