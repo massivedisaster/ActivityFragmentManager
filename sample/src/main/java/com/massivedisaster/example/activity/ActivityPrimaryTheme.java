@@ -17,6 +17,9 @@
 
 package com.massivedisaster.example.activity;
 
+import android.arch.lifecycle.LifecycleRegistry;
+import android.arch.lifecycle.LifecycleRegistryOwner;
+
 import com.massivedisaster.activitymanager.AbstractFragmentActivity;
 import com.massivedisaster.example.activitymanager.R;
 
@@ -24,7 +27,14 @@ import com.massivedisaster.example.activitymanager.R;
  * Activity Manager
  * Created by jms on 27/04/16.
  */
-public class ActivityPrimaryTheme extends AbstractFragmentActivity {
+public class ActivityPrimaryTheme extends AbstractFragmentActivity implements LifecycleRegistryOwner {
+
+    private final LifecycleRegistry mRegistry = new LifecycleRegistry(this);
+
+    @Override
+    public LifecycleRegistry getLifecycle() {
+        return mRegistry;
+    }
 
     @Override
     protected int getLayoutResId() {
