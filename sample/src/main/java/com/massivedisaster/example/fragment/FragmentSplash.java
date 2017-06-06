@@ -89,7 +89,7 @@ public class FragmentSplash extends Fragment {
      * @param activity The actual activity.
      */
     protected void openHomeScreen(Activity activity) {
-        ActivityFragmentManager.open(activity, ActivityPrimaryTheme.class, FragmentHome.class);
+        ActivityFragmentManager.open(activity, ActivityPrimaryTheme.class, FragmentHome.class).commit();
         activity.finish();
     }
 
