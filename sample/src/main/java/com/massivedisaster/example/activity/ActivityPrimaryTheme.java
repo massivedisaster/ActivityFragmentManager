@@ -17,7 +17,7 @@
 
 package com.massivedisaster.example.activity;
 
-import com.massivedisaster.activitymanager.AbstractFragmentActivity;
+import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 import com.massivedisaster.example.activitymanager.R;
 
 /**
@@ -27,12 +27,12 @@ import com.massivedisaster.example.activitymanager.R;
 public class ActivityPrimaryTheme extends AbstractFragmentActivity {
 
     @Override
-    protected int getLayoutResId() {
+    public int getLayoutResId() {
         return R.layout.activity_primary;
     }
 
     @Override
-    protected int getContainerViewId() {
+    public int getContainerViewId() {
         return R.id.frmContainer;
     }
 

@@ -28,9 +28,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.massivedisaster.activitymanager.AbstractFragmentActivity;
+import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
-import com.massivedisaster.activitymanager.TransactionAnimation;
+import com.massivedisaster.activitymanager.animation.TransactionAnimation;
 import com.massivedisaster.example.activitymanager.R;
 
 /**
@@ -78,33 +78,36 @@ public class FragmentAddReplace extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnAddFragment:
-                ActivityFragmentManager.add((AbstractFragmentActivity) getActivity(), FragmentAddReplace.class);
+                ActivityFragmentManager.add((AbstractFragmentActivity) getActivity(), FragmentAddReplace.class)
+                        .commit();
                 break;
             case R.id.btnAddFragmentWithAnimation:
-                ActivityFragmentManager.add((AbstractFragmentActivity) getActivity(), FragmentAddReplace.class, new TransactionAnimation() {
-                    @Override
-                    public int getAnimationEnter() {
-                        return R.anim.enter_from_right;
-                    }
+                ActivityFragmentManager.add((AbstractFragmentActivity) getActivity(), FragmentAddReplace.class)
+                        .addTransactionAnimation(new TransactionAnimation() {
+                            @Override
+                            public int getAnimationEnter() {
+                                return R.anim.enter_from_right;
+                            }
 
-                    @Override
-                    public int getAnimationExit() {
-                        return R.anim.exit_from_left;
-                    }
+                            @Override
+                            public int getAnimationExit() {
+                                return R.anim.exit_from_left;
+                            }
 
-                    @Override
-                    public int getAnimationPopEnter() {
-                        return R.anim.pop_enter;
-                    }
+                            @Override
+                            public int getAnimationPopEnter() {
+                                return R.anim.pop_enter;
+                            }
 
-                    @Override
-                    public int getAnimationPopExit() {
-                        return R.anim.pop_exit;
-                    }
-                });
+                            @Override
+                            public int getAnimationPopExit() {
+                                return R.anim.pop_exit;
+                            }
+                        }).commit();
                 break;
             case R.id.btnReplaceFragment:
-                ActivityFragmentManager.replace((AbstractFragmentActivity) getActivity(), FragmentAddReplace.class);
+                ActivityFragmentManager.replace((AbstractFragmentActivity) getActivity(), FragmentAddReplace.class)
+                        .commit();
                 break;
             default:
                 break;

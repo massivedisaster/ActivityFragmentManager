@@ -15,14 +15,19 @@
  * with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.massivedisaster.activitymanager;
+package com.massivedisaster.activitymanager.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+
+import com.massivedisaster.activitymanager.ActivityFragmentManager;
+import com.massivedisaster.activitymanager.animation.TransactionAnimation;
 
 /**
  * Abstract Fragment Activity.
@@ -32,12 +37,14 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
     /**
      * @return the layout resource id.
      */
-    protected abstract int getLayoutResId();
+    @LayoutRes
+    public abstract int getLayoutResId();
 
     /**
      * @return the container view id to inject the fragments.
      */
-    protected abstract int getContainerViewId();
+    @IdRes
+    public abstract int getContainerViewId();
 
     /**
      * Override this method if you want to set a default fragment.

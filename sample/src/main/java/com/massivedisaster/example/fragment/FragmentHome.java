@@ -66,13 +66,16 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnOpenFragmentOtherActivity:
-                ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentAddReplace.class);
+                ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentAddReplace.class)
+                        .commit();
                 break;
             case R.id.btnOpenFragmentOtherActivityFullscreen:
-                ActivityFragmentManager.open(getActivity(), ActivityFullscreen.class, FragmentAddReplace.class);
+                ActivityFragmentManager.open(getActivity(), ActivityFullscreen.class, FragmentAddReplace.class)
+                        .commit();
                 break;
             case R.id.btnOpenFragmentOtherActivityWithCustomAnimation:
-                ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentAddReplace.class);
+                ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentAddReplace.class)
+                        .commit();
                 break;
             default:
                 break;
