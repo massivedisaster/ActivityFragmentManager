@@ -21,11 +21,17 @@ import android.app.Activity;
 import android.support.v4.app.Fragment;
 
 import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
+import com.massivedisaster.activitymanager.transaction.TransactionAddFragment;
+import com.massivedisaster.activitymanager.transaction.TransactionOpenFragment;
+import com.massivedisaster.activitymanager.transaction.TransactionReplaceFragment;
 
 /**
  * Activity Fragment Manager
  */
 public final class ActivityFragmentManager {
+
+    public static final String ACTIVITY_MANAGER_FRAGMENT = "activity_manager_fragment";
+    public static final String ACTIVITY_MANAGER_FRAGMENT_TAG = "activity_manager_fragment_tag";
 
     /**
      * Private constructor to prevent instantiation.
@@ -33,56 +39,37 @@ public final class ActivityFragmentManager {
     private ActivityFragmentManager() {
     }
 
-    /**
-     * Start a new {@link AddFragmentTransaction}, when you {@link ActivityTransaction#commit} will
-     * added a new fragment to a specific activity.
-     *
-     * @param activity      The activity to be used to add the new fragment.
-     * @param fragmentClass The Fragment to be injected in the activity.
-     * @return The {@link AddFragmentTransaction}.
-     */
-    public static FragmentTransaction add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClass) {
-        return new AddFragmentTransaction(activity, fragmentClass);
+
+    public static TransactionAddFragment add(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz){
+        return new TransactionAddFragment(activity, fragmentClazz);
+    }
+
+    public static TransactionReplaceFragment replace(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClazz){
+        return new TransactionReplaceFragment(activity, fragmentClazz);
     }
 
     /**
-     * Start a new {@link ReplaceFragmentTransaction}, when you {@link ReplaceFragmentTransaction#commit} will
-     * replace a fragment in the container with a new fragment.
-     *
-     * @param activity      The activity to be used to replace the new fragment.
-     * @param fragmentClass The Fragment to be replaced in the activity.
-     * @return The {@link ReplaceFragmentTransaction}.
-     */
-    public static FragmentTransaction replace(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClass) {
-        return new ReplaceFragmentTransaction(activity, fragmentClass);
-    }
-
-    /**
-     * Starts a new {@link ActivityTransaction},
-     * when you {@link ActivityTransaction#commit} w'll open a new activity with the specific fragment.
+     * Starts a new {@link TransactionOpenFragment}, when you commit w'll open a new activity with the specific fragment.
      *
      * @param activity      The activity to be used to start the new activity.
-     * @param activityClass The AbstractFragmentActivity class.
-     * @param fragmentClass The Fragment to be injected in the activityClass.
-     * @return The {@link ActivityTransaction}.
+     * @param activityClazz The AbstractFragmentActivity class.
+     * @param fragmentClazz The Fragment to be injected in the activityClass.
+     * @return the Fragment Transaction.
      */
-    public static ActivityTransaction open(Activity activity, Class<? extends AbstractFragmentActivity> activityClass,
-                                           Class<? extends Fragment> fragmentClass) {
-        return new ActivityTransaction(activity, activityClass, fragmentClass);
+    public static TransactionOpenFragment open(Activity activity, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz){
+        return new TransactionOpenFragment(activity, activityClazz, fragmentClazz);
     }
 
     /**
-     * Starts a new {@link ActivityTransaction},
-     * when you {@link ActivityTransaction#commit} w'll open a new activity with the specific fragment.
+     * Starts a new {@link TransactionOpenFragment}, when you commit w'll open a new activity with the specific fragment.
      * Use this method if you want to catch the result in the original fragment.
      *
      * @param fragment      The fragment to be used to start the new activity.
-     * @param activityClass The AbstractFragmentActivity class.
-     * @param fragmentClass The Fragment to be injected in the activityClass.
-     * @return The {@link ActivityTransaction}.
+     * @param activityClazz The AbstractFragmentActivity class.
+     * @param fragmentClazz The Fragment to be injected in the activityClass.
+     * @return the Fragment Transaction.
      */
-    public static ActivityTransaction open(Fragment fragment, Class<? extends AbstractFragmentActivity> activityClass,
-                                           Class<? extends Fragment> fragmentClass) {
-        return new ActivityTransaction(fragment, activityClass, fragmentClass);
+    public static TransactionOpenFragment open(Fragment fragment, Class<? extends AbstractFragmentActivity> activityClazz, Class<? extends Fragment> fragmentClazz){
+        return new TransactionOpenFragment(fragment,activityClazz, fragmentClazz);
     }
 }

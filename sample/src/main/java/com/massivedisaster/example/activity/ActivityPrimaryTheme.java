@@ -20,7 +20,7 @@ package com.massivedisaster.example.activity;
 import android.arch.lifecycle.LifecycleRegistry;
 import android.arch.lifecycle.LifecycleRegistryOwner;
 
-import com.massivedisaster.activitymanager.AbstractFragmentActivity;
+import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 import com.massivedisaster.example.activitymanager.R;
 
 /**
@@ -37,12 +37,12 @@ public class ActivityPrimaryTheme extends AbstractFragmentActivity implements Li
     }
 
     @Override
-    protected int getLayoutResId() {
+    public int getLayoutResId() {
         return R.layout.activity_primary;
     }
 
     @Override
-    protected int getContainerViewId() {
+    public int getContainerViewId() {
         return R.id.frmContainer;
     }
 

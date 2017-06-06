@@ -15,7 +15,7 @@
  * with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.massivedisaster.example.feature.home;
+package com.massivedisaster.example.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -29,8 +29,6 @@ import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.example.activity.ActivityFullscreen;
 import com.massivedisaster.example.activity.ActivityPrimaryTheme;
 import com.massivedisaster.example.activitymanager.R;
-import com.massivedisaster.example.feature.navigation.FragmentAddReplace;
-import com.massivedisaster.example.feature.sharedelements.FragmentSharedElementsOptions;
 
 /**
  * Fragment Home
@@ -39,8 +37,7 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
 
     private Button mBtnOpenFragmentOtherActivity,
             mBtnOpenFragmentOtherActivityFullscreen,
-            mBtnOpenFragmentOtherActivityWithCustomAnimation,
-            mBtnSharedElements;
+            mBtnOpenFragmentOtherActivityWithCustomAnimation;
 
     @Nullable
     @Override
@@ -50,7 +47,6 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
         mBtnOpenFragmentOtherActivity = (Button) v.findViewById(R.id.btnOpenFragmentOtherActivity);
         mBtnOpenFragmentOtherActivityFullscreen = (Button) v.findViewById(R.id.btnOpenFragmentOtherActivityFullscreen);
         mBtnOpenFragmentOtherActivityWithCustomAnimation = (Button) v.findViewById(R.id.btnOpenFragmentOtherActivityWithCustomAnimation);
-        mBtnSharedElements = (Button) v.findViewById(R.id.btnSharedElements);
 
         return v;
     }
@@ -62,7 +58,6 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
         mBtnOpenFragmentOtherActivity.setOnClickListener(this);
         mBtnOpenFragmentOtherActivityFullscreen.setOnClickListener(this);
         mBtnOpenFragmentOtherActivityWithCustomAnimation.setOnClickListener(this);
-        mBtnSharedElements.setOnClickListener(this);
 
         getActivity().setTitle(getString(R.string.home));
     }
@@ -82,19 +77,8 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
                 ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentAddReplace.class)
                         .commit();
                 break;
-            case R.id.btnSharedElements:
-                openSharedElements();
-                break;
             default:
                 break;
         }
-    }
-
-    /**
-     * Open Shared Elements Fragment
-     */
-    private void openSharedElements() {
-        ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentSharedElementsOptions.class)
-                .commit();
     }
 }

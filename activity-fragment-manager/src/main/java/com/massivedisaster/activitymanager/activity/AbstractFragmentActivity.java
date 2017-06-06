@@ -35,6 +35,9 @@ import com.massivedisaster.activitymanager.animation.TransactionAnimation;
 import static com.massivedisaster.activitymanager.ActivityTransaction.ACTIVITY_MANAGER_FRAGMENT;
 import static com.massivedisaster.activitymanager.ActivityTransaction.ACTIVITY_MANAGER_FRAGMENT_TAG;
 
+import com.massivedisaster.activitymanager.ActivityFragmentManager;
+import com.massivedisaster.activitymanager.animation.TransactionAnimation;
+
 /**
  * Abstract Fragment Activity.
  */
