@@ -3,7 +3,9 @@ package com.massivedisaster.activitymanager;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.transition.TransitionInflater;
 import android.util.Log;
+import android.view.View;
 
 import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 import com.massivedisaster.activitymanager.animation.TransactionAnimation;
@@ -51,6 +53,13 @@ public abstract class FragmentTransaction implements ITransaction<FragmentTransa
         if (bundle != null) {
             mFragment.setArguments(bundle);
         }
+        return this;
+    }
+
+    @Override
+    public FragmentTransaction addSharedElement(View view, String transactionName) {
+        mFragment.setSharedElementEnterTransition(TransitionInflater.from(mActivity).inflateTransition(android.R.transition.move));
+        mFrgTransaction.addSharedElement(view, transactionName);
         return this;
     }
 
