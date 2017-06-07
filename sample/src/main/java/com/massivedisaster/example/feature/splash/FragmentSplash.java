@@ -15,7 +15,7 @@
  * with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.massivedisaster.example.fragment;
+package com.massivedisaster.example.feature.splash;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -29,6 +29,7 @@ import android.view.ViewGroup;
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.example.activity.ActivityPrimaryTheme;
 import com.massivedisaster.example.activitymanager.R;
+import com.massivedisaster.example.feature.home.FragmentHome;
 
 /**
  * Fragment Splash Screen

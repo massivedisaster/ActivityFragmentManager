@@ -21,7 +21,7 @@ import android.support.v4.app.Fragment;
 
 import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 import com.massivedisaster.example.activitymanager.R;
-import com.massivedisaster.example.fragment.FragmentSplash;
+import com.massivedisaster.example.feature.splash.FragmentSplash;
 
 /**
  * Activity in fullscreen mode.
