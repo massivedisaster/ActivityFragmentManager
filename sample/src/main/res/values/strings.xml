@@ -29,7 +29,5 @@
     <string name="replace_this_fragment">Replace this fragment!</string>
     <string name="write_a_value_to_test_onsaveinstance">Write a value to test OnSaveInstance</string>
     <string name="shared_elements">Shared Elements</string>
-    <string name="shared_elements_between_fragment_in_diferent_activties">Shared elements between fragments in diferents activities.</string>
-    <string name="shared_elements_between_fragment_using_replace">Shared elements between fragments using replace.</string>
 
 </resources>

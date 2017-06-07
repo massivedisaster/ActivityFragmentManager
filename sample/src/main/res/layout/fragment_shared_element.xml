@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:contentDescription="@null"
-        android:src="@mipmap/ic_launcher"
-        android:transitionName="sharedElement"/>
+        android:transitionName="sharedElement"
+        android:src="@mipmap/ic_launcher"/>
 
 </LinearLayout>
