@@ -15,7 +15,7 @@
  * with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.massivedisaster.example.fragment;
+package com.massivedisaster.example.feature.home;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -29,6 +29,7 @@ import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.example.activity.ActivityFullscreen;
 import com.massivedisaster.example.activity.ActivityPrimaryTheme;
 import com.massivedisaster.example.activitymanager.R;
+import com.massivedisaster.example.feature.navigation.FragmentAddReplace;
 
 /**
  * Fragment Home
