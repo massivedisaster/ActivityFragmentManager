@@ -1,12 +1,22 @@
-package com.massivedisaster.activitymanager.transaction;
+package com.massivedisaster.activitymanager;
 
 import android.support.v4.app.Fragment;
 
 import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 
-public class TransactionAddFragment extends AbstractFragmentTransaction {
+/**
+ * AddFragmentTransaction
+ * This class implements the {@link ITransaction#commit()} with the add fragment logic.
+ */
+class AddFragmentTransaction extends FragmentTransaction {
 
-    public TransactionAddFragment(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClass) {
+    /**
+     * ActivityTransaction constructor, created to be used by an activity.
+     *
+     * @param activity      The activity to be used to add the new fragment.
+     * @param fragmentClass The Fragment to be injected in the activityClass.
+     */
+    AddFragmentTransaction(AbstractFragmentActivity activity, Class<? extends Fragment> fragmentClass) {
         super(activity, fragmentClass);
     }
 
