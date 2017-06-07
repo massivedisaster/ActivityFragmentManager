@@ -15,7 +15,7 @@
  * with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.massivedisaster.example.fragment;
+package com.massivedisaster.example.feature.navigation;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
