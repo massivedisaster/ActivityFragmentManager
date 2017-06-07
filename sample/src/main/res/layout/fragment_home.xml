@@ -39,4 +39,10 @@
         android:layout_height="wrap_content"
         android:text="@string/open_fragment_other_activity_with_animation"/>
 
+    <Button
+        android:id="@+id/btnSharedElements"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/shared_elements"/>
+
 </LinearLayout>
