@@ -20,7 +20,7 @@ package com.massivedisaster.activitymanager.animation;
 import android.support.annotation.AnimRes;
 
 /**
- * AbstractFragmentTransaction animation.
+ * FragmentTransaction animation.
  * <p>
  * You can implement this interface and return the specific animations
  * to be applied when the fragment enters or exits the container.

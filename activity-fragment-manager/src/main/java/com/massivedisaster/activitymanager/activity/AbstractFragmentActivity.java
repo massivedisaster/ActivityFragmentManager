@@ -29,6 +29,9 @@ import android.util.Log;
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.activitymanager.animation.TransactionAnimation;
 
+import static com.massivedisaster.activitymanager.ActivityTransaction.ACTIVITY_MANAGER_FRAGMENT;
+import static com.massivedisaster.activitymanager.ActivityTransaction.ACTIVITY_MANAGER_FRAGMENT_TAG;
+
 /**
  * Abstract Fragment Activity.
  */
@@ -68,8 +71,8 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
     protected void onStart() {
         super.onStart();
 
-        if (getSupportFragmentManager().getBackStackEntryCount() == 0 && getIntent().hasExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT)) {
-            performInitialTransaction(getFragment(getIntent().getStringExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT)), getFragmentTag());
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0 && getIntent().hasExtra(ACTIVITY_MANAGER_FRAGMENT)) {
+            performInitialTransaction(getFragment(getIntent().getStringExtra(ACTIVITY_MANAGER_FRAGMENT)), getFragmentTag());
         } else if (getDefaultFragment() != null) {
             performInitialTransaction(getFragment(getDefaultFragment().getCanonicalName()), null);
         }
@@ -122,7 +125,7 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
     }
 
     private String getFragmentTag() {
-        return getIntent().getStringExtra(ActivityFragmentManager.ACTIVITY_MANAGER_FRAGMENT_TAG);
+        return getIntent().getStringExtra(ACTIVITY_MANAGER_FRAGMENT_TAG);
     }
 
     @Override
