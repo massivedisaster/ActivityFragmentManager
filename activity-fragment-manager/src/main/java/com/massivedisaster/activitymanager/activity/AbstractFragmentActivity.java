@@ -18,6 +18,7 @@
 package com.massivedisaster.activitymanager.activity;
 
 import android.content.res.Configuration;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
@@ -63,6 +64,9 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            postponeEnterTransition();
+        }
 
         setContentView(getLayoutResId());
     }
@@ -86,6 +90,7 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
      */
     protected void performInitialTransaction(Fragment fragment, String tag) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
 
         ft.replace(getContainerViewId(), fragment, tag);
         ft.addToBackStack(tag);
