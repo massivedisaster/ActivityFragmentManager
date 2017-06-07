@@ -17,9 +17,7 @@
 
 package com.massivedisaster.activitymanager.activity;
 
-import android.content.Intent;
 import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
@@ -27,16 +25,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Window;
 
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.activitymanager.animation.TransactionAnimation;
 
 import static com.massivedisaster.activitymanager.ActivityTransaction.ACTIVITY_MANAGER_FRAGMENT;
 import static com.massivedisaster.activitymanager.ActivityTransaction.ACTIVITY_MANAGER_FRAGMENT_TAG;
-
-import com.massivedisaster.activitymanager.ActivityFragmentManager;
-import com.massivedisaster.activitymanager.animation.TransactionAnimation;
 
 /**
  * Abstract Fragment Activity.
@@ -68,15 +62,14 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            requestWindowFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
-            requestWindowFeature(Window.FEATURE_CONTENT_TRANSITIONS);
-        }
-
         super.onCreate(savedInstanceState);
 
         setContentView(getLayoutResId());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
 
         if (getSupportFragmentManager().getBackStackEntryCount() == 0 && getIntent().hasExtra(ACTIVITY_MANAGER_FRAGMENT)) {
             performInitialTransaction(getFragment(getIntent().getStringExtra(ACTIVITY_MANAGER_FRAGMENT)), getFragmentTag());
@@ -95,8 +88,9 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
         ft.replace(getContainerViewId(), fragment, tag);
+        ft.addToBackStack(tag);
 
-        ft.commitNow();
+        ft.commitAllowingStateLoss();
     }
 
     @Override
@@ -135,6 +129,15 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
     }
 
     @Override
+    public void onBackPressed() {
+        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public int getAnimationEnter() {
         return android.R.anim.fade_in;
     }
@@ -152,10 +155,5 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
     @Override
     public int getAnimationPopExit() {
         return android.R.anim.fade_out;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
     }
 }

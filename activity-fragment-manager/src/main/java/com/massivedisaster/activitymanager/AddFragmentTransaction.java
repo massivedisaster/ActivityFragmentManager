@@ -22,13 +22,13 @@ class AddFragmentTransaction extends FragmentTransaction {
 
     @Override
     public void commit() {
-        // Add the new fragment to the stack.
-        mFrgTransaction.add(mActivity.getContainerViewId(), mFragment, mTag);
         // Hide the first fragment in the container.
         if (mActivity.getSupportFragmentManager().findFragmentById(mActivity.getContainerViewId()) != null) {
             mFrgTransaction.hide(mActivity.getSupportFragmentManager().findFragmentById(mActivity.getContainerViewId()));
         }
 
+        // Add the new fragment to the stack.
+        mFrgTransaction.add(mActivity.getContainerViewId(), mFragment, mTag);
         mFrgTransaction.commit();
     }
 }

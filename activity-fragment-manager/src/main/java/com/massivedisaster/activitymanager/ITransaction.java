@@ -2,7 +2,6 @@ package com.massivedisaster.activitymanager;
 
 
 import android.os.Bundle;
-import android.view.View;
 
 /**
  * /**
@@ -30,17 +29,6 @@ interface ITransaction<T> {
      * @return Return the Transaction instance.
      */
     T addTag(String tag);
-
-    /**
-     * Add the new view to do an animated in the transaction.
-     *
-     * @param sharedElement   A View in a disappearing Fragment to match with a View in an
-     *                        appearing Fragment.
-     * @param transactionName The transitionName for a View in an appearing Fragment to match to the shared
-     *                        element.
-     * @return Return the Transaction instance.
-     */
-    T addSharedElement(View sharedElement, String transactionName);
 
 
     /**
