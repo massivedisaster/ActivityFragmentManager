@@ -17,15 +17,21 @@
 
 package com.massivedisaster.activitymanager.activity;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.Window;
 
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.activitymanager.animation.TransactionAnimation;
@@ -63,10 +69,13 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            postponeEnterTransition();
+            requestWindowFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+            requestWindowFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         }
+
+        super.onCreate(savedInstanceState);
 
         setContentView(getLayoutResId());
     }
@@ -80,6 +89,49 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
         } else if (getDefaultFragment() != null) {
             performInitialTransaction(getFragment(getDefaultFragment().getCanonicalName()), null);
         }
+
+        // Add element shared startPostponedEnterTransition
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            supportPostponeEnterTransition();
+
+            getSupportFragmentManager().registerFragmentLifecycleCallbacks(new FragmentManager.FragmentLifecycleCallbacks() {
+                @Override
+                public void onFragmentViewCreated(FragmentManager fm, Fragment f, final View view, Bundle savedInstanceState) {
+                    if (view != null) {
+                        view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                            @Override
+                            public boolean onPreDraw() {
+                                view.getViewTreeObserver().removeOnPreDrawListener(this);
+
+                                supportStartPostponedEnterTransition();
+
+                                return true;
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onFragmentStarted(FragmentManager fm, Fragment f) {
+                    final View view = f.getView();
+                    if (view != null) {
+                        f.getView().getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+                            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+                            @Override
+                            public boolean onPreDraw() {
+                                view.getViewTreeObserver().removeOnPreDrawListener(this);
+
+                                startPostponedEnterTransition();
+
+                                return true;
+                            }
+                        });
+                    }
+                }
+            }, true);
+        }
     }
 
     /**
@@ -90,7 +142,6 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
      */
     protected void performInitialTransaction(Fragment fragment, String tag) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-
 
         ft.replace(getContainerViewId(), fragment, tag);
         ft.addToBackStack(tag);
@@ -136,7 +187,14 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
     @Override
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
-            finish();
+            getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+                @Override
+                public void onBackStackChanged() {
+                    finish();
+                }
+            });
+            super.onBackPressed();
+
         } else {
             super.onBackPressed();
         }
@@ -160,5 +218,10 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
     @Override
     public int getAnimationPopExit() {
         return android.R.anim.fade_out;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

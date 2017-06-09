@@ -24,13 +24,13 @@
         android:id="@+id/btnReplaceFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/replace_this_fragment"/>
+        android:text="@string/shared_elements_between_fragment_using_replace"/>
 
     <Button
         android:id="@+id/btnOpenFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/replace_this_fragment"/>
+        android:text="@string/shared_elements_between_fragment_in_diferent_activties"/>
 
     <EditText
         android:hint="Try me!"

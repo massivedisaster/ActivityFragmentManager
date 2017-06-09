@@ -16,8 +16,23 @@
   ~ with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
   -->
 
-<FrameLayout
-    android:id="@+id/frmContainer"
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgSharedElement"
+        android:layout_gravity="center"
+        android:contentDescription="@null"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher"
+        android:transitionName="sharedElement"/>
+
+    <FrameLayout
+        android:id="@+id/frmContainer"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>
