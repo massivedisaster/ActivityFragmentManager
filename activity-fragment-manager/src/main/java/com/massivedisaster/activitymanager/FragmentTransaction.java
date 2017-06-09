@@ -59,6 +59,8 @@ public abstract class FragmentTransaction implements ITransaction<FragmentTransa
     @Override
     public FragmentTransaction addSharedElement(View view, String transactionName) {
         mFragment.setSharedElementEnterTransition(TransitionInflater.from(mActivity).inflateTransition(android.R.transition.move));
+        mFragment.setSharedElementReturnTransition(TransitionInflater.from(mActivity).inflateTransition(android.R.transition.move));
+
         mFrgTransaction.addSharedElement(view, transactionName);
         return this;
     }

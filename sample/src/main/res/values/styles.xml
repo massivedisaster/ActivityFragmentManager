@@ -23,6 +23,7 @@
         <item name="colorPrimary">@color/colorPrimaryPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkPrimary</item>
         <item name="colorAccent">@color/colorAccentPrimary</item>
+        <item name="android:windowContentTransitions">true</item>
     </style>
 
     <style name="FullscreenTheme" parent="AppTheme">
