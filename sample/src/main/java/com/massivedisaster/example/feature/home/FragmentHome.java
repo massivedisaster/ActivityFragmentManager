@@ -30,7 +30,6 @@ import com.massivedisaster.example.activity.ActivityFullscreen;
 import com.massivedisaster.example.activity.ActivityPrimaryTheme;
 import com.massivedisaster.example.activitymanager.R;
 import com.massivedisaster.example.feature.navigation.FragmentAddReplace;
-import com.massivedisaster.example.feature.sharedelements.FragmentSharedElement;
 import com.massivedisaster.example.feature.sharedelements.FragmentSharedElementsOptions;
 
 /**
@@ -91,6 +90,9 @@ public class FragmentHome extends Fragment implements View.OnClickListener {
         }
     }
 
+    /**
+     * Open Shared Elements Fragment
+     */
     private void openSharedElements() {
         ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentSharedElementsOptions.class)
                 .commit();
