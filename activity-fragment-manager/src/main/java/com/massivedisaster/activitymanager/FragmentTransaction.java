@@ -1,6 +1,7 @@
 package com.massivedisaster.activitymanager;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.transition.TransitionInflater;
@@ -35,6 +36,13 @@ public abstract class FragmentTransaction implements ITransaction<FragmentTransa
         try {
             mFragment = fragmentClass.newInstance();
             mFrgTransaction.addToBackStack(null);
+
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                mFragment.setSharedElementEnterTransition(TransitionInflater.from(mActivity).inflateTransition(android.R.transition.move));
+                mFragment.setSharedElementReturnTransition(TransitionInflater.from(mActivity).inflateTransition(android.R.transition.move));
+            }
+
         } catch (InstantiationException e) {
             Log.e(ActivityFragmentManager.class.getCanonicalName(), e.toString());
         } catch (IllegalAccessException e) {
@@ -58,9 +66,6 @@ public abstract class FragmentTransaction implements ITransaction<FragmentTransa
 
     @Override
     public FragmentTransaction addSharedElement(View view, String transactionName) {
-        mFragment.setSharedElementEnterTransition(TransitionInflater.from(mActivity).inflateTransition(android.R.transition.move));
-        mFragment.setSharedElementReturnTransition(TransitionInflater.from(mActivity).inflateTransition(android.R.transition.move));
-
         mFrgTransaction.addSharedElement(view, transactionName);
         return this;
     }
