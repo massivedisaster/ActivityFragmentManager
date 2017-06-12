@@ -1,10 +1,7 @@
 package com.massivedisaster.example.feature.sharedelements;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
 import android.view.LayoutInflater;
@@ -15,8 +12,6 @@ import android.widget.ImageView;
 
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
-import com.massivedisaster.example.activity.ActivityA;
-import com.massivedisaster.example.activity.ActivityB;
 import com.massivedisaster.example.activity.ActivityPrimaryTheme;
 import com.massivedisaster.example.activitymanager.R;
 

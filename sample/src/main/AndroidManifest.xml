@@ -39,9 +39,6 @@
             android:name="com.massivedisaster.example.activity.ActivityPrimaryTheme"
             android:theme="@style/AppTheme"/>
 
-        <activity android:name="com.massivedisaster.example.activity.ActivityA"/>
-        <activity android:name="com.massivedisaster.example.activity.ActivityB"/>
-
     </application>
 
 </manifest>
