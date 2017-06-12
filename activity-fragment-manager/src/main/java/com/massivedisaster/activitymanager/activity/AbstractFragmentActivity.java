@@ -78,11 +78,7 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
         super.onCreate(savedInstanceState);
 
         setContentView(getLayoutResId());
-    }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
 
         if (getSupportFragmentManager().getBackStackEntryCount() == 0 && getIntent().hasExtra(ACTIVITY_MANAGER_FRAGMENT)) {
             performInitialTransaction(getFragment(getIntent().getStringExtra(ACTIVITY_MANAGER_FRAGMENT)), getFragmentTag());
@@ -144,9 +140,8 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 
         ft.replace(getContainerViewId(), fragment, tag);
-        ft.addToBackStack(tag);
 
-        ft.commitAllowingStateLoss();
+        ft.commitNow();
     }
 
     @Override
@@ -182,22 +177,6 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
 
     private String getFragmentTag() {
         return getIntent().getStringExtra(ACTIVITY_MANAGER_FRAGMENT_TAG);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
-            getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-                @Override
-                public void onBackStackChanged() {
-                    finish();
-                }
-            });
-            super.onBackPressed();
-
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @Override
