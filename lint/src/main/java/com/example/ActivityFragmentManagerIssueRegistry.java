@@ -6,12 +6,10 @@ import com.android.tools.lint.detector.api.Issue;
 import java.util.Arrays;
 import java.util.List;
 
-public class ActivityFragmentManager extends IssueRegistry {
+public class ActivityFragmentManagerIssueRegistry extends IssueRegistry {
 
     @Override
     public List<Issue> getIssues() {
-        return Arrays.asList(CallNeedsPermissionDetector.ISSUE,
-                NoCorrespondingNeedsPermissionDetector.ISSUE,
-                CallOnRequestPermissionsResultDetector.ISSUE);
+        return Arrays.asList(CommitTransaction.COMMIT_FRAGMENT);
     }
 }
