@@ -23,14 +23,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.Window;
 
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
@@ -79,54 +75,10 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
 
         setContentView(getLayoutResId());
 
-
         if (getSupportFragmentManager().getBackStackEntryCount() == 0 && getIntent().hasExtra(ACTIVITY_MANAGER_FRAGMENT)) {
             performInitialTransaction(getFragment(getIntent().getStringExtra(ACTIVITY_MANAGER_FRAGMENT)), getFragmentTag());
         } else if (getDefaultFragment() != null) {
             performInitialTransaction(getFragment(getDefaultFragment().getCanonicalName()), null);
-        }
-
-        // Add element shared startPostponedEnterTransition
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-
-            supportPostponeEnterTransition();
-
-            getSupportFragmentManager().registerFragmentLifecycleCallbacks(new FragmentManager.FragmentLifecycleCallbacks() {
-                @Override
-                public void onFragmentViewCreated(FragmentManager fm, Fragment f, final View view, Bundle savedInstanceState) {
-                    if (view != null) {
-                        view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-                            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                            @Override
-                            public boolean onPreDraw() {
-                                view.getViewTreeObserver().removeOnPreDrawListener(this);
-
-                                supportStartPostponedEnterTransition();
-
-                                return true;
-                            }
-                        });
-                    }
-                }
-
-                @Override
-                public void onFragmentStarted(FragmentManager fm, Fragment f) {
-                    final View view = f.getView();
-                    if (view != null) {
-                        f.getView().getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-                            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-                            @Override
-                            public boolean onPreDraw() {
-                                view.getViewTreeObserver().removeOnPreDrawListener(this);
-
-                                startPostponedEnterTransition();
-
-                                return true;
-                            }
-                        });
-                    }
-                }
-            }, true);
         }
     }
 
