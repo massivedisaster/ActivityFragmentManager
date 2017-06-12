@@ -15,31 +15,4 @@
  * with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.massivedisaster.example.activity;
-
-import android.support.v4.app.Fragment;
-
-import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
-import com.massivedisaster.example.activitymanager.R;
-import com.massivedisaster.example.feature.splash.FragmentSplash;
-
-/**
- * Activity in fullscreen mode.
- */
-public class ActivityFullscreen extends AbstractFragmentActivity {
-
-    @Override
-    public int getLayoutResId() {
-        return R.layout.activity_fullscreen;
-    }
-
-    @Override
-    public int getContainerViewId() {
-        return R.id.frmContainer;
-    }
-
-    @Override
-    protected Class<? extends Fragment> getDefaultFragment() {
-        return FragmentSplash.class;
-    }
-}
+include ':sample', ':activity-fragment-manager', ':lint'

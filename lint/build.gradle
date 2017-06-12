@@ -1,8 +1,32 @@
 apply plugin: 'java'
 
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
+
+repositories {
+    jcenter()
 }
 
-sourceCompatibility = "1.7"
-targetCompatibility = "1.7"
+dependencies {
+    compile 'com.android.tools.lint:lint-api:24.2.1'
+    compile 'com.android.tools.lint:lint-checks:24.2.1'
+}
+
+jar {
+    manifest {
+        attributes 'Manifest-Version': 1.0
+        attributes 'Lint-Registry': 'com.example.ActivityFragmentManagerIssueRegistry'
+    }
+}
+
+defaultTasks 'assemble'
+
+task copyLintJar(type: Copy) {
+    description = 'Copies the lint jar file into the {user.home}/.android/lint folder.'
+    from('build/libs/')
+    into(System.getProperty("user.home") + '/.android/lint')
+    include("*.jar")
+}
+
+// Runs the copyLintJar task after build has completed.
+build.finalizedBy(copyLintJar)
