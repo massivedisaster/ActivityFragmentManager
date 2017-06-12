@@ -15,8 +15,10 @@ import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 import com.massivedisaster.example.activity.ActivityPrimaryTheme;
 import com.massivedisaster.example.activitymanager.R;
 
+/**
+ * Fragment Shared Elements Options
+ */
 public class FragmentSharedElementsOptions extends Fragment implements View.OnClickListener {
-
 
     private Button mBtnAddFragment, mBtnOpenFragment, mBtnReplaceFragment;
     private ImageView mImgSharedElement;
@@ -76,21 +78,31 @@ public class FragmentSharedElementsOptions extends Fragment implements View.OnCl
         super.onDestroy();
     }
 
+    /**
+     * Add a new fragment, the transaction dont work here.
+     */
     private void add() {
         ActivityFragmentManager.add((AbstractFragmentActivity) getActivity(), FragmentSharedElement.class)
                 .addSharedElement(mImgSharedElement, ViewCompat.getTransitionName(mImgSharedElement))
                 .commit();
     }
 
+    /**
+     * Replace the fragment
+     */
     private void replace() {
         ActivityFragmentManager.replace((AbstractFragmentActivity) getActivity(), FragmentSharedElement.class)
                 .addSharedElement(mImgSharedElement, ViewCompat.getTransitionName(mImgSharedElement))
                 .commit();
     }
 
+    /**
+     * Open a new fragment on a new activity
+     */
     private void open() {
         ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentSharedElement.class)
-                .addSharedElement(getActivity().findViewById(R.id.imgSharedElement), ViewCompat.getTransitionName(getActivity().findViewById(R.id.imgSharedElement)))
+                .addSharedElement(getActivity().findViewById(R.id.imgSharedElement),
+                        ViewCompat.getTransitionName(getActivity().findViewById(R.id.imgSharedElement)))
                 .commit();
     }
 }
