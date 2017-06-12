@@ -9,6 +9,10 @@ import android.view.ViewGroup;
 
 import com.massivedisaster.example.activitymanager.R;
 
+/**
+ * SHared Element Fragment
+ * Fragment to show the transaction
+ */
 public class FragmentSharedElement extends Fragment {
 
     @Nullable
