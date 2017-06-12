@@ -1,6 +1,7 @@
 package com.massivedisaster.activitymanager;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -106,6 +107,15 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
     public ActivityTransaction addRequestCode(int requestCode) {
         mRequestCode = requestCode;
         return this;
+    }
+
+    /**
+     * Retrieve the activity options.
+     *
+     * @return  The activity options instance.
+     */
+    public ActivityOptionsCompat getActivityOptions(){
+        return mActivityOptions;
     }
 
     /**
