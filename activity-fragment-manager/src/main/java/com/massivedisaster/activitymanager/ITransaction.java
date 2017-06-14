@@ -21,7 +21,7 @@ interface ITransaction<T> {
      * @param bundle The Bundle with the parameters to be passed to the new Fragment.
      * @return Return the Transaction instance.
      */
-    T addBundle(Bundle bundle);
+    T setBundle(Bundle bundle);
 
     /**
      * Set the tag to be applied to the new Fragment.
@@ -29,7 +29,7 @@ interface ITransaction<T> {
      * @param tag The tag to be used in the fragment transaction.
      * @return Return the Transaction instance.
      */
-    T addTag(String tag);
+    T setTag(String tag);
 
     /**
      * Add the new view to do an animated in the transaction.

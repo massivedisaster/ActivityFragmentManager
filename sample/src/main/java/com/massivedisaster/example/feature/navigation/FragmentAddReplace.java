@@ -28,8 +28,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
+import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 import com.massivedisaster.activitymanager.animation.TransactionAnimation;
 import com.massivedisaster.example.activitymanager.R;
 
@@ -83,7 +83,7 @@ public class FragmentAddReplace extends LifecycleFragment implements View.OnClic
                 break;
             case R.id.btnAddFragmentWithAnimation:
                 ActivityFragmentManager.add((AbstractFragmentActivity) getActivity(), FragmentAddReplace.class)
-                        .addTransactionAnimation(new TransactionAnimation() {
+                        .setTransactionAnimation(new TransactionAnimation() {
                             @Override
                             public int getAnimationEnter() {
                                 return R.anim.enter_from_right;

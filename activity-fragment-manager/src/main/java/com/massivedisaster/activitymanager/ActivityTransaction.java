@@ -66,13 +66,13 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
 
 
     @Override
-    public ActivityTransaction addTag(String tag) {
+    public ActivityTransaction setTag(String tag) {
         mIntent.putExtra(ACTIVITY_MANAGER_FRAGMENT_TAG, tag);
         return this;
     }
 
     @Override
-    public ActivityTransaction addBundle(Bundle bundle) {
+    public ActivityTransaction setBundle(Bundle bundle) {
         mIntent.putExtras(bundle);
         return this;
     }
@@ -102,7 +102,7 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
      * @param requestCode The code to be used in the {@link Activity#startActivityForResult}.
      * @return Return the Transaction instance.
      */
-    public ActivityTransaction addRequestCode(int requestCode) {
+    public ActivityTransaction setRequestCode(int requestCode) {
         mRequestCode = requestCode;
         return this;
     }
