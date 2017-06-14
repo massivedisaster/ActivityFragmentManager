@@ -51,13 +51,13 @@ public abstract class FragmentTransaction implements ITransaction<FragmentTransa
     }
 
     @Override
-    public FragmentTransaction addTag(String tag) {
+    public FragmentTransaction setTag(String tag) {
         mTag = tag;
         return this;
     }
 
     @Override
-    public FragmentTransaction addBundle(Bundle bundle) {
+    public FragmentTransaction setBundle(Bundle bundle) {
         if (bundle != null) {
             mFragment.setArguments(bundle);
         }
@@ -76,7 +76,7 @@ public abstract class FragmentTransaction implements ITransaction<FragmentTransa
      * @param transactionAnimation The animation to used in fragment transaction.
      * @return Return the Transaction instance.
      */
-    public FragmentTransaction addTransactionAnimation(TransactionAnimation transactionAnimation) {
+    public FragmentTransaction setTransactionAnimation(TransactionAnimation transactionAnimation) {
         // Apply the default activity animation if the FragmentTransaction is null.
         if (transactionAnimation == null) {
             transactionAnimation = mActivity;
