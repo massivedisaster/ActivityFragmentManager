@@ -1,7 +1,6 @@
 package com.massivedisaster.activitymanager;
 
 import android.app.Activity;
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -25,14 +24,13 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
     public static final String ACTIVITY_MANAGER_FRAGMENT = "activity_manager_fragment";
     public static final String ACTIVITY_MANAGER_FRAGMENT_TAG = "activity_manager_fragment_tag";
     public static final String ACTIVITY_MANAGER_FRAGMENT_SHARED_ELEMENTS = "activity_manager_fragment_shared_elements";
-
+    private final Class<? extends AbstractFragmentActivity> mAbstractBaseActivity;
+    private final Intent mIntent;
     private ActivityOptionsCompat mActivityOptions;
     private List<Pair<View, String>> mSharedElements;
     private Activity mActivityBase;
     private Fragment mFragment;
-    private final Class<? extends AbstractFragmentActivity> mAbstractBaseActivity;
     private Integer mRequestCode;
-    private final Intent mIntent;
 
     /**
      * ActivityTransaction constructor, created to be used by an activity.
@@ -112,9 +110,9 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
     /**
      * Retrieve the activity options.
      *
-     * @return  The activity options instance.
+     * @return The activity options instance.
      */
-    public ActivityOptionsCompat getActivityOptions(){
+    public ActivityOptionsCompat getActivityOptions() {
         return mActivityOptions;
     }
 
