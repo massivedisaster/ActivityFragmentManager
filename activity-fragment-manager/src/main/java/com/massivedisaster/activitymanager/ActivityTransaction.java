@@ -24,14 +24,13 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
     public static final String ACTIVITY_MANAGER_FRAGMENT = "activity_manager_fragment";
     public static final String ACTIVITY_MANAGER_FRAGMENT_TAG = "activity_manager_fragment_tag";
     public static final String ACTIVITY_MANAGER_FRAGMENT_SHARED_ELEMENTS = "activity_manager_fragment_shared_elements";
-
+    private final Class<? extends AbstractFragmentActivity> mAbstractBaseActivity;
+    private final Intent mIntent;
     private ActivityOptionsCompat mActivityOptions;
     private List<Pair<View, String>> mSharedElements;
     private Activity mActivityBase;
     private Fragment mFragment;
-    private final Class<? extends AbstractFragmentActivity> mAbstractBaseActivity;
     private Integer mRequestCode;
-    private final Intent mIntent;
 
     /**
      * ActivityTransaction constructor, created to be used by an activity.
@@ -67,13 +66,13 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
 
 
     @Override
-    public ActivityTransaction addTag(String tag) {
+    public ActivityTransaction setTag(String tag) {
         mIntent.putExtra(ACTIVITY_MANAGER_FRAGMENT_TAG, tag);
         return this;
     }
 
     @Override
-    public ActivityTransaction addBundle(Bundle bundle) {
+    public ActivityTransaction setBundle(Bundle bundle) {
         mIntent.putExtras(bundle);
         return this;
     }
@@ -103,7 +102,7 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
      * @param requestCode The code to be used in the {@link Activity#startActivityForResult}.
      * @return Return the Transaction instance.
      */
-    public ActivityTransaction addRequestCode(int requestCode) {
+    public ActivityTransaction setRequestCode(int requestCode) {
         mRequestCode = requestCode;
         return this;
     }
