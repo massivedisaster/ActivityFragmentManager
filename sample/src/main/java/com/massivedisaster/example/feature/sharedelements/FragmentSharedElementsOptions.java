@@ -86,8 +86,6 @@ public class FragmentSharedElementsOptions extends Fragment implements View.OnCl
      * Add a new fragment, the transaction dont work here.
      */
     private void add() {
-        ActivityFragmentManager.add(null, null);
-
         ActivityFragmentManager.add((AbstractFragmentActivity) getActivity(), FragmentSharedElement.class)
                 .addSharedElement(mImgSharedElement, ViewCompat.getTransitionName(mImgSharedElement))
                 .commit();
