@@ -1,11 +1,11 @@
 apply plugin: 'java'
 
-targetCompatibility = '1.7'
-sourceCompatibility = '1.7'
-
 repositories {
     jcenter()
 }
+
+targetCompatibility = '1.7'
+sourceCompatibility = '1.7'
 
 dependencies {
     compile 'com.android.tools.lint:lint-api:24.2.1'
@@ -15,7 +15,7 @@ dependencies {
 jar {
     manifest {
         attributes 'Manifest-Version': 1.0
-        attributes 'Lint-Registry': 'com.example.ActivityFragmentManagerIssueRegistry'
+        attributes 'Lint-Registry': 'com.massivedisaster.activitymanager.lint.ActivityFragmentManagerIssueRegistry'
     }
 }
 
