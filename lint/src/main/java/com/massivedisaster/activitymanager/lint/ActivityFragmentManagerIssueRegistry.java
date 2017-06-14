@@ -14,6 +14,6 @@ public class ActivityFragmentManagerIssueRegistry extends IssueRegistry {
 
     @Override
     public List<Issue> getIssues() {
-        return Arrays.asList(CommitTransaction.COMMIT_FRAGMENT);
+        return Arrays.asList(CommitTransaction.COMMIT_FRAGMENT, AddSharedElements.ADD_SHARED_ELEMENT);
     }
 }
