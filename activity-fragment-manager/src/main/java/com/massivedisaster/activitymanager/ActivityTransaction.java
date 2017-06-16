@@ -108,6 +108,15 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
     }
 
     /**
+     * Retrieve the activity options.
+     *
+     * @return The activity options instance.
+     */
+    public ActivityOptionsCompat getActivityOptions() {
+        return mActivityOptions;
+    }
+
+    /**
      * Get the intent created with the configurations to used.
      *
      * @return The Intent to the transaction.

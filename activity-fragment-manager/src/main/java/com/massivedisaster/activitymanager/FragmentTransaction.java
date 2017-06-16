@@ -71,6 +71,24 @@ public abstract class FragmentTransaction implements ITransaction<FragmentTransa
     }
 
     /**
+     * Retrieve the fragment transaction.
+     *
+     * @return The fragment transaction.
+     */
+    public android.support.v4.app.FragmentTransaction getFragmentTransaction() {
+        return mFrgTransaction;
+    }
+
+    /**
+     * Retrieve the fragment created.
+     *
+     * @return The fragment instance.
+     */
+    public Fragment getFragment() {
+        return mFragment;
+    }
+
+    /**
      * Set the transaction animation to be passed to the new Fragment.
      *
      * @param transactionAnimation The animation to used in fragment transaction.
