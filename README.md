@@ -199,4 +199,4 @@ The Sample app don't require any configuration to interact.
 [CONTRIBUTING](CONTRIBUTING.md)
 
 ## License
-[GNU LESSER GENERAL PUBLIC LICENSE](LICENSE.md)
+[MIT LICENSE](LICENSE.md)
