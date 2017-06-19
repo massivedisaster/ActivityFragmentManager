@@ -30,13 +30,23 @@
               android:gravity="center"
               android:orientation="vertical">
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ola"/>
+
     <ImageView
         android:id="@+id/imgSharedElement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:adjustViewBounds="true"
         android:contentDescription="@null"
-        android:src="@mipmap/ic_launcher"
         android:transitionName="sharedElement"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adeus"/>
 
 </LinearLayout>

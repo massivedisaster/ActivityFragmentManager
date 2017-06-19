@@ -10,17 +10,9 @@ import com.massivedisaster.example.activitymanager.R;
 
 import java.util.List;
 
-/**
- * Image Adapter
- */
-class ImageAdapter extends AbstractLoadMoreBaseAdapter<Integer> {
+public class ImageAdapter extends AbstractLoadMoreBaseAdapter<Integer> {
 
-    /**
-     * Image Adapter constructor
-     *
-     * @param lstItems List of items to populate adapter
-     */
-    ImageAdapter(List<Integer> lstItems) {
+    public ImageAdapter(List<Integer> lstItems) {
         super(R.layout.adapter_image, lstItems);
     }
 
@@ -34,6 +26,6 @@ class ImageAdapter extends AbstractLoadMoreBaseAdapter<Integer> {
 
     @Override
     protected void bindError(BaseViewHolder holder, boolean loadingError) {
-        //TODO
+
     }
 }

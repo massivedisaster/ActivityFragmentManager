@@ -54,19 +54,17 @@ public class FragmentSharedElement extends AbstractBaseFragment {
 
     @Override
     protected void restoreInstanceState(@Nullable Bundle savedInstanceState) {
-        //TODO
+
     }
 
     @Override
     protected void doOnCreated() {
-        getActivity().setTitle(R.string.image_detail);
-
         ImageView imgExample = findViewById(R.id.imgSharedElement);
 
         Glide.with(getContext())
                 .load(mUrl)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .dontAnimate()
+
                 .into(imgExample);
 
     }
