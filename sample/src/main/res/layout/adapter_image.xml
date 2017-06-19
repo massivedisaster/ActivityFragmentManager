@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:contentDescription="@null"
-        android:src="@mipmap/ic_launcher"/>
+        android:contentDescription="@null"/>
 
 </RelativeLayout>
