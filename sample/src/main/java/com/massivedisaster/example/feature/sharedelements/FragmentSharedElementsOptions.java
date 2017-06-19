@@ -2,50 +2,70 @@ package com.massivedisaster.example.feature.sharedelements;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
-import android.view.LayoutInflater;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
+import com.massivedisaster.adal.adapter.OnChildClickListener;
+import com.massivedisaster.adal.fragment.AbstractBaseFragment;
 import com.massivedisaster.example.activity.ActivityPrimaryTheme;
 import com.massivedisaster.example.activitymanager.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Fragment Shared Elements Options
  */
-public class FragmentSharedElementsOptions extends Fragment implements View.OnClickListener {
+public class FragmentSharedElementsOptions extends AbstractBaseFragment implements View.OnClickListener {
 
+    private RecyclerView mRclItems;
     private Button mBtnAddFragment, mBtnOpenFragment, mBtnReplaceFragment;
     private ImageView mImgSharedElement;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_shared_elements_options, container, false);
-
-        mBtnAddFragment = (Button) v.findViewById(R.id.btnAddFragment);
-        mBtnOpenFragment = (Button) v.findViewById(R.id.btnOpenFragment);
-        mBtnReplaceFragment = (Button) v.findViewById(R.id.btnReplaceFragment);
-
-        mImgSharedElement = (ImageView) v.findViewById(R.id.imgSharedElement);
-
-        return v;
+    protected int layoutToInflate() {
+        return R.layout.fragment_shared_elements_options;
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void getFromBundle(Bundle bundle) {
 
-        mBtnAddFragment.setOnClickListener(this);
-        mBtnReplaceFragment.setOnClickListener(this);
-        mBtnOpenFragment.setOnClickListener(this);
     }
 
+    @Override
+    protected void restoreInstanceState(@Nullable Bundle savedInstanceState) {
+
+    }
+
+    @Override
+    protected void doOnCreated() {
+        mRclItems = findViewById(R.id.rclItems);
+        mRclItems.setLayoutManager(new GridLayoutManager(getContext(), 2));
+
+        ImageAdapter adapter = new ImageAdapter(makeSequence(1, 10));
+
+        mRclItems.setAdapter(adapter);
+
+        adapter.setOnChildClickListener(new OnChildClickListener<Integer>() {
+            @Override
+            public void onChildClick(View view, Integer integer, int position) {
+                Bundle bundle = new Bundle();
+                bundle.putString("URL", "http://lorempixel.com/400/200/nature/" + integer);
+
+                ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentSharedElement.class)
+                        .setBundle(bundle)
+                        .addSharedElement(view.findViewById(R.id.imgExample), "sharedElement")
+                        .commit();
+            }
+        });
+    }
+/*
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -62,20 +82,14 @@ public class FragmentSharedElementsOptions extends Fragment implements View.OnCl
                 break;
         }
     }
+*/
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-    }
+    List<Integer> makeSequence(int begin, int end) {
+        List<Integer> ret = new ArrayList(end - begin + 1);
 
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
+        for (int i = begin; i <= end; i++, ret.add(i)) ;
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+        return ret;
     }
 
     /**
@@ -100,9 +114,11 @@ public class FragmentSharedElementsOptions extends Fragment implements View.OnCl
      * Open a new fragment on a new activity
      */
     private void open() {
-        ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentSharedElement.class)
-                .addSharedElement(getActivity().findViewById(R.id.imgSharedElement),
-                        ViewCompat.getTransitionName(getActivity().findViewById(R.id.imgSharedElement)))
-                .commit();
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
