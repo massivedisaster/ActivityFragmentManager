@@ -30,6 +30,7 @@
 
     <string name="open_fragment_other_activity">Open a fragment in a toolbar activity.</string>
     <string name="open_fragment_other_activity_fullscreen">Open a fragment in a fullscreen activity.</string>
+    <string name="open_fragment_other_activity_with_animation">Open a fragment in a toolbar activity with a custom animation.</string>
     <string name="add_more_one_fragment">Add one more fragment to this activity!</string>
     <string name="home">Home</string>
     <string name="add_more_one_fragment_with_custom_animation">Add one more fragment to this activty with a custom animation!</string>
@@ -42,6 +43,4 @@
         \n\nProin ut euismod velit. Nullam eu orci euismod, dictum tellus tristique, consequat metus. Sed aliquet vehicula ante sit amet gravida. Donec a laoreet lacus. Vestibulum faucibus ante eros. Etiam lacinia venenatis neque, in tempus ante dignissim eu. Mauris egestas nibh dui, vitae efficitur augue dapibus non. Vestibulum convallis consectetur tempor. Duis quam risus, sollicitudin congue ultricies a, elementum ac felis. Nullam cursus mi vel molestie commodo. Etiam magna risus, ultricies ac venenatis eget, malesuada nec leo. Curabitur turpis arcu, efficitur ac pharetra ac, pretium vel leo. Aenean consequat sodales leo nec posuere. Quisque eget sagittis augue, ut pretium risus. Nullam non sollicitudin dui, laoreet tincidunt nisl. In convallis lectus dolor, tempor pharetra ante posuere et.
         \n\nProin placerat sollicitudin porta. Fusce blandit tortor orci, sit amet cursus felis molestie eget. Nunc ullamcorper convallis nulla porta malesuada. Duis sodales magna metus, cursus elementum tortor luctus eu. Nunc consequat, dolor ac tristique commodo, orci metus varius dolor, in dictum quam sem vitae eros. Mauris non malesuada velit, id mattis nulla. Sed vel quam vestibulum, ullamcorper odio et, condimentum diam.
     </string>
-    <string name="image_detail">Image Detail</string>
-    <string name="navigation">Navigation</string>
 </resources>

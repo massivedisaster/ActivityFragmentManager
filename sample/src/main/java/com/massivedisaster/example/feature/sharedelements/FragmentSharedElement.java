@@ -64,7 +64,7 @@ public class FragmentSharedElement extends AbstractBaseFragment {
         Glide.with(getContext())
                 .load(mUrl)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-
+                .dontAnimate()
                 .into(imgExample);
 
     }
