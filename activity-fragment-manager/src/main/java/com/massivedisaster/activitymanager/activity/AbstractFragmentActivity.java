@@ -88,8 +88,6 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
         } else if (getDefaultFragment() != null) {
             performInitialTransaction(getFragment(getDefaultFragment().getCanonicalName()), null);
         }
-
-        ActivityFragmentManager.add(null, null);
     }
 
     /**
