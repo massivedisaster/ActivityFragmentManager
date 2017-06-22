@@ -42,7 +42,7 @@ public class FragmentSplash extends AbstractSplashFragment {
 
     @Override
     protected void getFromBundle(Bundle bundle) {
-
+        //TODO
     }
 
     @Override
@@ -52,12 +52,12 @@ public class FragmentSplash extends AbstractSplashFragment {
 
     @Override
     protected void restoreInstanceState(@Nullable Bundle savedInstanceState) {
-
+        //TODO
     }
 
     @Override
     protected void doOnCreated() {
-
+        //TODO
     }
 
 
