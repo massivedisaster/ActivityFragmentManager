@@ -17,13 +17,10 @@
 
 package com.massivedisaster.example.feature.navigation;
 
-import android.arch.lifecycle.LifecycleFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,47 +28,54 @@ import android.widget.TextView;
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 import com.massivedisaster.activitymanager.animation.TransactionAnimation;
+import com.massivedisaster.adal.fragment.AbstractBaseFragment;
 import com.massivedisaster.example.activitymanager.R;
 
 /**
  * Fragment Add Replace
  * Fragment with some features to add and remove more fragments.
  */
-public class FragmentAddReplace extends LifecycleFragment implements View.OnClickListener {
+public class FragmentAddReplace extends AbstractBaseFragment implements View.OnClickListener {
 
     private static final String VALUE = "value";
+    private String mValue;
 
-    private Button mBtnAddFragment, mBtnAddFragmentWithAnimation, mBtnReplaceFragment;
     private TextView mTxtNumberOfFragments;
     private EditText mEdtValue;
 
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_add, container, false);
-
-        mBtnAddFragment = (Button) v.findViewById(R.id.btnAddFragment);
-        mBtnReplaceFragment = (Button) v.findViewById(R.id.btnReplaceFragment);
-        mBtnAddFragmentWithAnimation = (Button) v.findViewById(R.id.btnAddFragmentWithAnimation);
-        mTxtNumberOfFragments = (TextView) v.findViewById(R.id.txtNumberOfFragments);
-        mEdtValue = (EditText) v.findViewById(R.id.edtValue);
-
-        if (savedInstanceState != null && savedInstanceState.containsKey(VALUE)) {
-            mEdtValue.setText(savedInstanceState.getString(VALUE));
-        }
-
-        Log.d("AFM", "OnCreated Called");
-
-        return v;
+    protected int layoutToInflate() {
+        return R.layout.fragment_add;
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    protected void getFromBundle(Bundle bundle) {
 
-        mBtnAddFragment.setOnClickListener(this);
-        mBtnReplaceFragment.setOnClickListener(this);
-        mBtnAddFragmentWithAnimation.setOnClickListener(this);
+    }
+
+    @Override
+    protected void restoreInstanceState(@Nullable Bundle savedInstanceState) {
+        if (savedInstanceState != null && savedInstanceState.containsKey(VALUE)) {
+            mValue = savedInstanceState.getString(VALUE);
+        }
+    }
+
+    @Override
+    protected void doOnCreated() {
+        Button btnAddFragment = findViewById(R.id.btnAddFragment);
+        Button btnReplaceFragment = findViewById(R.id.btnReplaceFragment);
+        Button btnAddFragmentWithAnimation = findViewById(R.id.btnAddFragmentWithAnimation);
+        mTxtNumberOfFragments = findViewById(R.id.txtNumberOfFragments);
+        mEdtValue = findViewById(R.id.edtValue);
+
+        btnAddFragment.setOnClickListener(this);
+        btnReplaceFragment.setOnClickListener(this);
+        btnAddFragmentWithAnimation.setOnClickListener(this);
+
+        mEdtValue.setText(mValue);
+
+        mTxtNumberOfFragments.setText(getString(R.string.number_fragment_in_this_activity,
+                getActivity().getSupportFragmentManager().getBackStackEntryCount()));
     }
 
     @Override
@@ -124,13 +128,6 @@ public class FragmentAddReplace extends LifecycleFragment implements View.OnClic
                     getActivity().getSupportFragmentManager().getBackStackEntryCount()));
             Log.d("AFM", "Number:" + getActivity().getSupportFragmentManager().getBackStackEntryCount());
         }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mTxtNumberOfFragments.setText(getString(R.string.number_fragment_in_this_activity,
-                getActivity().getSupportFragmentManager().getBackStackEntryCount()));
     }
 
     @Override
