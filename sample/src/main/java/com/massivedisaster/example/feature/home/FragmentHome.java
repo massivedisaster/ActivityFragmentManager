@@ -22,7 +22,6 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 
-import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.adal.fragment.AbstractBaseFragment;
 import com.massivedisaster.example.activity.ActivityFullscreen;
 import com.massivedisaster.example.activity.ActivityToolbar;
@@ -44,12 +43,12 @@ public class FragmentHome extends AbstractBaseFragment implements View.OnClickLi
 
     @Override
     protected void getFromBundle(Bundle bundle) {
-
+        //TODO
     }
 
     @Override
     protected void restoreInstanceState(@Nullable Bundle savedInstanceState) {
-
+        //TODO
     }
 
     @Override
@@ -77,7 +76,7 @@ public class FragmentHome extends AbstractBaseFragment implements View.OnClickLi
                         .commit();
                 break;
             case R.id.btnSharedElements:
-                ActivityFragmentManager.open(getActivity(), ActivityToolbar.class, FragmentSharedElementsOptions.class)
+                open(getActivity(), ActivityToolbar.class, FragmentSharedElementsOptions.class)
                         .commit();
                 break;
             default:

@@ -50,7 +50,7 @@ public class FragmentAddReplace extends AbstractBaseFragment implements View.OnC
 
     @Override
     protected void getFromBundle(Bundle bundle) {
-
+        //TODO
     }
 
     @Override
