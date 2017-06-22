@@ -179,7 +179,36 @@ public class ActivityPrimaryTheme extends AbstractFragmentActivity {
 }
 ```
 
-### 5. Custom Intents
+### 5. Shared Elements
+If you want to make your app beautiful you need to put some cool animation on it!  
+Shared elements are introduce in API 21 and makes the transactions so great and sweet.  
+So, now it's very easy to share elements between fragments or activities.
+Let's take a look:
+
+**Activity A**
+```java
+...
+.addSharedElement(view, "sharedElement")
+...
+.commit();
+```
+
+**Activity B**
+```java
+ViewCompat.setTransitionName(view, "sharedElement");
+```
+or
+
+```xml
+<View
+  ...
+  android:transitionName="sharedElement" />
+```
+
+**Attention:** Shared elements doesn't work when you use ```add()```!  
+Well if you remove the first fragment it's possible, i.e. a replace :)
+
+### 6. Custom Intents
 Sometimes you want to add more information to the ```Intent``` or set some flags. You can use the follow method to open a new ```AbstractActivityFragment```:
 
 ```java
