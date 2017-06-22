@@ -33,6 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="@string/splash_screen"/>
+        android:text="@string/splash_screen"
+        android:textColor="@android:color/white"/>
 
 </RelativeLayout>
