@@ -1,3 +1,28 @@
+/*
+ * ActivityFragmentManager - A library to help android developer working easily with activities and fragments.
+ *
+ * Copyright (c) 2017 ActivityFragmentManager
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
 package com.massivedisaster.activitymanager.lint;
 
 import com.android.annotations.NonNull;
@@ -67,66 +92,6 @@ public class CommitTransaction extends Detector implements JavaScanner {
     public CommitTransaction() {
     }
 
-    @Nullable
-    @Override
-    public List<String> getApplicableMethodNames() {
-        return Arrays.asList(
-                ADD_TRANSACTION,
-                OPEN_TRANSACTION,
-                REPLACE_TRANSACTION
-        );
-    }
-
-    @Override
-    public void visitMethod(@NonNull JavaContext context, @Nullable AstVisitor visitor,
-                            @NonNull MethodInvocation node) {
-        if (!checkTransactionHasACommit(context, node)) {
-            showCommitMessage(context, node);
-        }
-    }
-
-
-    @NonNull
-    @Override
-    public Speed getSpeed() {
-        return Speed.FAST;
-    }
-
-
-    @Override
-    public AstVisitor createJavaVisitor(@NonNull JavaContext context) {
-        return new CallChecker(context);
-    }
-
-    /**
-     * Call Checker to find lint warnings on-a-fly.
-     */
-    private static class CallChecker extends ForwardingAstVisitor {
-
-        private final JavaContext mContext;
-
-        CallChecker(JavaContext context) {
-            mContext = context;
-        }
-
-        @Override
-        public boolean visitMethodInvocation(@NonNull MethodInvocation call) {
-            JavaParser.ResolvedNode resolved = mContext.resolve(call);
-            if (resolved instanceof JavaParser.ResolvedMethod) {
-                if (!checkTransactionHasACommit(mContext, call)) {
-                    showCommitMessage(mContext, call);
-                }
-            }
-
-            return false;
-        }
-
-        @Override
-        public boolean visitConstructorInvocation(@NonNull ConstructorInvocation call) {
-            return false;
-        }
-    }
-
     /**
      *
      */
@@ -139,7 +104,6 @@ public class CommitTransaction extends Detector implements JavaScanner {
 
         return true;
     }
-
 
     private static boolean isAddReplaceOpen(@NonNull JavaContext context, @NonNull MethodInvocation node) {
         String methodName = node.astName().astValue();
@@ -249,7 +213,6 @@ public class CommitTransaction extends Detector implements JavaScanner {
         return null;
     }
 
-
     /**
      * Show the Lint Message
      *
@@ -260,6 +223,64 @@ public class CommitTransaction extends Detector implements JavaScanner {
         String message = "This transaction should be completed with a `commit()` call.";
         context.report(COMMIT_FRAGMENT, node, context.getLocation(node),
                 message);
+    }
+
+    @Nullable
+    @Override
+    public List<String> getApplicableMethodNames() {
+        return Arrays.asList(
+                ADD_TRANSACTION,
+                OPEN_TRANSACTION,
+                REPLACE_TRANSACTION
+        );
+    }
+
+    @Override
+    public void visitMethod(@NonNull JavaContext context, @Nullable AstVisitor visitor,
+                            @NonNull MethodInvocation node) {
+        if (!checkTransactionHasACommit(context, node)) {
+            showCommitMessage(context, node);
+        }
+    }
+
+    @NonNull
+    @Override
+    public Speed getSpeed() {
+        return Speed.FAST;
+    }
+
+    @Override
+    public AstVisitor createJavaVisitor(@NonNull JavaContext context) {
+        return new CallChecker(context);
+    }
+
+    /**
+     * Call Checker to find lint warnings on-a-fly.
+     */
+    private static class CallChecker extends ForwardingAstVisitor {
+
+        private final JavaContext mContext;
+
+        CallChecker(JavaContext context) {
+            mContext = context;
+        }
+
+        @Override
+        public boolean visitMethodInvocation(@NonNull MethodInvocation call) {
+            JavaParser.ResolvedNode resolved = mContext.resolve(call);
+            if (resolved instanceof JavaParser.ResolvedMethod) {
+                if (!checkTransactionHasACommit(mContext, call)) {
+                    showCommitMessage(mContext, call);
+                }
+            }
+
+            return false;
+        }
+
+        @Override
+        public boolean visitConstructorInvocation(@NonNull ConstructorInvocation call) {
+            return false;
+        }
     }
 
     /**

@@ -24,42 +24,8 @@
   ~ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
-
-
-    <ImageView
-        android:id="@+id/imgSharedElement"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:contentDescription="@null"
-        android:src="@mipmap/ic_launcher"
-        android:transitionName="sharedElement"/>
-
-    <Button
-        android:id="@+id/btnAddFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/replace_this_fragment"/>
-
-    <Button
-        android:id="@+id/btnReplaceFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/shared_elements_between_fragment_using_replace"/>
-
-    <Button
-        android:id="@+id/btnOpenFragment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/shared_elements_between_fragment_in_diferent_activties"/>
-
-    <EditText
-        android:hint="Try me!"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-</LinearLayout>
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/rclItems"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>

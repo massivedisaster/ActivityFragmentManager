@@ -27,69 +27,48 @@ package com.massivedisaster.example.feature.splash;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
-import com.massivedisaster.example.activity.ActivityPrimaryTheme;
+import com.massivedisaster.adal.fragment.AbstractSplashFragment;
+import com.massivedisaster.example.activity.ActivityHome;
 import com.massivedisaster.example.activitymanager.R;
 import com.massivedisaster.example.feature.home.FragmentHome;
 
 /**
  * Fragment Splash Screen
  */
-public class FragmentSplash extends Fragment {
+public class FragmentSplash extends AbstractSplashFragment {
 
-    private static final long SPLASH_TIMEOUT = 2000;
-    private Handler mHandler;
-    private long mStartTime;
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_splash, container, false);
+    protected void getFromBundle(Bundle bundle) {
+        //TODO
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-
-        mHandler = new Handler();
+    protected int layoutToInflate() {
+        return R.layout.fragment_splash;
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-
-        mStartTime = System.currentTimeMillis();
-
-        startSplashScreen();
+    protected void restoreInstanceState(@Nullable Bundle savedInstanceState) {
+        //TODO
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
-
-        mHandler.removeCallbacksAndMessages(null);
+    protected void doOnCreated() {
+        //TODO
     }
 
-    /**
-     * Start handler to open home screen
-     */
-    protected void startSplashScreen() {
-        if (mHandler == null) {
-            return;
-        }
-        mHandler.postDelayed(new Runnable() {
+
+    @Override
+    protected void onSplashStarted() {
+        onSplashFinish(new OnFinishSplashScreen() {
             @Override
-            public void run() {
+            public void onFinish() {
                 openHomeScreen(getActivity());
             }
-        }, getTimeout());
+        });
     }
 
     /**
@@ -98,22 +77,7 @@ public class FragmentSplash extends Fragment {
      * @param activity The actual activity.
      */
     protected void openHomeScreen(Activity activity) {
-        ActivityFragmentManager.open(activity, ActivityPrimaryTheme.class, FragmentHome.class).commit();
+        ActivityFragmentManager.open(activity, ActivityHome.class, FragmentHome.class).commit();
         activity.finish();
-    }
-
-    /**
-     * Gets the timeout for the splash finishes.
-     *
-     * @return the timeout.
-     */
-    private long getTimeout() {
-        long diff = System.currentTimeMillis() - mStartTime;
-
-        if (diff > SPLASH_TIMEOUT) {
-            return 0;
-        }
-
-        return SPLASH_TIMEOUT - diff;
     }
 }

@@ -1,33 +1,3 @@
-apply plugin: 'java'
-
-repositories {
-    jcenter()
-}
-
-targetCompatibility = '1.7'
-sourceCompatibility = '1.7'
-
-dependencies {
-    compile 'com.android.tools.lint:lint-api:24.2.1'
-    compile 'com.android.tools.lint:lint-checks:24.2.1'
-}
-
-jar {
-    manifest {
-        attributes 'Manifest-Version': 1.0
-        attributes 'Lint-Registry': 'com.massivedisaster.activitymanager.lint.ActivityFragmentManagerIssueRegistry'
-    }
-}
-
-defaultTasks 'assemble'
-
-task copyLintJar(type: Copy) {
-    description = 'Copies the lint jar file into the {user.home}/.android/lint folder.'
-    from('build/libs/')
-    into(System.getProperty("user.home") + '/.android/lint')
-    include("*.jar")
-}
-
 /*
  * ActivityFragmentManager - A library to help android developer working easily with activities and fragments.
  *
@@ -53,5 +23,20 @@ task copyLintJar(type: Copy) {
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-// Runs the copyLintJar task after build has completed.
-build.finalizedBy(copyLintJar)
+package com.massivedisaster.example.activity;
+
+import android.os.Bundle;
+
+/**
+ * ActivityHome
+ */
+public class ActivityHome extends ActivityToolbar {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
+    }
+}
