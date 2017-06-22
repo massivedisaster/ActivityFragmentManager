@@ -58,7 +58,7 @@ public class FragmentAddReplace extends AbstractBaseFragment implements View.OnC
 
     @Override
     protected void getFromBundle(Bundle bundle) {
-        //TODO
+
     }
 
     @Override
@@ -70,8 +70,6 @@ public class FragmentAddReplace extends AbstractBaseFragment implements View.OnC
 
     @Override
     protected void doOnCreated() {
-        getActivity().setTitle(R.string.navigation);
-
         Button btnAddFragment = findViewById(R.id.btnAddFragment);
         Button btnReplaceFragment = findViewById(R.id.btnReplaceFragment);
         Button btnAddFragmentWithAnimation = findViewById(R.id.btnAddFragmentWithAnimation);
