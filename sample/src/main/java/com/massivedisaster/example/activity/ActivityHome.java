@@ -27,6 +27,7 @@ package com.massivedisaster.example.activity;
 
 import android.arch.lifecycle.LifecycleRegistry;
 import android.arch.lifecycle.LifecycleRegistryOwner;
+import android.os.Bundle;
 
 import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 import com.massivedisaster.example.activitymanager.R;
@@ -35,7 +36,7 @@ import com.massivedisaster.example.activitymanager.R;
  * Activity Manager
  * Created by jms on 27/04/16.
  */
-public class ActivityPrimaryTheme extends AbstractFragmentActivity implements LifecycleRegistryOwner {
+public class ActivityHome extends AbstractFragmentActivity implements LifecycleRegistryOwner {
 
     private final LifecycleRegistry mRegistry = new LifecycleRegistry(this);
 
@@ -54,4 +55,13 @@ public class ActivityPrimaryTheme extends AbstractFragmentActivity implements Li
         return R.id.frmContainer;
     }
 
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        }
+    }
 }
