@@ -34,6 +34,6 @@ class ImageAdapter extends AbstractLoadMoreBaseAdapter<Integer> {
 
     @Override
     protected void bindError(BaseViewHolder holder, boolean loadingError) {
-
+        //TODO
     }
 }
