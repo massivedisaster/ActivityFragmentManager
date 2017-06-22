@@ -63,6 +63,8 @@ public class FragmentSharedElementsOptions extends AbstractBaseFragment {
 
     @Override
     protected void doOnCreated() {
+        getActivity().setTitle(R.string.shared_elements);
+
         ImageAdapter adapter = new ImageAdapter(makeSequence(1, 10));
         adapter.setOnChildClickListener(new OnChildClickListener<Integer>() {
             @Override
