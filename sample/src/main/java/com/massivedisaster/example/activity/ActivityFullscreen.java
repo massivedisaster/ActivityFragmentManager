@@ -23,4 +23,30 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-include ':sample', ':activity-fragment-manager', ':lint'
+package com.massivedisaster.example.activity;
+
+import android.support.v4.app.Fragment;
+
+import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
+import com.massivedisaster.example.activitymanager.R;
+import com.massivedisaster.example.feature.splash.FragmentSplash;
+
+/**
+ * Activity Home
+ */
+public class ActivityFullscreen extends AbstractFragmentActivity {
+    @Override
+    public int getLayoutResId() {
+        return R.layout.activity_fullscreen;
+    }
+
+    @Override
+    public int getContainerViewId() {
+        return R.id.frmContainer;
+    }
+
+    @Override
+    protected Class<? extends Fragment> getDefaultFragment() {
+        return FragmentSplash.class;
+    }
+}
