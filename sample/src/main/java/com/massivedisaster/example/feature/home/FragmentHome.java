@@ -30,6 +30,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 
+import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.adal.fragment.AbstractBaseFragment;
 import com.massivedisaster.example.activity.ActivityFullscreen;
 import com.massivedisaster.example.activity.ActivityToolbar;
@@ -51,12 +52,12 @@ public class FragmentHome extends AbstractBaseFragment implements View.OnClickLi
 
     @Override
     protected void getFromBundle(Bundle bundle) {
-        //TODO
+
     }
 
     @Override
     protected void restoreInstanceState(@Nullable Bundle savedInstanceState) {
-        //TODO
+
     }
 
     @Override
@@ -66,9 +67,11 @@ public class FragmentHome extends AbstractBaseFragment implements View.OnClickLi
         Button btnSharedElements = findViewById(R.id.btnSharedElements);
         Button btnOpenFragmentOtherActivity = findViewById(R.id.btnOpenFragmentOtherActivity);
         Button btnOpenFragmentOtherActivityFullscreen = findViewById(R.id.btnOpenFragmentOtherActivityFullscreen);
+        Button btnOpenFragmentOtherActivityWithCustomAnimation = findViewById(R.id.btnOpenFragmentOtherActivityWithCustomAnimation);
 
         btnOpenFragmentOtherActivity.setOnClickListener(this);
         btnOpenFragmentOtherActivityFullscreen.setOnClickListener(this);
+        btnOpenFragmentOtherActivityWithCustomAnimation.setOnClickListener(this);
         btnSharedElements.setOnClickListener(this);
     }
 
@@ -83,8 +86,12 @@ public class FragmentHome extends AbstractBaseFragment implements View.OnClickLi
                 open(getActivity(), ActivityFullscreen.class, FragmentAddReplace.class)
                         .commit();
                 break;
+            case R.id.btnOpenFragmentOtherActivityWithCustomAnimation:
+                open(getActivity(), ActivityToolbar.class, FragmentAddReplace.class)
+                        .commit();
+                break;
             case R.id.btnSharedElements:
-                open(getActivity(), ActivityToolbar.class, FragmentSharedElementsOptions.class)
+                ActivityFragmentManager.open(getActivity(), ActivityToolbar.class, FragmentSharedElementsOptions.class)
                         .commit();
                 break;
             default:

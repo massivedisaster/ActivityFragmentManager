@@ -34,7 +34,7 @@ import android.view.View;
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.adal.adapter.OnChildClickListener;
 import com.massivedisaster.adal.fragment.AbstractBaseFragment;
-import com.massivedisaster.example.activity.ActivityPrimaryTheme;
+import com.massivedisaster.example.activity.ActivityToolbar;
 import com.massivedisaster.example.activitymanager.R;
 
 import java.util.ArrayList;
@@ -87,7 +87,7 @@ public class FragmentSharedElementsOptions extends AbstractBaseFragment {
         Bundle bundle = new Bundle();
         bundle.putString("URL", "http://lorempixel.com/400/200/nature/" + integer);
 
-        ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentSharedElement.class)
+        ActivityFragmentManager.open(getActivity(), ActivityToolbar.class, FragmentSharedElement.class)
                 .setBundle(bundle)
                 .addSharedElement(view.findViewById(R.id.imgExample), "sharedElement")
                 .commit();

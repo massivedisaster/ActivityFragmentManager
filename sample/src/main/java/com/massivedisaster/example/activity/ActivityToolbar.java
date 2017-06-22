@@ -20,7 +20,6 @@ package com.massivedisaster.example.activity;
 import android.arch.lifecycle.LifecycleRegistry;
 import android.arch.lifecycle.LifecycleRegistryOwner;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 import com.massivedisaster.example.activitymanager.R;
@@ -48,23 +47,13 @@ public class ActivityToolbar extends AbstractFragmentActivity implements Lifecyc
         return R.id.frmContainer;
     }
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
         }
     }
 }
