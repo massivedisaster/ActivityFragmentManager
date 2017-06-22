@@ -67,11 +67,9 @@ public class FragmentHome extends AbstractBaseFragment implements View.OnClickLi
         Button btnSharedElements = findViewById(R.id.btnSharedElements);
         Button btnOpenFragmentOtherActivity = findViewById(R.id.btnOpenFragmentOtherActivity);
         Button btnOpenFragmentOtherActivityFullscreen = findViewById(R.id.btnOpenFragmentOtherActivityFullscreen);
-        Button btnOpenFragmentOtherActivityWithCustomAnimation = findViewById(R.id.btnOpenFragmentOtherActivityWithCustomAnimation);
 
         btnOpenFragmentOtherActivity.setOnClickListener(this);
         btnOpenFragmentOtherActivityFullscreen.setOnClickListener(this);
-        btnOpenFragmentOtherActivityWithCustomAnimation.setOnClickListener(this);
         btnSharedElements.setOnClickListener(this);
     }
 
@@ -84,10 +82,6 @@ public class FragmentHome extends AbstractBaseFragment implements View.OnClickLi
                 break;
             case R.id.btnOpenFragmentOtherActivityFullscreen:
                 open(getActivity(), ActivityFullscreen.class, FragmentAddReplace.class)
-                        .commit();
-                break;
-            case R.id.btnOpenFragmentOtherActivityWithCustomAnimation:
-                open(getActivity(), ActivityToolbar.class, FragmentAddReplace.class)
                         .commit();
                 break;
             case R.id.btnSharedElements:
