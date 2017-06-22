@@ -35,4 +35,5 @@
         \n\nProin placerat sollicitudin porta. Fusce blandit tortor orci, sit amet cursus felis molestie eget. Nunc ullamcorper convallis nulla porta malesuada. Duis sodales magna metus, cursus elementum tortor luctus eu. Nunc consequat, dolor ac tristique commodo, orci metus varius dolor, in dictum quam sem vitae eros. Mauris non malesuada velit, id mattis nulla. Sed vel quam vestibulum, ullamcorper odio et, condimentum diam.
     </string>
     <string name="image_detail">Image Detail</string>
+    <string name="navigation">Navigation</string>
 </resources>
