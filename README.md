@@ -1,5 +1,5 @@
 # Activity Fragment Manager 
-[![Download](https://api.bintray.com/packages/jmspt/maven/activity-fragment-manager/images/download.svg) ](https://bintray.com/jmspt/maven/activity-fragment-manager/)
+[![Download](https://api.bintray.com/packages/jmspt/maven/activity-fragment-manager/images/download.svg)](https://bintray.com/jmspt/maven/activity-fragment-manager/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://travis-ci.org/massivedisaster/ActivityFragmentManager.svg?branch=master)](https://travis-ci.org/massivedisaster/ActivityFragmentManager)
 [![API](https://img.shields.io/badge/API-10%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=10)
