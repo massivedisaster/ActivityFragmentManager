@@ -8,14 +8,14 @@ A library to help android developer working easly with activities and fragments
 
 ## Motivation
 
-* Accelerate the process and abstract the logic of opening, adding, and replacing fragments in an activity;
+* Accelerate the process and abstract the logic of opening, adding and replacing fragments in an activity;
 * Reduce the number of activities declared in the project;
 * Add animated transitions between fragments in an easy way;
+* Easy way to work with shared elements;
 
 <div align="center">
   <img src="extra/example.gif" alt="An animated GIF showing an sample app opening" />
   <br />
-  <em>Sample</em>
 </div>
 
 ## Download
@@ -81,17 +81,20 @@ Create the layout to be used by your ```AbstractFragmentActivity```.
 
 #### Open a new AbstractFragmentActivity with a fragment.
 ```java
-ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentExample.class);
+ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentExample.class)
+                .commit();
 ```
 
 #### Add a new Fragment in the actual AbstractFragmentActivity.
 ```java
-ActivityFragmentManager.add(getActivity(), ActivityPrimaryTheme.class, FragmentExample.class);
+ActivityFragmentManager.add(getActivity(), FragmentExample.class)
+                .commit();
 ```
 
 #### Replace a new Fragment in the actual AbstractFragmentActivity.
 ```java
-ActivityFragmentManager.replace((AbstractFragmentActivity) getActivity(), FragmentExample.class);
+ActivityFragmentManager.replace((AbstractFragmentActivity) getActivity(), FragmentExample.class)
+                .commit();
 ```
 
 ### 3. Default Fragment
@@ -119,28 +122,31 @@ When you add or replace fragments in the old way you can set a custom animations
 
 If you want to add a single animation only for one transaction you can do this:
 ```java
-ActivityFragmentManager.add((AbstractFragmentActivity) getActivity(), FragmentExample.class, new TransactionAnimation() {
-                @Override
-                public int getAnimationEnter() {
-                    return R.anim.enter_from_right;
-                }
+ActivityFragmentManager.add(getActivity(), FragmentExample.class)
+        .setTransactionAnimation(new TransactionAnimation() {
+            @Override
+            public int getAnimationEnter() {
+                return R.anim.enter_from_right;
+            }
 
-                @Override
-                public int getAnimationExit() {
-                    return R.anim.exit_from_left;
-                }
+            @Override
+            public int getAnimationExit() {
+                return R.anim.exit_from_left;
+            }
 
-                @Override
-                public int getAnimationPopEnter() {
-                    return R.anim.pop_enter;
-                }
+            @Override
+            public int getAnimationPopEnter() {
+                return R.anim.pop_enter;
+            }
 
-                @Override
-                public int getAnimationPopExit() {
-                    return R.anim.pop_exit;
-                }
-            });
+            @Override
+            public int getAnimationPopExit() {
+                return R.anim.pop_exit;
+            }
+        })
+        .commit();
 ```
+**Attention:** This only works in transactions between fragments, i.e. ```add()``` and ```replace()```
 
 #### Custom animation for all transactions.
 
@@ -174,10 +180,10 @@ public class ActivityPrimaryTheme extends AbstractFragmentActivity {
 ```
 
 ### 5. Custom Intents
-Sometimes you want to add more information to the ```Intent``` or set some flags. You can use the follow method to open a new ```AbtractActivityFragment```:
+Sometimes you want to add more information to the ```Intent``` or set some flags. You can use the follow method to open a new ```AbstractActivityFragment```:
 
 ```java
-Intent intent = ActivityFragmentManager.getIntent(getContext(), ActivityPrimaryTheme.class, FragmentExample.class);
+Intent intent = ActivityFragmentManager.open(getContext(), ActivityPrimaryTheme.class, FragmentExample.class).getIntent();
 intent.setFlag(Intent.FLAG_ACTIVITY_NEW_TASK
                 | intent.FLAG_ACTIVITY_CLEAR_TASK);
 getActivity().startActivity(intent);
@@ -188,6 +194,7 @@ getActivity().startActivity(intent);
 * You can pass a tag to be applied in the ```Fragment```.
 * You can pass ```REQUEST_CODE``` to the ```startActivityForResult```.
 * You can pass data between fragments using a ```Bundle```.
+* You can get acess to the original ```FragmentTransaction```.
 
 ## Sample
 
