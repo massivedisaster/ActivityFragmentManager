@@ -15,4 +15,4 @@
  * with ActivityFragmentManager. If not, see <http://www.gnu.org/licenses/>.
  */
 
-include ':sample', ':activity-fragment-manager'
+include ':sample', ':activity-fragment-manager', ':lint'
