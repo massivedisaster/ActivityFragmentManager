@@ -1,6 +1,5 @@
 # Activity Fragment Manager 
 [![Download](https://api.bintray.com/packages/jmspt/maven/activity-fragment-manager/images/download.svg) ](https://bintray.com/jmspt/maven/activity-fragment-manager/)
-[![License](http://img.shields.io/badge/license-Apache%202.0-blue.svg?style=flat)](http://choosealicense.com/licenses/apache-2.0/)
 [![Build Status](https://travis-ci.org/massivedisaster/ActivityFragmentManager.svg?branch=master)](https://travis-ci.org/massivedisaster/ActivityFragmentManager)
 
 A library to help android developer working easly with activities and fragments 
@@ -199,4 +198,4 @@ The Sample app don't require any configuration to interact.
 [CONTRIBUTING](CONTRIBUTING.md)
 
 ## License
-[GNU LESSER GENERAL PUBLIC LICENSE](LICENSE.md)
+[MIT LICENSE](LICENSE.md)
