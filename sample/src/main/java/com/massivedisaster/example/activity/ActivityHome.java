@@ -25,53 +25,18 @@
 
 package com.massivedisaster.example.activity;
 
-import android.arch.lifecycle.LifecycleRegistry;
-import android.arch.lifecycle.LifecycleRegistryOwner;
 import android.os.Bundle;
-import android.view.MenuItem;
-
-import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
-import com.massivedisaster.example.activitymanager.R;
 
 /**
- * Activity Toolbar
+ * ActivityHome
  */
-public class ActivityToolbar extends AbstractFragmentActivity implements LifecycleRegistryOwner {
-
-    private final LifecycleRegistry mRegistry = new LifecycleRegistry(this);
-
-    @Override
-    public LifecycleRegistry getLifecycle() {
-        return mRegistry;
-    }
-
-    @Override
-    public int getLayoutResId() {
-        return R.layout.activity_primary;
-    }
-
-    @Override
-    public int getContainerViewId() {
-        return R.id.frmContainer;
-    }
-
+public class ActivityHome extends ActivityToolbar {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         }
     }
 }
