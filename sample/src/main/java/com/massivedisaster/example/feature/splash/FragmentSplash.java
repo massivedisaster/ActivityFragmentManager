@@ -23,7 +23,7 @@ import android.support.annotation.Nullable;
 
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.adal.fragment.AbstractSplashFragment;
-import com.massivedisaster.example.activity.ActivityPrimaryTheme;
+import com.massivedisaster.example.activity.ActivityHome;
 import com.massivedisaster.example.activitymanager.R;
 import com.massivedisaster.example.feature.home.FragmentHome;
 
@@ -69,7 +69,7 @@ public class FragmentSplash extends AbstractSplashFragment {
      * @param activity The actual activity.
      */
     protected void openHomeScreen(Activity activity) {
-        ActivityFragmentManager.open(activity, ActivityPrimaryTheme.class, FragmentHome.class).commit();
+        ActivityFragmentManager.open(activity, ActivityHome.class, FragmentHome.class).commit();
         activity.finish();
     }
 }
