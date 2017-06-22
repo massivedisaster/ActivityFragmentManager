@@ -34,8 +34,7 @@ import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 import com.massivedisaster.example.activitymanager.R;
 
 /**
- * Activity Manager
- * Created by jms on 27/04/16.
+ * Activity Toolbar
  */
 public class ActivityToolbar extends AbstractFragmentActivity implements LifecycleRegistryOwner {
 

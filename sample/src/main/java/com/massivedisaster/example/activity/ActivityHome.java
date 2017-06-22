@@ -25,37 +25,12 @@
 
 package com.massivedisaster.example.activity;
 
-import android.arch.lifecycle.LifecycleRegistry;
-import android.arch.lifecycle.LifecycleRegistryOwner;
 import android.os.Bundle;
 
-import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
-import com.massivedisaster.example.activitymanager.R;
-
 /**
- * Activity Manager
- * Created by jms on 27/04/16.
+ * ActivityHome
  */
-public class ActivityHome extends AbstractFragmentActivity implements LifecycleRegistryOwner {
-
-    private final LifecycleRegistry mRegistry = new LifecycleRegistry(this);
-
-    @Override
-    public LifecycleRegistry getLifecycle() {
-        return mRegistry;
-    }
-
-    @Override
-    public int getLayoutResId() {
-        return R.layout.activity_primary;
-    }
-
-    @Override
-    public int getContainerViewId() {
-        return R.id.frmContainer;
-    }
-
-
+public class ActivityHome extends ActivityToolbar {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
