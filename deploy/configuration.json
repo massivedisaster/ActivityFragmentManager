@@ -1,10 +1,8 @@
 {
   "basePath": "../",
   "readmePath": "../README.md",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "modules": [
     "activity-fragment-manager"
-  ],
-  "bintrayUsername": "jmspt",
-  "bintrayKey": "84d0a1571053d3f110abcc40ef7e73e36b51012e"
+  ]
 }
