@@ -35,6 +35,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.Window;
 
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
@@ -81,7 +83,9 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
 
         super.onCreate(savedInstanceState);
 
-        setContentView(getLayoutResId());
+        View rootView = LayoutInflater.from(this).inflate(getLayoutResId(), null);
+        setContentView(rootView);
+        initializeDataBinding(rootView);
 
         if (getSupportFragmentManager().getBackStackEntryCount() == 0 && getIntent().hasExtra(ACTIVITY_MANAGER_FRAGMENT)) {
             performInitialTransaction(getFragment(getIntent().getStringExtra(ACTIVITY_MANAGER_FRAGMENT)), getFragmentTag());
@@ -133,6 +137,16 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
         }
 
         return null;
+    }
+
+    /**
+     * Override if you want to initialize DataBinding
+     *
+     * @param view the view to bind
+     */
+    @SuppressWarnings("PMD.UnnecessaryReturn")
+    protected void initializeDataBinding(View view) {
+        return;
     }
 
     private String getFragmentTag() {
