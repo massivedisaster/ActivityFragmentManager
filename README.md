@@ -10,6 +10,7 @@ A library to help android developer working easly with activities and fragments
 
 * Accelerate the process and abstract the logic of opening, adding and replacing fragments in an activity;
 * Reduce the number of activities declared in the project;
+* Get access to ```Activity.onBackPressed()``` inside of the fragments.
 * Add animated transitions between fragments in an easy way;
 * Easy way to work with shared elements;
 
@@ -218,6 +219,22 @@ intent.setFlag(Intent.FLAG_ACTIVITY_NEW_TASK
                 | intent.FLAG_ACTIVITY_CLEAR_TASK);
 getActivity().startActivity(intent);
 ``` 
+
+### 7. Fragment#OnBackPressed
+
+
+```java
+public class FragmentA extends Fragment implements OnBackPressedListener{
+
+    ...
+
+    @Override
+    public boolean onBackPressed() {
+      // Do what you want here! If you return true the activity will not process the OnBackPressed
+    }
+
+}
+```
 
 ## Goodies
 
