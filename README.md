@@ -15,8 +15,9 @@ A library to help android developer working easly with activities and fragments
 * Easy way to work with shared elements;
 
 <div align="center">
-  <img src="extra/navigation.gif" alt="An animated GIF showing navigation flow" />
-  <img src="extra/shared_elements.gif" alt="An animated GIF showing shared elements working" />
+  <img src="extra/navigation.gif" width="300" alt="An animated GIF showing navigation flow" />
+  <img src="extra/shared_elements.gif" width="300" alt="An animated GIF showing shared elements working" />
+  <img src="extra/onbackpressed.gif" width="300" alt="An animated GIF showing onbackpressed working" />
   <br />
 </div>
 
