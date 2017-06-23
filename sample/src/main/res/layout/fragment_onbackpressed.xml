@@ -29,28 +29,15 @@
               android:layout_height="match_parent"
               android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btnOpenFragmentOtherActivity"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/open_fragment_other_activity"/>
+        android:layout_margin="@dimen/medium_spacing"
+        android:text="@string/onbackpressed_tutorial"/>
 
-    <Button
-        android:id="@+id/btnOpenFragmentOtherActivityFullscreen"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/open_fragment_other_activity_fullscreen"/>
-
-    <Button
-        android:id="@+id/btnSharedElements"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/shared_elements"/>
-
-    <Button
-        android:id="@+id/btnFragmentOnBackPressed"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/fragment_onbackpressed"/>
+    <TextView
+        android:id="@+id/txtCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>
