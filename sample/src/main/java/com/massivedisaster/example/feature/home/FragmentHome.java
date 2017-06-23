@@ -34,6 +34,7 @@ import com.massivedisaster.adal.fragment.AbstractBaseFragment;
 import com.massivedisaster.example.activity.ActivityFullscreen;
 import com.massivedisaster.example.activity.ActivityToolbar;
 import com.massivedisaster.example.activitymanager.R;
+import com.massivedisaster.example.feature.backpressed.FragmentOnBackPressed;
 import com.massivedisaster.example.feature.navigation.FragmentAddReplace;
 import com.massivedisaster.example.feature.sharedelements.FragmentSharedElementsOptions;
 
@@ -64,9 +65,11 @@ public class FragmentHome extends AbstractBaseFragment implements View.OnClickLi
         getActivity().setTitle(getString(R.string.home));
 
         Button btnSharedElements = findViewById(R.id.btnSharedElements);
+        Button btnFragmentOnBackPressed = findViewById(R.id.btnFragmentOnBackPressed);
         Button btnOpenFragmentOtherActivity = findViewById(R.id.btnOpenFragmentOtherActivity);
         Button btnOpenFragmentOtherActivityFullscreen = findViewById(R.id.btnOpenFragmentOtherActivityFullscreen);
 
+        btnFragmentOnBackPressed.setOnClickListener(this);
         btnOpenFragmentOtherActivity.setOnClickListener(this);
         btnOpenFragmentOtherActivityFullscreen.setOnClickListener(this);
         btnSharedElements.setOnClickListener(this);
@@ -85,6 +88,10 @@ public class FragmentHome extends AbstractBaseFragment implements View.OnClickLi
                 break;
             case R.id.btnSharedElements:
                 open(getActivity(), ActivityToolbar.class, FragmentSharedElementsOptions.class)
+                        .commit();
+                break;
+            case R.id.btnFragmentOnBackPressed:
+                open(getActivity(), ActivityToolbar.class, FragmentOnBackPressed.class)
                         .commit();
                 break;
             default:

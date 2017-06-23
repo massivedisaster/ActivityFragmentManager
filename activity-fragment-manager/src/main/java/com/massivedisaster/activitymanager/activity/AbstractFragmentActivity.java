@@ -40,6 +40,7 @@ import android.view.View;
 import android.view.Window;
 
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
+import com.massivedisaster.activitymanager.OnBackPressedListener;
 import com.massivedisaster.activitymanager.animation.TransactionAnimation;
 
 import static com.massivedisaster.activitymanager.ActivityTransaction.ACTIVITY_MANAGER_FRAGMENT;
@@ -176,5 +177,34 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if (!canBackPress()) {
+            super.onBackPressed();
+        }
+    }
+
+    /**
+     * Checks if the active fragment wants to consume the back press.
+     *
+     * @return false if the fragment wants the activity to call super.onBackPressed, otherwise nothing will happen.
+     */
+    private boolean canBackPress() {
+        Fragment activeFragment = getActiveFragment();
+        return activeFragment != null
+                && activeFragment instanceof OnBackPressedListener
+                && ((OnBackPressedListener) activeFragment).onBackPressed();
+    }
+
+    /**
+     * Gets the active fragment.
+     *
+     * @return the active fragment.
+     */
+    private Fragment getActiveFragment() {
+        return getSupportFragmentManager().findFragmentById(getContainerViewId());
     }
 }
