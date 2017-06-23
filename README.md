@@ -222,10 +222,10 @@ getActivity().startActivity(intent);
 ``` 
 
 ### 7. Fragment#OnBackPressed
-
+Allows to have back pressed events in `Fragments`.
 
 ```java
-public class FragmentA extends Fragment implements OnBackPressedListener{
+public class FragmentA extends Fragment implements OnBackPressedListener {
 
     ...
 
