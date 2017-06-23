@@ -44,7 +44,7 @@
     </string>
     <string name="image_detail">Image Detail</string>
     <string name="navigation">Navigation</string>
-    <string name="onbackpressed_tutorial">When you click on the back button onBackPressed will be called only in this fragment.</string>
+    <string name="onbackpressed_tutorial">When you click on the back button onBackPressed will be called only in this fragment.\n\nThe activity only finish when you tap the back button 6 times.</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="message_exist">Do you want to close this fragment?</string>

@@ -58,6 +58,8 @@ public class FragmentOnBackPressed extends AbstractBaseFragment implements OnBac
 
     @Override
     protected void doOnCreated() {
+        getActivity().setTitle(R.string.fragment_onbackpressed);
+
         mTxtCount = findViewById(R.id.txtCount);
 
         mTxtCount.setText(getString(R.string.number_of_counts, 0));
