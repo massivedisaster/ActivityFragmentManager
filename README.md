@@ -225,6 +225,7 @@ getActivity().startActivity(intent);
 * You can pass ```REQUEST_CODE``` to the ```startActivityForResult```.
 * You can pass data between fragments using a ```Bundle```.
 * You can get acess to the original ```FragmentTransaction```.
+* You can use ```DataBinding``` in your ```AbstractFragmentActivity```, all you need is override ```initializeDataBinding()``` and bind the view!
 
 ## Sample
 
