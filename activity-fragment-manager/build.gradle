@@ -27,6 +27,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'pt.simdea.verifier'
 apply from: "$project.rootDir/quality/quality.gradle"
+apply plugin: 'com.kageiit.lintrules'
 
 android {
     compileSdkVersion 25
@@ -45,14 +46,31 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    lintOptions {
+        textReport true
+        textOutput 'stdout'
+    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.3.1'
-    compile(project(path: ':lint')) {
-        exclude group: 'com.android.tools.lint'
-        exclude group: 'org.projectlombok'
+
+    lintRules project(':lint')
+}
+
+def getRuntimeJar() {
+    try {
+        final File javaBase = new File(System.getProperty("java.home")).getCanonicalFile();
+        File runtimeJar = new File(javaBase, "lib/rt.jar");
+        if (runtimeJar.exists()) {
+            return runtimeJar;
+        }
+        runtimeJar = new File(javaBase, "jre/lib/rt.jar");
+        return runtimeJar.exists() ? runtimeJar : null;
+    } catch (IOException e) {
+        throw new RuntimeException(e);
     }
 }
 
@@ -60,7 +78,7 @@ publish {
     userOrg = "jmspt"
     groupId = "com.massivedisaster"
     artifactId = 'activity-fragment-manager'
-    publishVersion = "0.4.0"
+    publishVersion = "0.4.1"
     desc = 'Activity Fragment Manager'
     website = websiteBase
     licences = licensesBase
