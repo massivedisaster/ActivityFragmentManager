@@ -30,13 +30,13 @@ import android.support.annotation.Nullable;
 import android.widget.TextView;
 
 import com.massivedisaster.activitymanager.OnBackPressedListener;
-import com.massivedisaster.adal.fragment.AbstractBaseFragment;
+import com.massivedisaster.adal.fragment.BaseFragment;
 import com.massivedisaster.example.activitymanager.R;
 
 /**
  * FragmentOnBackPressed
  */
-public class FragmentOnBackPressed extends AbstractBaseFragment implements OnBackPressedListener {
+public class FragmentOnBackPressed extends BaseFragment implements OnBackPressedListener {
 
     private int mNumberOfBacks;
     private TextView mTxtCount;

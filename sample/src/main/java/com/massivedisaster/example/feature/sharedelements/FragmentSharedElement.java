@@ -31,14 +31,14 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.massivedisaster.adal.fragment.AbstractBaseFragment;
+import com.massivedisaster.adal.fragment.BaseFragment;
 import com.massivedisaster.example.activitymanager.R;
 
 /**
  * SHared Element Fragment
  * Fragment to show the transaction
  */
-public class FragmentSharedElement extends AbstractBaseFragment {
+public class FragmentSharedElement extends BaseFragment {
 
     private String mUrl;
 
