@@ -67,7 +67,6 @@ interface ITransaction<T> {
      */
     T addSharedElement(View sharedElement, String transactionName);
 
-
     /**
      * Commit the transaction with all the configurations.
      */

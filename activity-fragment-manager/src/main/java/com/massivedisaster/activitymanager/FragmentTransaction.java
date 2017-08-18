@@ -60,8 +60,6 @@ public abstract class FragmentTransaction implements ITransaction<FragmentTransa
 
         try {
             mFragment = fragmentClass.newInstance();
-            mFrgTransaction.addToBackStack(null);
-
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 mFragment.setSharedElementEnterTransition(TransitionInflater.from(mActivity).inflateTransition(android.R.transition.move));
@@ -92,6 +90,17 @@ public abstract class FragmentTransaction implements ITransaction<FragmentTransa
     @Override
     public FragmentTransaction addSharedElement(View view, String transactionName) {
         mFrgTransaction.addSharedElement(view, transactionName);
+        return this;
+    }
+
+    /**
+     * Add the new view to do an animated in the transaction.
+     *
+     * @param name An optional name for this back stack state, or null.
+     * @return Return the Transaction instance.
+     */
+    public FragmentTransaction addToBackStack(String name) {
+        mFrgTransaction.addToBackStack(name);
         return this;
     }
 

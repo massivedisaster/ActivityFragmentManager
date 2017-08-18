@@ -42,9 +42,7 @@ check {
     }
 
     lint {
-        xmlReport false
-        htmlReport true
-        lintConfig new File(project.rootDir, '/quality/lint/config.xml')
-        htmlOutput file("$project.buildDir/reports/lint/lint-result.html")
+        config new File(project.rootDir, '/quality/lint/config.xml')
+        reportHTML file("$project.buildDir/reports/lint/lint-result.html")
     }
 }
