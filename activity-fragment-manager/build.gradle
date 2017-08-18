@@ -29,12 +29,12 @@ apply plugin: 'pt.simdea.verifier'
 apply from: "$project.rootDir/quality/quality.gradle"
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
 
     defaultConfig {
-        minSdkVersion 10
-        targetSdkVersion 25
+        minSdkVersion 16
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
 
@@ -49,7 +49,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:appcompat-v7:26.0.1'
     compile(project(path: ':lint')) {
         exclude group: 'com.android.tools.lint'
         exclude group: 'org.projectlombok'
