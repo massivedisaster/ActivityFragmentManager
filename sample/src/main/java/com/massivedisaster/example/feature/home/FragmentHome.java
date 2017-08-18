@@ -30,7 +30,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 
-import com.massivedisaster.adal.fragment.AbstractBaseFragment;
+import com.massivedisaster.adal.fragment.BaseFragment;
 import com.massivedisaster.example.activity.ActivityFullscreen;
 import com.massivedisaster.example.activity.ActivityToolbar;
 import com.massivedisaster.example.activitymanager.R;
@@ -43,7 +43,7 @@ import static com.massivedisaster.activitymanager.ActivityFragmentManager.open;
 /**
  * Fragment Home
  */
-public class FragmentHome extends AbstractBaseFragment implements View.OnClickListener {
+public class FragmentHome extends BaseFragment implements View.OnClickListener {
 
     @Override
     protected int layoutToInflate() {

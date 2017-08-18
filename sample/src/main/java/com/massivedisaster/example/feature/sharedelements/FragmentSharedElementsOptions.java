@@ -33,7 +33,7 @@ import android.view.View;
 
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.adal.adapter.OnChildClickListener;
-import com.massivedisaster.adal.fragment.AbstractBaseFragment;
+import com.massivedisaster.adal.fragment.BaseFragment;
 import com.massivedisaster.example.activity.ActivityToolbar;
 import com.massivedisaster.example.activitymanager.R;
 
@@ -43,7 +43,7 @@ import java.util.List;
 /**
  * Fragment Shared Elements Options
  */
-public class FragmentSharedElementsOptions extends AbstractBaseFragment {
+public class FragmentSharedElementsOptions extends BaseFragment {
 
 
     @Override

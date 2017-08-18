@@ -36,14 +36,14 @@ import android.widget.TextView;
 import com.massivedisaster.activitymanager.ActivityFragmentManager;
 import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
 import com.massivedisaster.activitymanager.animation.TransactionAnimation;
-import com.massivedisaster.adal.fragment.AbstractBaseFragment;
+import com.massivedisaster.adal.fragment.BaseFragment;
 import com.massivedisaster.example.activitymanager.R;
 
 /**
  * Fragment Add Replace
  * Fragment with some features to add and remove more fragments.
  */
-public class FragmentAddReplace extends AbstractBaseFragment implements View.OnClickListener {
+public class FragmentAddReplace extends BaseFragment implements View.OnClickListener {
 
     private static final String VALUE = "value";
     private String mValue;
