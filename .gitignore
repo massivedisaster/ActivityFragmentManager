@@ -59,7 +59,7 @@ hs_err_pid*
 # Track copyright configuration
 !.idea/copyright
 .idea/copyright/*
-!.idea/copyright/ADAL_GNU_LESSER_GENERAL_PUBLIC_LICENSE.xml
+!.idea/copyright/AFM_MIT_LICENSE.xml
 !.idea/copyright/profiles_settings.xml
 
 # if you remove the above rule, at least ignore the following:
@@ -68,6 +68,7 @@ hs_err_pid*
 # .idea/workspace.xml
 # .idea/tasks.xml
 # .idea/dictionaries
+# .idea/misc.xml
 
 # Sensitive or high-churn files:
 # .idea/dataSources.ids
