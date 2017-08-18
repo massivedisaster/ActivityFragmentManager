@@ -67,6 +67,13 @@ interface ITransaction<T> {
      */
     T addSharedElement(View sharedElement, String transactionName);
 
+    /**
+     * Add the new view to do an animated in the transaction.
+     *
+     * @param name An optional name for this back stack state, or null.
+     * @return Return the Transaction instance.
+     */
+    T addToBackStack(String name);
 
     /**
      * Commit the transaction with all the configurations.
