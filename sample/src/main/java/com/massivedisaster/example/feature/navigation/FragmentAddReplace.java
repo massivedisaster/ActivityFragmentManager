@@ -93,10 +93,12 @@ public class FragmentAddReplace extends AbstractBaseFragment implements View.OnC
         switch (v.getId()) {
             case R.id.btnAddFragment:
                 ActivityFragmentManager.add((AbstractFragmentActivity) getActivity(), FragmentAddReplace.class)
+                        .addToBackStack(null)
                         .commit();
                 break;
             case R.id.btnAddFragmentWithAnimation:
                 ActivityFragmentManager.add((AbstractFragmentActivity) getActivity(), FragmentAddReplace.class)
+                        .addToBackStack(null)
                         .setTransactionAnimation(new TransactionAnimation() {
                             @Override
                             public int getAnimationEnter() {
@@ -121,6 +123,7 @@ public class FragmentAddReplace extends AbstractBaseFragment implements View.OnC
                 break;
             case R.id.btnReplaceFragment:
                 ActivityFragmentManager.replace((AbstractFragmentActivity) getActivity(), FragmentAddReplace.class)
+                        .addToBackStack(null)
                         .commit();
                 break;
             default:
