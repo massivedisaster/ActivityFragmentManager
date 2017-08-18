@@ -93,7 +93,12 @@ public abstract class FragmentTransaction implements ITransaction<FragmentTransa
         return this;
     }
 
-    @Override
+    /**
+     * Add the new view to do an animated in the transaction.
+     *
+     * @param name An optional name for this back stack state, or null.
+     * @return Return the Transaction instance.
+     */
     public FragmentTransaction addToBackStack(String name) {
         mFrgTransaction.addToBackStack(name);
         return this;
