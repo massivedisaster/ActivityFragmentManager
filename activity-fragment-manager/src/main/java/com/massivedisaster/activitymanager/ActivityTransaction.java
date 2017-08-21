@@ -94,7 +94,7 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
     /**
      * ActivityTransaction constructor, created to be used by a fragment.
      *
-     * @param context                   The fragment to be used to start the new activity.
+     * @param context                   The context to be used to start the new activity.
      * @param abstractBaseActivityClass The AbstractFragmentActivity class.
      * @param fragmentClass             The Fragment to be injected in the activityClass.
      */
@@ -103,7 +103,7 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
         mContext = context;
         mAbstractBaseActivity = abstractBaseActivityClass;
 
-        mIntent = new Intent(mFragment.getContext(), mAbstractBaseActivity);
+        mIntent = new Intent(mContext, mAbstractBaseActivity);
         mIntent.putExtra(ACTIVITY_MANAGER_FRAGMENT, fragmentClass.getCanonicalName());
     }
 
