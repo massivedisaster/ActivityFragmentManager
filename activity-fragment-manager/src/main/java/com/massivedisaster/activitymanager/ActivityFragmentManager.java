@@ -26,6 +26,7 @@
 package com.massivedisaster.activitymanager;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import com.massivedisaster.activitymanager.activity.AbstractFragmentActivity;
@@ -92,5 +93,20 @@ public final class ActivityFragmentManager {
     public static ActivityTransaction open(Fragment fragment, Class<? extends AbstractFragmentActivity> activityClass,
                                            Class<? extends Fragment> fragmentClass) {
         return new ActivityTransaction(fragment, activityClass, fragmentClass);
+    }
+
+    /**
+     * Starts a new {@link ActivityTransaction},
+     * when you {@link ActivityTransaction#commit} w'll open a new activity with the specific fragment.
+     * Use this method if you only have the context, ex: Service, Broadcast, etc
+     *
+     * @param context       The Context.
+     * @param activityClass The AbstractFragmentActivity class.
+     * @param fragmentClass The Fragment to be injected in the activityClass.
+     * @return The {@link ActivityTransaction}.
+     */
+    public static ActivityTransaction open(Context context, Class<? extends AbstractFragmentActivity> activityClass,
+                                           Class<? extends Fragment> fragmentClass) {
+        return new ActivityTransaction(context, activityClass, fragmentClass);
     }
 }
