@@ -26,6 +26,7 @@
 package com.massivedisaster.activitymanager;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -55,6 +56,7 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
     private List<Pair<View, String>> mSharedElements;
     private Activity mActivityBase;
     private Fragment mFragment;
+    private Context mContext;
     private Integer mRequestCode;
 
     /**
@@ -83,6 +85,22 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
     ActivityTransaction(Fragment fragment, Class<? extends AbstractFragmentActivity> abstractBaseActivityClass,
                         Class<? extends Fragment> fragmentClass) {
         mFragment = fragment;
+        mAbstractBaseActivity = abstractBaseActivityClass;
+
+        mIntent = new Intent(mFragment.getContext(), mAbstractBaseActivity);
+        mIntent.putExtra(ACTIVITY_MANAGER_FRAGMENT, fragmentClass.getCanonicalName());
+    }
+
+    /**
+     * ActivityTransaction constructor, created to be used by a fragment.
+     *
+     * @param context                   The fragment to be used to start the new activity.
+     * @param abstractBaseActivityClass The AbstractFragmentActivity class.
+     * @param fragmentClass             The Fragment to be injected in the activityClass.
+     */
+    ActivityTransaction(Context context, Class<? extends AbstractFragmentActivity> abstractBaseActivityClass,
+                        Class<? extends Fragment> fragmentClass) {
+        mContext = context;
         mAbstractBaseActivity = abstractBaseActivityClass;
 
         mIntent = new Intent(mFragment.getContext(), mAbstractBaseActivity);
@@ -159,14 +177,18 @@ public class ActivityTransaction implements ITransaction<ActivityTransaction> {
         if (mRequestCode == null) {
             if (mActivityBase != null) {
                 ContextCompat.startActivity(mActivityBase, intent, bundleOptions);
-            } else {
+            } else if (mFragment != null) {
                 mFragment.startActivity(intent, bundleOptions);
+            } else {
+                mContext.startActivity(intent);
             }
         } else {
             if (mActivityBase != null) {
                 ActivityCompat.startActivityForResult(mActivityBase, intent, mRequestCode, bundleOptions);
-            } else {
+            } else if (mFragment != null) {
                 mFragment.startActivityForResult(intent, mRequestCode, bundleOptions);
+            } else {
+                mContext.startActivity(intent);
             }
         }
     }
