@@ -5,13 +5,13 @@ sudo: false
 android:
   components:
     - tools
-    - build-tools-25.0.3
+    - build-tools-26.0.1
     - platform-tools
     - extra-android-m2repository
     - extra-google-m2repository
     - extra-google-android-support
-    - android-25
-    - sys-img-armeabi-v7a-android-25
+    - android-26
+    - sys-img-armeabi-v7a-android-26
 
 jdk: oraclejdk8
 os:
