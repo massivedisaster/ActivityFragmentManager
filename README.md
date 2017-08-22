@@ -1,8 +1,7 @@
 # Activity Fragment Manager 
 [![Download](https://api.bintray.com/packages/jmspt/maven/activity-fragment-manager/images/download.svg)](https://bintray.com/jmspt/maven/activity-fragment-manager/)
 [![Build Status](https://travis-ci.org/massivedisaster/ActivityFragmentManager.svg?branch=master)](https://travis-ci.org/massivedisaster/ActivityFragmentManager)
-[![API](https://img.shields.io/badge/API-10%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=10)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Activity%20Fragment%20Manager-red.svg?style=flat)](https://android-arsenal.com/details/1/5916)  
 A library to help android developer working easly with activities and fragments 
 
