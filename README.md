@@ -240,6 +240,7 @@ public class FragmentA extends Fragment implements OnBackPressedListener {
 
 * You can pass a tag to be applied in the ```Fragment```.
 * You can pass ```REQUEST_CODE``` to the ```startActivityForResult```.
+* You can ```addToBackStack```.
 * You can pass data between fragments using a ```Bundle```.
 * You can get acess to the original ```FragmentTransaction```.
 * You can use ```DataBinding``` in your ```AbstractFragmentActivity```, all you need is override ```initializeDataBinding()``` and bind the view!
