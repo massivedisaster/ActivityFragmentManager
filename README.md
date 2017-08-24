@@ -1,10 +1,9 @@
 # Activity Fragment Manager 
 [![Download](https://api.bintray.com/packages/jmspt/maven/activity-fragment-manager/images/download.svg)](https://bintray.com/jmspt/maven/activity-fragment-manager/)
 [![Build Status](https://travis-ci.org/massivedisaster/ActivityFragmentManager.svg?branch=master)](https://travis-ci.org/massivedisaster/ActivityFragmentManager)
-[![API](https://img.shields.io/badge/API-10%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=10)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Activity%20Fragment%20Manager-red.svg?style=flat)](https://android-arsenal.com/details/1/5916)  
-A library to help android developer working easly with activities and fragments 
+[![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Activity%20Fragment%20Manager-red.svg?style=flat)](https://android-arsenal.com/details/1/5916)
+A library to help android developer working easly with activities and fragments
 
 ## Motivation
 
@@ -109,7 +108,7 @@ An example, if your ```AbstractFragmentActivity``` is started by an external int
 public class ActivityPrimaryTheme extends AbstractFragmentActivity {
 
     ...
-    
+
     @Override
     protected Class<? extends Fragment> getDefaultFragment() {
         return FragmentSplash.class;
@@ -158,7 +157,7 @@ If you want to add a custom animation for all transactions inside of a ```Abstra
 public class ActivityPrimaryTheme extends AbstractFragmentActivity {
 
     ...
-    
+
     @Override
     public int getAnimationEnter() {
         return R.anim.enter_from_right;
@@ -183,8 +182,8 @@ public class ActivityPrimaryTheme extends AbstractFragmentActivity {
 ```
 
 ### 5. Shared Elements
-If you want to make your app beautiful you need to put some cool animation on it!  
-Shared elements are introduce in API 21 and makes the transactions so great and sweet.  
+If you want to make your app beautiful you need to put some cool animation on it!
+Shared elements are introduce in API 21 and makes the transactions so great and sweet.
 So, now it's very easy to share elements between fragments or activities.
 Let's take a look:
 
@@ -208,7 +207,7 @@ or
   android:transitionName="sharedElement" />
 ```
 
-**Attention:** Shared elements doesn't work when you use ```add()```!  
+**Attention:** Shared elements doesn't work when you use ```add()```!
 Well if you remove the first fragment it's possible, i.e. a replace :)
 
 ### 6. Custom Intents
@@ -219,7 +218,7 @@ Intent intent = ActivityFragmentManager.open(getContext(), ActivityPrimaryTheme.
 intent.setFlag(Intent.FLAG_ACTIVITY_NEW_TASK
                 | intent.FLAG_ACTIVITY_CLEAR_TASK);
 getActivity().startActivity(intent);
-``` 
+```
 
 ### 7. Fragment#OnBackPressed
 Allows to have back pressed events in `Fragments`.
@@ -241,6 +240,7 @@ public class FragmentA extends Fragment implements OnBackPressedListener {
 
 * You can pass a tag to be applied in the ```Fragment```.
 * You can pass ```REQUEST_CODE``` to the ```startActivityForResult```.
+* You can ```addToBackStack```.
 * You can pass data between fragments using a ```Bundle```.
 * You can get acess to the original ```FragmentTransaction```.
 * You can use ```DataBinding``` in your ```AbstractFragmentActivity```, all you need is override ```initializeDataBinding()``` and bind the view!
