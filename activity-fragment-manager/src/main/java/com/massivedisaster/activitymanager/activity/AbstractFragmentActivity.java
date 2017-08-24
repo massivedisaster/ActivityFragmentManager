@@ -88,10 +88,12 @@ public abstract class AbstractFragmentActivity extends AppCompatActivity impleme
         setContentView(rootView);
         initializeDataBinding(rootView);
 
-        if (getSupportFragmentManager().getBackStackEntryCount() == 0 && getIntent().hasExtra(ACTIVITY_MANAGER_FRAGMENT)) {
-            performInitialTransaction(getFragment(getIntent().getStringExtra(ACTIVITY_MANAGER_FRAGMENT)), getFragmentTag());
-        } else if (getDefaultFragment() != null) {
-            performInitialTransaction(getFragment(getDefaultFragment().getCanonicalName()), null);
+        if (getSupportFragmentManager().getFragments().isEmpty() && getSupportFragmentManager().getBackStackEntryCount() == 0) {
+            if (getIntent().hasExtra(ACTIVITY_MANAGER_FRAGMENT)) {
+                performInitialTransaction(getFragment(getIntent().getStringExtra(ACTIVITY_MANAGER_FRAGMENT)), getFragmentTag());
+            } else if (getDefaultFragment() != null) {
+                performInitialTransaction(getFragment(getDefaultFragment().getCanonicalName()), null);
+            }
         }
     }
 
