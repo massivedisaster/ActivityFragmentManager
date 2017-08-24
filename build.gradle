@@ -48,7 +48,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:2.3.3'
         classpath 'com.novoda:bintray-release:0.3.4'
         classpath 'pt.simdea.verifier:verifier:3.5.8'
         classpath 'gradle.plugin.com.kageiit:lintrules:1.1.2'
