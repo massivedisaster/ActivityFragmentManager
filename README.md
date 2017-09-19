@@ -1,16 +1,18 @@
 # Activity Fragment Manager 
 [![Download](https://api.bintray.com/packages/jmspt/maven/activity-fragment-manager/images/download.svg)](https://bintray.com/jmspt/maven/activity-fragment-manager/)
 [![Build Status](https://travis-ci.org/massivedisaster/ActivityFragmentManager.svg?branch=master)](https://travis-ci.org/massivedisaster/ActivityFragmentManager)
-[![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![API](https://img.shields.io/badge/API-16%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=16)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Activity%20Fragment%20Manager-red.svg?style=flat)](https://android-arsenal.com/details/1/5916)
-A library to help android developer working easly with activities and fragments
+
+A library to deal with activities and fragments with ease.
 
 ## Motivation
 
-* Accelerate the process and abstract the logic of opening, adding and replacing fragments in an activity;
+* Speed up the process and abstract the logic of opening, adding and replacing fragments in an activity;
 * Reduce the number of activities declared in the project;
-* Get access to ```Activity.onBackPressed()``` inside of the fragments.
-* Add animated transitions between fragments in an easy way;
+* Get access to `Activity.onBackPressed()` inside fragments;
+* Add animated transitions between fragments in a easy way;
 * Easy way to work with shared elements;
 
 <div align="center">
@@ -29,7 +31,7 @@ To use the Activity Fragment Manager, add the compile dependency with the latest
 Add the Activity Fragment Manager to your `build.gradle`:
 ```gradle
 dependencies {
-    compile 'com.massivedisaster:activity-fragment-manager:0.4.3'
+    compile 'com.massivedisaster:activity-fragment-manager:0.4.4'
 }
 ```
 
@@ -40,7 +42,7 @@ In the `pom.xml` file:
 <dependency>
     <groupId>com.massivedisaster</groupId>
     <artifactId>activity-fragment-manager</artifactId>
-    <version>0.4.3</version>
+    <version>0.4.4</version>
 </dependency>
 ```
 
@@ -48,7 +50,7 @@ In the `pom.xml` file:
 
 ### 1. Create your Activity
 
-Create a new activity and extends the ```AbstractFragmentActivity```.
+Create a new activity that extend the `AbstractFragmentActivity`.
 
 ```java
 public class ActivityPrimaryTheme extends AbstractFragmentActivity {
@@ -64,12 +66,10 @@ public class ActivityPrimaryTheme extends AbstractFragmentActivity {
     protected int getContainerViewId() {
         return R.id.frmContainer;
     }
-
 }
-
 ```
 
-Create the layout to be used by your ```AbstractFragmentActivity```.
+Create the layout to be used by your `AbstractFragmentActivity`.
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
@@ -81,7 +81,7 @@ Create the layout to be used by your ```AbstractFragmentActivity```.
 
 ### 2. Opening, adding or replacing fragments in your AbstractFragmentActivity.
 
-#### Open a new AbstractFragmentActivity with a fragment.
+#### Open a new AbstractFragmentActivity with a Fragment.
 ```java
 ActivityFragmentManager.open(getActivity(), ActivityPrimaryTheme.class, FragmentExample.class)
                 .commit();
@@ -101,8 +101,8 @@ ActivityFragmentManager.replace((AbstractFragmentActivity) getActivity(), Fragme
 
 ### 3. Default Fragment
 
-You can set a default fragment in you ```AbstractFragmentActivity```.
-An example, if your ```AbstractFragmentActivity``` is started by an external intent you need to define a default fragment.
+You can set a default fragment in your `AbstractFragmentActivity`.
+An example, if your `AbstractFragmentActivity` is started by an external intent you need to define a default fragment.
 
 ```java
 public class ActivityPrimaryTheme extends AbstractFragmentActivity {
@@ -113,12 +113,11 @@ public class ActivityPrimaryTheme extends AbstractFragmentActivity {
     protected Class<? extends Fragment> getDefaultFragment() {
         return FragmentSplash.class;
     }
-
 }
 ```
 
 ### 4. Fragment Transaction Animations.
-When you add or replace fragments in the old way you can set a custom animations for the transactions. So, you can set custom animation in easly way using this library.
+When you add or replace fragments in the old way you can set custom animations for the transactions. So, you can set a custom animation with ease using this library.
 
 #### Single Transaction Animation
 
@@ -148,11 +147,11 @@ ActivityFragmentManager.add(getActivity(), FragmentExample.class)
         })
         .commit();
 ```
-**Attention:** This only works in transactions between fragments, i.e. ```add()``` and ```replace()```
+**Attention:** This only works in transactions between fragments, i.e. `add()` and `replace()`
 
 #### Custom animation for all transactions.
 
-If you want to add a custom animation for all transactions inside of a ```AbstractFragmentActivity``` you can override the follow methods:
+If you want to add a custom animation for all transactions inside of a `AbstractFragmentActivity` you can override the follow methods:
 ```java
 public class ActivityPrimaryTheme extends AbstractFragmentActivity {
 
@@ -177,22 +176,20 @@ public class ActivityPrimaryTheme extends AbstractFragmentActivity {
     public int getAnimationPopExit() {
         return R.anim.pop_exit;
     }
-
 }
 ```
 
 ### 5. Shared Elements
 If you want to make your app beautiful you need to put some cool animation on it!
-Shared elements are introduce in API 21 and makes the transactions so great and sweet.
-So, now it's very easy to share elements between fragments or activities.
+Shared elements were introduced in API 21 and makes the transactions so great and sweet.
+With Activity Fragment Manager it's easy to share elements between fragments or activities.
 Let's take a look:
 
 **Activity A**
 ```java
-...
-.addSharedElement(view, "sharedElement")
-...
-.commit();
+ActivityFragmentManager.open(getActivity(), ActivityToolbar.class, FragmentSharedElement.class)
+                .addSharedElement(view.findViewById(R.id.imgExample), "sharedElement")
+                .commit();
 ```
 
 **Activity B**
@@ -207,16 +204,15 @@ or
   android:transitionName="sharedElement" />
 ```
 
-**Attention:** Shared elements doesn't work when you use ```add()```!
+**Attention:** Shared elements doesn't work when you use `add()`!
 Well if you remove the first fragment it's possible, i.e. a replace :)
 
 ### 6. Custom Intents
-Sometimes you want to add more information to the ```Intent``` or set some flags. You can use the follow method to open a new ```AbstractActivityFragment```:
+Sometimes you want to add more information to the `Intent` or set some flags. You can use the follow method to open a new `AbstractActivityFragment`:
 
 ```java
 Intent intent = ActivityFragmentManager.open(getContext(), ActivityPrimaryTheme.class, FragmentExample.class).getIntent();
-intent.setFlag(Intent.FLAG_ACTIVITY_NEW_TASK
-                | intent.FLAG_ACTIVITY_CLEAR_TASK);
+intent.setFlag(Intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
 getActivity().startActivity(intent);
 ```
 
@@ -232,18 +228,17 @@ public class FragmentA extends Fragment implements OnBackPressedListener {
     public boolean onBackPressed() {
       // Do what you want here! If you return true the activity will not process the OnBackPressed
     }
-
 }
 ```
 
 ## Goodies
 
-* You can pass a tag to be applied in the ```Fragment```.
-* You can pass ```REQUEST_CODE``` to the ```startActivityForResult```.
-* You can ```addToBackStack```.
-* You can pass data between fragments using a ```Bundle```.
-* You can get acess to the original ```FragmentTransaction```.
-* You can use ```DataBinding``` in your ```AbstractFragmentActivity```, all you need is override ```initializeDataBinding()``` and bind the view!
+* You can pass a tag to be applied in the `Fragment`.
+* You can pass `REQUEST_CODE` to the `startActivityForResult`.
+* You can `addToBackStack`.
+* You can pass data between fragments using a `Bundle`.
+* You can get acess to the original `FragmentTransaction`.
+* You can use `DataBinding` in your `AbstractFragmentActivity`, all you need is override `initializeDataBinding()` and bind the view!
 
 ## Sample
 
