@@ -45,6 +45,7 @@ public abstract class FragmentTransaction implements ITransaction<FragmentTransa
     protected Fragment mFragment;
     protected android.support.v4.app.FragmentTransaction mFrgTransaction;
     protected String mTag;
+    protected TransactionAnimation mTransactionAnimation;
 
     /**
      * FragmentTransaction constructor, created to be used by an activity.
@@ -129,15 +130,7 @@ public abstract class FragmentTransaction implements ITransaction<FragmentTransa
      * @return Return the Transaction instance.
      */
     public FragmentTransaction setTransactionAnimation(TransactionAnimation transactionAnimation) {
-        // Apply the default activity animation if the FragmentTransaction is null.
-        if (transactionAnimation == null) {
-            transactionAnimation = mActivity;
-        }
-
-        // Set the custom transaction animation.
-        mFrgTransaction.setCustomAnimations(transactionAnimation.getAnimationEnter(), transactionAnimation.getAnimationExit(),
-                transactionAnimation.getAnimationPopEnter(),
-                transactionAnimation.getAnimationPopExit());
+        mTransactionAnimation = transactionAnimation;
 
         return this;
     }
