@@ -55,7 +55,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:26.0.1'
+    compile 'com.android.support:appcompat-v7:26.1.0'
 
     lintRules project(':lint')
 }
@@ -78,7 +78,7 @@ publish {
     userOrg = "jmspt"
     groupId = "com.massivedisaster"
     artifactId = 'activity-fragment-manager'
-    publishVersion = "0.4.3"
+    publishVersion = "0.4.4"
     desc = 'Activity Fragment Manager'
     website = websiteBase
     licences = licensesBase

@@ -47,6 +47,16 @@ class AddFragmentTransaction extends FragmentTransaction {
 
     @Override
     public void commit() {
+        // Apply the default activity animation if the FragmentTransaction is null.
+        if (mTransactionAnimation == null) {
+            mTransactionAnimation = mActivity;
+        }
+
+        // Set the custom transaction animation.
+        mFrgTransaction.setCustomAnimations(mTransactionAnimation.getAnimationEnter(), mTransactionAnimation.getAnimationExit(),
+                mTransactionAnimation.getAnimationPopEnter(),
+                mTransactionAnimation.getAnimationPopExit());
+
         // Add the new fragment to the stack.
         mFrgTransaction.add(mActivity.getContainerViewId(), mFragment, mTag);
         // Hide the first fragment in the container.
