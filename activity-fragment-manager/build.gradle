@@ -61,7 +61,7 @@ publish {
     userOrg = "jmspt"
     groupId = "com.massivedisaster"
     artifactId = 'activity-fragment-manager'
-    publishVersion = "0.4.4"
+    publishVersion = project.libraryVersionName
     desc = 'Activity Fragment Manager'
     website = websiteBase
     licences = licensesBase

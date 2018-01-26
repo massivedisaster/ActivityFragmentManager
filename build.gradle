@@ -32,7 +32,7 @@ ext {
     afmModuleBase = packageBase + '.activity-fragment-manager'
     isLibrary = true
     libraryVersionCode = 1
-    libraryVersionName = '0.3.0'
+    libraryVersionName = project.libraryVersionName
     librarySnaphotEnabled = false
 
     libraryVersionString = {
