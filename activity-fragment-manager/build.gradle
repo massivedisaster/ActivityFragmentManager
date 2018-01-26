@@ -30,15 +30,12 @@ apply from: "$project.rootDir/quality/quality.gradle"
 apply plugin: 'com.kageiit.lintrules'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion project.compileSdkVersion.toInteger()
+    buildToolsVersion project.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
-
+        minSdkVersion project.minSdkVersion.toInteger()
+        targetSdkVersion project.targetSdkVersion.toInteger()
     }
     buildTypes {
         release {
@@ -54,31 +51,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:26.1.0'
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api "com.android.support:appcompat-v7:$project.supportVersion"
 
     lintRules project(':lint')
-}
-
-def getRuntimeJar() {
-    try {
-        final File javaBase = new File(System.getProperty("java.home")).getCanonicalFile();
-        File runtimeJar = new File(javaBase, "lib/rt.jar");
-        if (runtimeJar.exists()) {
-            return runtimeJar;
-        }
-        runtimeJar = new File(javaBase, "jre/lib/rt.jar");
-        return runtimeJar.exists() ? runtimeJar : null;
-    } catch (IOException e) {
-        throw new RuntimeException(e);
-    }
 }
 
 publish {
     userOrg = "jmspt"
     groupId = "com.massivedisaster"
     artifactId = 'activity-fragment-manager'
-    publishVersion = "0.4.4"
+    publishVersion = project.libraryVersionName
     desc = 'Activity Fragment Manager'
     website = websiteBase
     licences = licensesBase
