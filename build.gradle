@@ -32,7 +32,7 @@ ext {
     afmModuleBase = packageBase + '.activity-fragment-manager'
     isLibrary = true
     libraryVersionCode = 1
-    libraryVersionName = '0.3.0'
+    libraryVersionName = project.libraryVersionName
     librarySnaphotEnabled = false
 
     libraryVersionString = {
@@ -49,9 +49,9 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.0-beta6'
+        classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'com.novoda:bintray-release:0.5.0'
-        classpath 'pt.simdea.verifier:verifier:3.5.8'
+        classpath 'pt.simdea.verifier:verifier:3.6.0'
         classpath 'gradle.plugin.com.kageiit:lintrules:1.1.2'
     }
 }
