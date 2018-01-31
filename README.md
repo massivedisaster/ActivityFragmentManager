@@ -12,7 +12,7 @@ A library to deal with activities and fragments with ease.
 * Speed up the process and abstract the logic of opening, adding and replacing fragments in an activity;
 * Reduce the number of activities declared in the project;
 * Get access to `Activity.onBackPressed()` inside fragments;
-* Add animated transitions between fragments in a easy way;
+* Add animated transitions between fragments in an easy way;
 * Easy way to work with shared elements;
 
 <div align="center">
@@ -31,7 +31,7 @@ To use the Activity Fragment Manager, add the compile dependency with the latest
 Add the Activity Fragment Manager to your `build.gradle`:
 ```gradle
 dependencies {
-    compile 'com.massivedisaster:activity-fragment-manager:0.4.5'
+    implementation 'com.massivedisaster:activity-fragment-manager:0.4.5'
 }
 ```
 
@@ -212,7 +212,7 @@ Sometimes you want to add more information to the `Intent` or set some flags. Yo
 
 ```java
 Intent intent = ActivityFragmentManager.open(getContext(), ActivityPrimaryTheme.class, FragmentExample.class).getIntent();
-intent.setFlag(Intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+intent.setFlag(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 getActivity().startActivity(intent);
 ```
 
