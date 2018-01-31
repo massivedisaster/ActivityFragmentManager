@@ -12,7 +12,7 @@ A library to deal with activities and fragments with ease.
 * Speed up the process and abstract the logic of opening, adding and replacing fragments in an activity;
 * Reduce the number of activities declared in the project;
 * Get access to `Activity.onBackPressed()` inside fragments;
-* Add animated transitions between fragments in a easy way;
+* Add animated transitions between fragments in an easy way;
 * Easy way to work with shared elements;
 
 <div align="center">
