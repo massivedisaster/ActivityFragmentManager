@@ -212,7 +212,7 @@ Sometimes you want to add more information to the `Intent` or set some flags. Yo
 
 ```java
 Intent intent = ActivityFragmentManager.open(getContext(), ActivityPrimaryTheme.class, FragmentExample.class).getIntent();
-intent.setFlag(Intent.FLAG_ACTIVITY_NEW_TASK | intent.FLAG_ACTIVITY_CLEAR_TASK);
+intent.setFlag(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 getActivity().startActivity(intent);
 ```
 
